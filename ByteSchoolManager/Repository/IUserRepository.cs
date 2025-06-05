@@ -4,7 +4,7 @@ namespace ByteSchoolManager.Repository;
 
 public interface IUserRepository : IRepository<User>
 {
-    
+    public bool SetRefreshToken(string refreshToken, int id);
 }
 
 public class UserRepository : IUserRepository
@@ -48,5 +48,24 @@ public class UserRepository : IUserRepository
     public bool Delete(int entityId)
     {
         throw new NotImplementedException();
+    }
+    public bool SetRefreshToken(string refreshToken, int id)
+    {
+        User? r = _context.Users.FirstOrDefault(u => u.Id == id);
+
+        if (r == null)
+            return false;
+
+        r.RefreshToken = refreshToken;
+
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        return true;
     }
 }
