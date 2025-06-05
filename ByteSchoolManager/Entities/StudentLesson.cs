@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ByteSchoolManager.Entities
 {
-    [Table("StudentWorkedLessons")]
-    public class StudentWorkedLesson
+    [Table("StudentLessons")]
+    public class StudentLesson
     {
         public enum StudentStatus
         {
@@ -19,15 +19,15 @@ namespace ByteSchoolManager.Entities
 
         public required int StudentId { get; set; }
 
-        public required int WorkedLessonId { get; set; }
+        public required int LessonId { get; set; }
 
         public required StudentStatus Status { get; set; }
         
         [ForeignKey(nameof(StudentId))]
         public Student Student { get; set; }
 
-        [ForeignKey(nameof(WorkedLessonId))]
-        public WorkedLesson WorkedLesson { get; set; }
+        [ForeignKey(nameof(LessonId))]
+        public Lesson Lesson { get; set; }
     }
 
 

@@ -2,46 +2,10 @@
 
 namespace ByteSchoolManager.Repository
 {
-    public class CoordinatorRepository : CoordinatorR
+    public class CoordinatorRepository
     {
-        public ApplicationContext _context;
-        public CoordinatorRepository(ApplicationContext context)
-        {
-            _context = context;
-        }
-        public int? CreateCoach(Coach coach)
-        {
-            var result = _context.Coaches.Add(coach);
-            if (result == null)
-                return null;
-
-            try {
-                _context.SaveChanges();
-            }
-            catch(Exception ex) {
-                return null;
-            }
-            return coach.Id;
-        }
-
-        public int? CreateStudent(Student student)
-        {
-            var result = _context.Students.Add(student);
-            if (result == null)
-                return null;
-
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-            return student.Id;
-        }
-
-        public int? CreateTimeTableLesson(TimeTableLesson lesson)
+        /*//перенести в course repository
+        public int? CreateTimeTableLesson(Course lesson)
         {
             var result = _context.TimetableLessons.Add(lesson);
             if (result == null)
@@ -58,30 +22,15 @@ namespace ByteSchoolManager.Repository
             return lesson.Id;
         }
 
-        public List<Student> GetAllStudents()
-        {
-           return _context.Students.ToList();
-        }
-
-        public TimeTableLesson? GetByIdTimeTableLesson(int lessonId)
+        
+        //перенести в course repository
+        public Course? GetByIdTimeTableLesson(int lessonId)
         {
             return _context.TimetableLessons.FirstOrDefault(u => u.Id == lessonId);
         }
 
-        public bool UpdateStudent(Student student)
-        {
-            _context.Students.Update(student);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            return true;
-        }
-
+        
+        //перенести в course repository
         public bool UpdateStudentStatus(Student studentId)
         {
             _context.Students.Update(studentId);
@@ -96,7 +45,8 @@ namespace ByteSchoolManager.Repository
             return true;
         }
 
-        public bool UpdateTimeTableLesson(TimeTableLesson lessonId)
+        //перенести в course repository
+        public bool UpdateTimeTableLesson(Course lessonId)
         {
             _context.TimetableLessons.Update(lessonId);
             try
@@ -108,34 +58,6 @@ namespace ByteSchoolManager.Repository
                 return false;
             }
             return true;
-        }
-
-        public bool UpdateUser(User userId)
-        {
-            _context.Users.Update(userId);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public bool UpdateUserRole(User userId)
-        {
-            _context.Users.Update(userId);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            return true;
-        }
+        }*/
     }
 }

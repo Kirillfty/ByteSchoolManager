@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ByteSchoolManager.Entities
 {
-    [Table("WorkedLessons")]
-    public class WorkedLesson
+    [Table("Lessons")]
+    public class Lesson
     {
         [Key]
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace ByteSchoolManager.Entities
 
 
         [ForeignKey(nameof(TimeTableLessonId))]
-        public TimeTableLesson TimeTableLesson { get; set; }
+        public Course Course { get; set; }
 
 
         [ForeignKey(nameof(CoachId))]

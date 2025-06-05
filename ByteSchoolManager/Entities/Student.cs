@@ -21,9 +21,9 @@ namespace ByteSchoolManager.Entities
 
         public required int NumberOfParent { get; set; }
 
-        public List<TimeTableLesson> Lessons { get; set; }
+        public List<Course> Courses { get; set; }
 
-        public List<WorkedLesson> WorkedLessons { get; set; }
+        public List<Lesson> Lessons { get; set; }
 
         //Список отработанных занятий (связь Таблица Студент - Отработанное занятие)
     }

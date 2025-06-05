@@ -11,6 +11,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.16",
           "Microsoft.EntityFrameworkCore": "8.0.16",
           "Microsoft.EntityFrameworkCore.Design": "8.0.16",
+          "Microsoft.EntityFrameworkCore.Tools": "8.0.16",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.22.1-Preview.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.11",
           "Swashbuckle.AspNetCore": "6.6.2"
@@ -315,6 +316,11 @@
             "assemblyVersion": "8.0.16.0",
             "fileVersion": "8.0.1625.21606"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/8.0.16": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "8.0.16"
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {},
@@ -751,6 +757,13 @@
       "sha512": "sha512-mZxHVSzGYmQWhvk98JEREmYke+NkBVsCL0q+yN23V3939qxXguSXBvnWc+zO9OfWGpYqzS80ES4I/H+xY33hoA==",
       "path": "microsoft.entityframeworkcore.relational/8.0.16",
       "hashPath": "microsoft.entityframeworkcore.relational.8.0.16.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/8.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AHFFtZSz/KuviL17IEYmCP53EqP9DydvDuOxWnW9rJou3nhVGJj1yvOIkLU8nXU4qiPYBheTH29UI/3Mefptkw==",
+      "path": "microsoft.entityframeworkcore.tools/8.0.16",
+      "hashPath": "microsoft.entityframeworkcore.tools.8.0.16.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",
