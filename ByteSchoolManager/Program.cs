@@ -20,6 +20,8 @@ builder.Services.AddTransient<JwtCreator>();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICoachRepository, CoachRepository>();
+builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -56,9 +58,11 @@ if (app.Environment.IsDevelopment())
     }
 }
 
-
-
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

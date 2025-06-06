@@ -4,77 +4,73 @@ namespace ByteSchoolManager.Repository;
 
 public interface ICourseRepository : IRepository<Course>
 {
-    public class CourseRepository : ICourseRepository
+
+}
+
+public class CourseRepository : ICourseRepository
+{
+
+    ApplicationContext _context;
+
+    public CourseRepository(ApplicationContext context)
     {
+        _context = context;
+    }
 
-        ApplicationContext _context;
+    public int? Create(Course entity)
+    {
+        _context.Courses.Add(entity);
 
-        public CourseRepository(ApplicationContext context)
+        _context.SaveChanges();
+
+        List<DateOnly> l = [];
+        var current = entity.TimeOfStartCourse;
+        while (current.DayOfWeek != entity.DayOfWeekend)
         {
-            _context = context;
+            current = current.AddDays(1);
         }
-
-        public int? Create(Course entity)
+        l.Add(current);
+        while (current <= entity.TimeOfEndCourse)
         {
-            var result = _context.Courses.Add(entity);
-            if (result == null)
-                return null;
-
-            List<DateOnly> l = [];
-            var current = entity.TimeOfStartCourse;
-            while (current.DayOfWeek != entity.DayOfWeekend)
-            {
-                current.AddDays(1);
-            }
             l.Add(current);
-            while (current <= entity.TimeOfEndCourse)
-            {
-                l.Add(current);
-                current = current.AddDays(7);
-            }
-
-           List<Lesson> l1 = new List<Lesson>();
-            foreach (var item in l)
-            {
-                l1.Add(new Lesson
-                {
-                    TimeTableLessonId = entity.Id,
-                    CoachId = entity.CoachId,
-                    DayOfWorkedLesson = item.ToDateTime(entity.TimeOfLesson)
-                });
-               
-            }
-            _context.Lessons.AddRange(l1);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-
-            return entity.Id;
+            current = current.AddDays(7);
         }
 
-        public bool Delete(int entityId)
+        List<Lesson> l1 = new List<Lesson>();
+        foreach (var item in l)
         {
-            throw new NotImplementedException();
-        }
+            l1.Add(new Lesson
+            {
+                TimeTableLessonId = entity.Id,
+                CoachId = entity.CoachId,
+                DayOfWorkedLesson = item.ToDateTime(entity.TimeOfLesson)
+            });
 
-        public List<Course> GetAll()
-        {
-            throw new NotImplementedException();
         }
+        _context.Lessons.AddRange(l1);
 
-        public Course? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        _context.SaveChanges();
 
-        public bool Update(Course entity)
-        {
-            throw new NotImplementedException();
-        }
+        return entity.Id;
+    }
+
+    public bool Delete(int entityId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Course> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Course? GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Update(Course entity)
+    {
+        throw new NotImplementedException();
     }
 }
