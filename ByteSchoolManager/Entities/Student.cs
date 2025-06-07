@@ -9,17 +9,13 @@ namespace ByteSchoolManager.Entities
         [Key]
         public int Id { get; set; }
 
-        public required string NameOfStudent{get;set;} 
+        public required string Name{get;set;} 
 
-        public required string SurNameOfStudent { get; set; }
+        public required string ParentName { get; set; }
 
-        public required string NameOfParent { get; set; }
+        public required int StudentPhoneNumber { get; set; }
 
-        public required string SurNameOfParent { get; set; }
-
-        public required int NumberOfStudent { get; set; }
-
-        public required int NumberOfParent { get; set; }
+        public required int ParentPhoneNumber { get; set; }
 
         public List<Course> Courses { get; set; }
 

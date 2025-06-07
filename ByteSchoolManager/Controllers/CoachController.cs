@@ -22,5 +22,14 @@ namespace ByteSchoolManager.Controllers
             return BadRequest();
 
         }
+
+        [HttpPut]
+        public ActionResult UpdateCoach([FromBody] Coach coach)
+        {
+            if (_repository.Update(coach) == null)
+                return BadRequest();
+            
+            return Ok();
+        }
     }
 }

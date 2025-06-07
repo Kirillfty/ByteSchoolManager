@@ -1,6 +1,0 @@
-@ByteSchoolManager_HostAddress = http://localhost:5146
-
-GET {{ByteSchoolManager_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

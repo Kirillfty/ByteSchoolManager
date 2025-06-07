@@ -9,7 +9,7 @@ namespace ByteSchoolManager.Entities
         [Key]
         public int Id { get; set; }
 
-        public required int TimeTableLessonId { get; set; }
+        public required int CourseId { get; set; }
 
         public required DateTime DayOfWorkedLesson { get; set; }
 
@@ -18,7 +18,7 @@ namespace ByteSchoolManager.Entities
         public List<Student> Students { get; set; }
 
 
-        [ForeignKey(nameof(TimeTableLessonId))]
+        [ForeignKey(nameof(CourseId))]
         public Course Course { get; set; }
 
 

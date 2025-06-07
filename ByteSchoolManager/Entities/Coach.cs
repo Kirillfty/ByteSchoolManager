@@ -8,9 +8,9 @@ namespace ByteSchoolManager.Entities
     {
         [Key]
         public int Id { get; set; }
-        public required string NameOfCoach { get; set; }
-        public required int NumberOfCoach { get; set; }
-
+        public required string Name { get; set; }
+        public required string PhoneNumber { get; set; }
+        public required string Telegram { get; set; }
         public List<Student> Students { get; set; }
     }
 }

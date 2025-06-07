@@ -25,5 +25,11 @@ namespace ByteSchoolManager.Controllers
                 return Created();
             }
         }
+
+        [HttpGet]
+        public List<Course> GetAll()
+        {
+            return _rep.GetAll().ToList();
+        }
     }
 }

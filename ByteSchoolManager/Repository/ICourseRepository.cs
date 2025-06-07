@@ -41,7 +41,7 @@ public class CourseRepository : ICourseRepository
         {
             l1.Add(new Lesson
             {
-                TimeTableLessonId = entity.Id,
+                CourseId = entity.Id,
                 CoachId = entity.CoachId,
                 DayOfWorkedLesson = item.ToDateTime(entity.TimeOfLesson)
             });
@@ -61,7 +61,7 @@ public class CourseRepository : ICourseRepository
 
     public List<Course> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Courses.ToList();
     }
 
     public Course? GetById(int id)
@@ -71,6 +71,38 @@ public class CourseRepository : ICourseRepository
 
     public bool Update(Course entity)
     {
-        throw new NotImplementedException();
+        _context.Courses.Update(entity);
+
+        _context.SaveChanges();
+
+        List<DateOnly> l = [];
+        var current = entity.TimeOfStartCourse;
+        while (current.DayOfWeek != entity.DayOfWeekend)
+        {
+            current = current.AddDays(1);
+        }
+        l.Add(current);
+        while (current <= entity.TimeOfEndCourse)
+        {
+            l.Add(current);
+            current = current.AddDays(7);
+        }
+
+        List<Lesson> l1 = new List<Lesson>();
+        foreach (var item in l)
+        {
+            l1.Add(new Lesson
+            {
+                CourseId = entity.Id,
+                CoachId = entity.CoachId,
+                DayOfWorkedLesson = item.ToDateTime(entity.TimeOfLesson)
+            });
+
+        }
+        _context.Lessons.AddRange(l1);
+
+        _context.SaveChanges();
+
+        return true;
     }
 }

@@ -42,7 +42,16 @@ public class CoachRepository : ICoachRepository
 
     public bool Update(Coach entity)
     {
-        throw new NotImplementedException();
+        _context.Coaches.Update(entity);
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        return true;
     }
 
     public bool Delete(int entityId)
