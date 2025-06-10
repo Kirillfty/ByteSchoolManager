@@ -31,14 +31,8 @@ public class StudentRepository : IStudentRepository
         if (result == null)
             return null;
 
-        try
-        {
-            _context.SaveChanges();
-        }
-        catch (Exception ex)
-        {
-            return null;
-        }
+        _context.SaveChanges();
+     
 
         return student.Id;
     }
@@ -46,14 +40,9 @@ public class StudentRepository : IStudentRepository
     public bool Update(Student student)
     {
         _context.Students.Update(student);
-        try
-        {
-            _context.SaveChanges();
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
+
+        _context.SaveChanges();
+       
         return true;
     }
 

@@ -6,6 +6,14 @@ namespace ByteSchoolManager.Entities
     [Table("Lessons")]
     public class Lesson
     {
+        public enum LessonStatus
+        {
+            NotDone,
+            Сanceled,
+            Done,
+            Mooved,
+            Replaced
+        }
         [Key]
         public int Id { get; set; }
 
@@ -16,6 +24,7 @@ namespace ByteSchoolManager.Entities
         public required int CoachId { get; set; }
 
         public List<Student> Students { get; set; }
+        public LessonStatus Status { get; set; }
 
 
         [ForeignKey(nameof(CourseId))]

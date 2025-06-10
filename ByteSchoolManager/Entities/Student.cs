@@ -13,9 +13,9 @@ namespace ByteSchoolManager.Entities
 
         public required string ParentName { get; set; }
 
-        public required int StudentPhoneNumber { get; set; }
+        public required string StudentPhoneNumber { get; set; }
 
-        public required int ParentPhoneNumber { get; set; }
+        public required string ParentPhoneNumber { get; set; }
 
         public List<Course> Courses { get; set; }
 

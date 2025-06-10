@@ -21,6 +21,7 @@ builder.Services.AddTransient<JwtCreator>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICoachRepository, CoachRepository>();
 builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

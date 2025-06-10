@@ -6,8 +6,10 @@ namespace ByteSchoolManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
     public class CoachController:ControllerBase
     {
+        public record CreateCoachRequest(string Name, string PhoneNumber, string Telegram);
         private ICoachRepository _repository;
         public CoachController(ICoachRepository usersRepository)
         {
@@ -15,8 +17,10 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCoach([FromBody] Coach coach) {
-            if (_repository.Create(coach) != null)
+        public ActionResult CreateCoach([FromBody] CreateCoachRequest coach) {
+
+            Coach c = new Coach { Name = coach.Name, PhoneNumber = coach.PhoneNumber, Telegram = coach.Telegram };
+            if (_repository.Create(c) != null)
                 return Ok();
 
             return BadRequest();

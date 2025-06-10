@@ -1,6 +1,7 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ByteSchoolManager.Controllers;
 
@@ -9,6 +10,8 @@ namespace ByteSchoolManager.Controllers;
 public class StudentController : ControllerBase
 {
     IStudentRepository _repository;
+    public record CreateStudentRequest(string Name,string StudentPhoneNumber, string ParentName,string ParentPhoneNumber);
+    public record UpdateStudentRequest(int Id,string Name, string StudentPhoneNumber, string ParentName, string ParentPhoneNumber);
 
     public StudentController(IStudentRepository repository)
     {
@@ -22,18 +25,33 @@ public class StudentController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Create([FromBody] Student student)
+    public ActionResult Create([FromBody] CreateStudentRequest student)
     {
-        if (_repository.Create(student) == null)
+        Student stud = new Student
+        {
+            Name = student.Name,
+            ParentName = student.ParentName,
+            StudentPhoneNumber = student.StudentPhoneNumber,
+            ParentPhoneNumber = student.ParentPhoneNumber
+        };
+        if (_repository.Create(stud) == null)
         {
             return BadRequest();
         }
         return Ok();
     }
     [HttpPut]
-    public ActionResult Update([FromBody] Student student)
+    public ActionResult Update([FromBody] UpdateStudentRequest student)
     {
-        if (_repository.Update(student) == null)
+        Student stud = new Student
+        {
+            Id = student.Id,
+            Name = student.Name,
+            ParentName = student.ParentName,
+            StudentPhoneNumber = student.StudentPhoneNumber,
+            ParentPhoneNumber = student.ParentPhoneNumber
+        };
+        if (_repository.Update(stud) == null)
         {
             return BadRequest();
         }
