@@ -5,11 +5,12 @@ namespace ByteSchoolManager.Repository;
 public interface ICourseRepository : IRepository<Course>
 {
     public bool UpdateDayOfLesson(Course course);
+    public bool UpdateTimeStartCourse(Course course);
+    public bool UpdateTimeEndCourse(Course course);
 }
 
 public class CourseRepository : ICourseRepository
 {
-
     ApplicationContext _context;
 
     public CourseRepository(ApplicationContext context)
@@ -17,81 +18,179 @@ public class CourseRepository : ICourseRepository
         _context = context;
     }
 
-    public int? Create(Course entity)
+    private List<DateOnly> GetDatesBetweenStartAndEndByDaysOfWeek(DateOnly start, DateOnly end,
+        Course.DayOfWeek daysOfWeek)
     {
-        _context.Courses.Add(entity);
+        List<DateOnly> dates = [];
 
-        _context.SaveChanges();
+        var days = DaysHelper.GetDays(daysOfWeek);
 
-        List<DateOnly> l = [];
-        var current = entity.TimeOfStartCourse;
-        while (current.DayOfWeek != entity.DayOfWeekend)
+        var currentDate = start;
+        while (currentDate <= end)
         {
-            current = current.AddDays(1);
-        }
-        l.Add(current);
-        while (current <= entity.TimeOfEndCourse)
-        {
-            l.Add(current);
-            current = current.AddDays(7);
-        }
-
-        List<Lesson> l1 = new List<Lesson>();
-        foreach (var item in l)
-        {
-            l1.Add(new Lesson
+            // Если текущий день недели содержится в списке, добавляем дату в результат
+            if (days.Contains(currentDate.DayOfWeek))
             {
-                CourseId = entity.Id,
-                CoachId = entity.CoachId,
-                DayOfWorkedLesson = item.ToDateTime(entity.TimeOfLesson)
-            });
+                dates.Add(currentDate);
+            }
 
+            // Переходим к следующей дате
+            currentDate = currentDate.AddDays(1);
         }
-        _context.Lessons.AddRange(l1);
 
-        _context.SaveChanges();
-
-        return entity.Id;
+        return dates;
     }
 
-    public bool UpdateDayOfLesson(Course course) {
-        
+    public int? Create(Course course)
+    {
+        _context.Courses.Add(course);
+
+        _context.SaveChanges();
+
+        var lessons = new List<Lesson>();
+        var dates = GetDatesBetweenStartAndEndByDaysOfWeek(course.DateOfStartCourse, course.DateOfEndCourse,
+            course.DaysOfWeek);
+
+        foreach (var date in dates)
+        {
+            lessons.Add(new Lesson
+            {
+                CourseId = course.Id,
+                CoachId = course.CoachId,
+                DateAndTime = date.ToDateTime(course.TimeOfLesson)
+            });
+        }
+
+        _context.Lessons.AddRange(lessons);
+
+        _context.SaveChanges();
+
+        return course.Id;
+    }
+
+    public bool UpdateDayOfLesson(Course course)
+    {
         var notDoneLessons = _context.Lessons.Where(u => u.Status != Lesson.LessonStatus.Done);
 
         _context.Lessons.RemoveRange(notDoneLessons);
 
-        var lastLesson = _context.Lessons.OrderBy(u => u.DayOfWorkedLesson).LastOrDefault();
+        var lastLesson = _context.Lessons.OrderBy(u => u.DateAndTime).LastOrDefault();
 
-        List<DateOnly> l = [];
-        var current =DateOnly.FromDateTime(lastLesson.DayOfWorkedLesson);
-        while (current.DayOfWeek != course.DayOfWeekend)
-        {
-            current = current.AddDays(1);
-        }
-        l.Add(current);
-        while (current <= course.TimeOfEndCourse)
-        {
-            l.Add(current);
-            current = current.AddDays(7);
-        }
+        var dates = GetDatesBetweenStartAndEndByDaysOfWeek(
+            DateOnly.FromDateTime(lastLesson.DateAndTime.AddDays(1)),
+            course.DateOfEndCourse,
+            course.DaysOfWeek
+        );
 
-        List<Lesson> l1 = new List<Lesson>();
-        foreach (var item in l)
+        List<Lesson> lessons = new List<Lesson>();
+        foreach (var date in dates)
         {
-            l1.Add(new Lesson
+            lessons.Add(new Lesson
             {
                 CourseId = course.Id,
                 CoachId = course.CoachId,
-                DayOfWorkedLesson = item.ToDateTime(course.TimeOfLesson)
+                DateAndTime = date.ToDateTime(course.TimeOfLesson)
             });
-
         }
-        _context.Lessons.AddRange(l1);
+
+        _context.Lessons.AddRange(lessons);
         _context.Courses.Update(course);
         _context.SaveChanges();
 
         return true;
     }
+
+    public bool UpdateTimeStartCourse(Course newCourse)
+    {
+        var lessons = _context.Lessons.ToList();
+        var oldCourses = _context.Courses.FirstOrDefault(u => u.Id == newCourse.Id);
+
+        if (lessons.Any(u => u.Status == Lesson.LessonStatus.NotDone) &&
+            oldCourses.DateOfStartCourse != newCourse.DateOfStartCourse)
+        {
+            _context.RemoveRange(lessons);
+
+            var lastLesson = _context.Lessons.OrderBy(u => u.DateAndTime).LastOrDefault();
+            List<DateOnly> l = [];
+            var current = DateOnly.FromDateTime(lastLesson.DateAndTime);
+            while (current.DayOfWeek != newCourse.DaysOfWeek)
+            {
+                current = current.AddDays(1);
+            }
+
+            l.Add(current);
+            while (current <= newCourse.DateOfEndCourse)
+            {
+                l.Add(current);
+                current = current.AddDays(7);
+            }
+
+            List<Lesson> l1 = new List<Lesson>();
+            foreach (var item in l)
+            {
+                l1.Add(new Lesson
+                {
+                    CourseId = newCourse.Id,
+                    CoachId = newCourse.CoachId,
+                    DateAndTime = item.ToDateTime(newCourse.TimeOfLesson)
+                });
+            }
+
+            _context.Lessons.AddRange(l1);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool UpdateTimeEndCourse(Course newCourse)
+    {
+        var oldCourses = _context.Courses.FirstOrDefault(u => u.Id == newCourse.Id);
+
+        if (oldCourses.DateOfEndCourse == newCourse.DateOfEndCourse)
+        {
+            return false;
+        }
+
+        var notDoneLessons = _context.Lessons.Where(u => u.Status != Lesson.LessonStatus.Done);
+
+        _context.Lessons.RemoveRange(notDoneLessons);
+
+        var lastLesson = _context.Lessons.OrderBy(u => u.DateAndTime).LastOrDefault();
+
+        List<DateOnly> l = [];
+        var current = DateOnly.FromDateTime(lastLesson.DateAndTime.AddDays(1));
+        while (current.DayOfWeek != newCourse.DaysOfWeek)
+        {
+            current = current.AddDays(1);
+        }
+
+        l.Add(current);
+        while (current <= newCourse.DateOfEndCourse)
+        {
+            l.Add(current);
+            current = current.AddDays(7);
+        }
+
+        List<Lesson> l1 = new List<Lesson>();
+        foreach (var item in l)
+        {
+            l1.Add(new Lesson
+            {
+                CourseId = newCourse.Id,
+                CoachId = newCourse.CoachId,
+                DateAndTime = item.ToDateTime(newCourse.TimeOfLesson)
+            });
+        }
+
+        _context.Lessons.AddRange(l1);
+        _context.Courses.Update(newCourse);
+        _context.SaveChanges();
+
+        return true;
+    }
+
     public bool Delete(int entityId)
     {
         throw new NotImplementedException();

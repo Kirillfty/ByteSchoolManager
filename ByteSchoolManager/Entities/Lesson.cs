@@ -19,7 +19,7 @@ namespace ByteSchoolManager.Entities
 
         public required int CourseId { get; set; }
 
-        public required DateTime DayOfWorkedLesson { get; set; }
+        public required DateTime DateAndTime { get; set; }
 
         public required int CoachId { get; set; }
 
