@@ -25,18 +25,30 @@ namespace ByteSchoolManager.Controllers
                 return Created();
             }
         }
-        [HttpPut]
-        public ActionResult UpdateDayOfWorkedLesson(Course c) {
+        [HttpPut("update-day-lesson")]
+        public ActionResult UpdateDayOfWorkedLesson(Course c)
+        {
             if (_rep.UpdateDayOfLesson(c) == true)
             {
                 return Ok();
             }
             return BadRequest();
         }
+
+        [HttpPut]
+        public ActionResult UpdateDayCoachinCourse(Course c)
+        {
+            if (_rep.UpdateCoachCourse(c) == true)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
         [HttpGet]
         public List<Course> GetAll()
         {
-            return _rep.GetAll().ToList();
+            return _rep.GetAll();
         }
     }
 }

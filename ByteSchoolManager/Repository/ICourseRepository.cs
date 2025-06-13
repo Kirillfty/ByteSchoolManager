@@ -167,13 +167,9 @@ public class CourseRepository : ICourseRepository
         return true;
     }
     public bool UpdateCoachCourse(Course course) {
-        var notDoneLessons = _context.Lessons.Where(u => u.Status != Lesson.LessonStatus.NotDone);
-        var oldCourses = _context.Courses.FirstOrDefault(u => u.Id == newCourse.Id);
-        var lessons = _context.Lessons.Where(u => u.CourseId == newCourse.Id).ToList();
 
-        //_context.Lessons.RemoveRange(notDoneLessons);
-
-        //var lastLesson = _context.Lessons.OrderBy(u => u.DateAndTime).LastOrDefault();
+        var lessons = _context.Lessons.Where(u => u.CourseId == course.Id && u.Status == Lesson.LessonStatus.NotDone).ToList();
+        var lastLesson = _context.Lessons.OrderBy(u => u.DateAndTime).LastOrDefault();
 
         var dates = GetDatesBetweenStartAndEndByDaysOfWeek(
             DateOnly.FromDateTime(lastLesson.DateAndTime.AddDays(1)),
@@ -181,7 +177,6 @@ public class CourseRepository : ICourseRepository
             course.DaysOfWeek
         );
 
-        //List<Lesson> lessons = new List<Lesson>();
         foreach (var date in dates)
         {
             lessons.Add(new Lesson
@@ -197,6 +192,7 @@ public class CourseRepository : ICourseRepository
         _context.SaveChanges();
 
         return true;
+
     }
     public bool UpdateTimeOfCourse(Course course) {
         var notDoneLessons = _context.Lessons.Where(u => u.Status != Lesson.LessonStatus.Done);
