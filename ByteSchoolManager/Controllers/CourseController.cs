@@ -34,7 +34,15 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-
+        [HttpPut("update-time-course")]
+        public ActionResult UpdateTimeinCourse(Course c)
+        {
+            if (_rep.UpdateTimeOfCourse(c) == true)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
         [HttpPut]
         public ActionResult UpdateDayCoachinCourse(Course c)
         {
