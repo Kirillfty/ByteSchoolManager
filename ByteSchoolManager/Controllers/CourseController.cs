@@ -9,7 +9,9 @@ namespace ByteSchoolManager.Controllers
     [Route("api/[controller]")]
     public class CourseController : ControllerBase
     {
-        private readonly ICourseRepository _rep;
+
+        public record UpdateCourseRequest(int id,int coachId);
+        public ICourseRepository _rep;
         public CourseController(ICourseRepository rep)
         {
             _rep = rep;
@@ -46,6 +48,7 @@ namespace ByteSchoolManager.Controllers
         [HttpPut]
         public ActionResult UpdateDayCoachinCourse(Course c)
         {
+            
             if (_rep.UpdateCoachCourse(c) == true)
             {
                 return Ok();
