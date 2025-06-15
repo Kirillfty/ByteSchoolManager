@@ -21,21 +21,21 @@ namespace ByteSchoolManager.Entities
         [Key]
         public int Id { get; set; }
 
-        public required DayOfWeek DaysOfWeek { get; set; }
+        public  DayOfWeek DaysOfWeek { get; set; }
 
-        public required TimeOnly TimeOfLesson { get; set; }  
+        public  TimeOnly TimeOfLesson { get; set; }  
 
-        public required DateOnly DateOfStartCourse { get; set; }
+        public  DateOnly DateOfStartCourse { get; set; }
 
-        public required DateOnly DateOfEndCourse { get; set; }
+        public  DateOnly DateOfEndCourse { get; set; }
 
-        public required string Title { get; set; }
+        public string Title { get; set; }
 
-        public required int CoachId { get; set; }
+        public int CoachId { get; set; }
         
         [ForeignKey(nameof(CoachId))]
         public Coach Coach { get; set; }
        
-        public required List<Student> Students { get; set; }
+        public  List<Student> Students { get; set; }
     }
 }
