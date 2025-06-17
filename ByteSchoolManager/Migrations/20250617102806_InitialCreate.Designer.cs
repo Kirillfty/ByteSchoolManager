@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ByteSchoolManager.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250610172700_AddCoach")]
-    partial class AddCoach
+    [Migration("20250617102806_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,17 +61,17 @@ namespace ByteSchoolManager.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("DayOfWeekend")
-                        .HasColumnType("integer");
-
-                    b.Property<DateOnly>("TimeOfEndCourse")
+                    b.Property<DateOnly>("DateOfEndCourse")
                         .HasColumnType("date");
+
+                    b.Property<DateOnly>("DateOfStartCourse")
+                        .HasColumnType("date");
+
+                    b.Property<int>("DaysOfWeek")
+                        .HasColumnType("integer");
 
                     b.Property<TimeOnly>("TimeOfLesson")
                         .HasColumnType("time without time zone");
-
-                    b.Property<DateOnly>("TimeOfStartCourse")
-                        .HasColumnType("date");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -98,8 +98,8 @@ namespace ByteSchoolManager.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DayOfWorkedLesson")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("DateAndTime")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");

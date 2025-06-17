@@ -43,7 +43,7 @@ namespace ByteSchoolManager.Controllers
                 return Created();
             }
         }
-        [HttpPut("update-day-lesson")] //поменять put на patch
+        [HttpPatch("update-day-lesson")] //поменять put на patch
         public ActionResult UpdateDayOfWorkedLesson([FromBody]UpdateDayCourseRequest c)
         {
             Course course = new Course { Id = c.id, DaysOfWeek = c.day};
@@ -53,7 +53,7 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPut("update-time-course")]//поменять put на patch
+        [HttpPatch("update-time-course")]//поменять put на patch
         public ActionResult UpdateTimeinCourse([FromBody]UpdateTimeCourseRequest c)
         {
             Course course = new Course { Id = c.id,TimeOfLesson = c.timeOfCourse };
@@ -64,8 +64,8 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPut]//поменять put на patch
-        public ActionResult UpdateCoachinCourse([FromBody] UpdateCoachCourseRequest c)//исправь опечатку в названии метода
+        [HttpPatch]//поменять put на patch
+        public ActionResult UpdateCoachInCourse([FromBody] UpdateCoachCourseRequest c)//исправь опечатку в названии метода
         {
             Course course = new Course { CoachId = c.coachId,Id = c.id };
             
