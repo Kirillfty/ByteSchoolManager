@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ByteSchoolManager
 {
-    public class ApplicationContext(DbContextOptions<ApplicationContext> options) : DbContext(options)
+    public class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -12,6 +12,11 @@ namespace ByteSchoolManager
         public DbSet<StudentCourse> StudentCourses { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<StudentLesson> StudentLessons { get; set; }
+
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Student>()
