@@ -11,8 +11,15 @@ namespace ByteSchoolManager.Controllers
     {
 
         public record UpdateCoachCourseRequest(int id,int coachId);
+        public record CreateCourseRequest(Course.DayOfWeek day,
+            TimeOnly timeOfLesson, 
+            DateOnly DateOfStartCourse,
+            DateOnly DateOfEndCourse, 
+            string Title, 
+            int CoachId);
         public record UpdateTimeCourseRequest(int id, TimeOnly timeOfCourse);
-        public record UpdateDayCourseRequest(int id, DayOfWeek dayOfCourse);
+        public record UpdateDayCourseRequest(int id, Course.DayOfWeek day);
+
         public ICourseRepository _rep;
         public CourseController(ICourseRepository rep)
         {
@@ -20,9 +27,15 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCoure([FromBody] Course c) {
-
-            if (_rep.Create(c) == null)
+        public ActionResult CreateCoure([FromBody] CreateCourseRequest c) {
+            Course course = new Course {TimeOfLesson = c.timeOfLesson,
+                DateOfEndCourse = c.DateOfEndCourse,
+                DateOfStartCourse = c.DateOfStartCourse,
+                DaysOfWeek = c.day,
+                Title = c.Title,
+                CoachId = c.CoachId
+            };
+            if (_rep.Create(course) == null)
             {
                 return BadRequest();
             }
@@ -31,17 +44,17 @@ namespace ByteSchoolManager.Controllers
             }
         }
         [HttpPut("update-day-lesson")]
-        public ActionResult UpdateDayOfWorkedLesson(Course c)
+        public ActionResult UpdateDayOfWorkedLesson([FromBody]UpdateDayCourseRequest c)
         {
-           
-            if (_rep.UpdateDayOfLesson(c) == true)
+            Course course = new Course { Id = c.id, DaysOfWeek = c.day};
+            if (_rep.UpdateDayOfLesson(course) == true)
             {
                 return Ok();
             }
             return BadRequest();
         }
         [HttpPut("update-time-course")]
-        public ActionResult UpdateTimeinCourse(UpdateTimeCourseRequest c)
+        public ActionResult UpdateTimeinCourse([FromBody]UpdateTimeCourseRequest c)
         {
             Course course = new Course { Id = c.id,TimeOfLesson = c.timeOfCourse };
 
@@ -52,7 +65,7 @@ namespace ByteSchoolManager.Controllers
             return BadRequest();
         }
         [HttpPut]
-        public ActionResult UpdateDayCoachinCourse(UpdateCoachCourseRequest c)
+        public ActionResult UpdateCoachinCourse([FromBody] UpdateCoachCourseRequest c)
         {
             Course course = new Course { CoachId = c.coachId,Id = c.id };
             
@@ -69,5 +82,9 @@ namespace ByteSchoolManager.Controllers
         {
             return _rep.GetAll();
         }
+
+
+
+       
     }
 }
