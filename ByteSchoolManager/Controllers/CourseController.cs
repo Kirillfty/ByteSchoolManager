@@ -31,7 +31,13 @@ namespace ByteSchoolManager.Controllers
             _rep = rep;
         }
 
-        [HttpPost("create-course")]
+        [HttpGet]
+        public List<Course> GetAll()
+        {
+            return _rep.GetAll();
+        }
+        
+        [HttpPost]
         public ActionResult CreateCoure([FromBody] CreateCourseRequest c)
         {
 
@@ -53,7 +59,7 @@ namespace ByteSchoolManager.Controllers
                 return Created();
             }
         }
-        [HttpPatch("update-start-date")]
+        [HttpPatch("start-date")]
         public ActionResult UpdateStartCourse([FromBody] UpdateDateStartCourseRequest request) {
 
             var course = _rep.GetById(request.id);
@@ -64,7 +70,7 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPatch("update-end-date")]
+        [HttpPatch("end-date")]
         public ActionResult UpdateEndCourse([FromBody] UpdateDateEndCourseRequest request)
         {
 
@@ -79,7 +85,7 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPatch("update-day-lesson")] //поменять put на patch
+        [HttpPatch("lesson-days")]
         public ActionResult UpdateDayOfWorkedLesson([FromBody] UpdateDayCourseRequest request)
         {
             var course = _rep.GetById(request.id);
@@ -96,7 +102,7 @@ namespace ByteSchoolManager.Controllers
 
             
         }
-        [HttpPatch("update-time-course")]//поменять put на patch
+        [HttpPatch("lesson-time")]
         public ActionResult UpdateTimeInCourse([FromBody] UpdateTimeCourseRequest c)
         {
             Course course = new Course { Id = c.id, TimeOfLesson = c.timeOfCourse };
@@ -107,7 +113,7 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPatch("update-coach-in-course")]//поменять put на patch
+        [HttpPatch("coach")]
         public ActionResult UpdateCoachInCourse([FromBody] UpdateCoachCourseRequest c)//исправь опечатку в названии метода
         {
             Course course = new Course { CoachId = c.coachId, Id = c.id };
@@ -119,15 +125,5 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-
-        [HttpGet]
-        public List<Course> GetAll()
-        {
-            return _rep.GetAll();
-        }
-
-
-
-
     }
 }
