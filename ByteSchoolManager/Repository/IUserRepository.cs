@@ -18,7 +18,16 @@ public class UserRepository : IUserRepository
 
     public int? Create(User entity)
     {
-        throw new NotImplementedException();
+        _context.Users.Add(entity);
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+        return entity.Id;
     }
 
     public bool Update(User userId)
@@ -37,7 +46,7 @@ public class UserRepository : IUserRepository
 
     public List<User> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Users.ToList();
     }
 
     public User? GetById(int id)
