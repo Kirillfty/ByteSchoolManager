@@ -1,10 +1,6 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System.Text.Json.Serialization;
-using static ByteSchoolManager.Repository.ICourseRepository;
 
 namespace ByteSchoolManager.Controllers
 {
@@ -12,45 +8,51 @@ namespace ByteSchoolManager.Controllers
     [Route("api/[controller]")]
     public class CourseController : ControllerBase
     {
+        public record UpdateCoachCourseRequest(int Id, int CoachId);
 
-        public record UpdateCoachCourseRequest(int id, int coachId);
-        public record UpdateDateStartCourseRequest(int id, DateOnly startDayCourse);
-        public record UpdateDateEndCourseRequest(int id, DateOnly endDayCourse);
-        public record CreateCourseRequest(int[] days,
-            TimeOnly timeOfLesson,
+        public record UpdateDateStartCourseRequest(int Id, DateOnly StartDayCourse);
+
+        public record UpdateDateEndCourseRequest(int Id, DateOnly EndDayCourse);
+
+        public record CreateCourseRequest(
+            int[] Days,
+            TimeOnly TimeOfLesson,
             DateOnly DateOfStartCourse,
             DateOnly DateOfEndCourse,
             string Title,
-            int CoachId);
-        public record UpdateTimeCourseRequest(int id, TimeOnly timeOfCourse);
-        public record UpdateDayCourseRequest(int id, int[] days);
+            int CoachId
+        );
 
-        public readonly ICourseRepository _rep;
-        public CourseController(ICourseRepository rep)
+        public record UpdateTimeCourseRequest(int Id, TimeOnly TimeOfCourse);
+
+        public record UpdateDayCourseRequest(int Id, int[] Days);
+
+        private readonly ICourseRepository _courseRepository;
+
+        public CourseController(ICourseRepository courseRepository)
         {
-            _rep = rep;
+            _courseRepository = courseRepository;
         }
 
         [HttpGet]
         public List<Course> GetAll()
         {
-            return _rep.GetAll();
+            return _courseRepository.GetAll();
         }
-        
-        [HttpPost]
-        public ActionResult CreateCoure([FromBody] CreateCourseRequest c)
-        {
 
+        [HttpPost]
+        public ActionResult Create([FromBody] CreateCourseRequest request)
+        {
             Course course = new Course
             {
-                TimeOfLesson = c.timeOfLesson,
-                DateOfEndCourse = c.DateOfEndCourse,
-                DateOfStartCourse = c.DateOfStartCourse,
-                DaysOfWeek = DaysHelper.GetDayOfWeek(c.days.Select(u => (DayOfWeek)u).ToArray()),
-                Title = c.Title,
-                CoachId = c.CoachId
+                TimeOfLesson = request.TimeOfLesson,
+                DateOfEndCourse = request.DateOfEndCourse,
+                DateOfStartCourse = request.DateOfStartCourse,
+                DaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(i => (DayOfWeek)i).ToArray()),
+                Title = request.Title,
+                CoachId = request.CoachId
             };
-            if (_rep.Create(course) == null)
+            if (_courseRepository.Create(course) == null)
             {
                 return BadRequest();
             }
@@ -59,70 +61,85 @@ namespace ByteSchoolManager.Controllers
                 return Created();
             }
         }
+
         [HttpPatch("start-date")]
-        public ActionResult UpdateStartCourse([FromBody] UpdateDateStartCourseRequest request) {
-
-            var course = _rep.GetById(request.id);
-            course.DateOfStartCourse = request.startDayCourse;
-            if (_rep.UpdateDayStartCourse(course) == true)
-            {
-                return Ok();
-            }
-            return BadRequest();
-        }
-        [HttpPatch("end-date")]
-        public ActionResult UpdateEndCourse([FromBody] UpdateDateEndCourseRequest request)
+        public ActionResult UpdateStartDate([FromBody] UpdateDateStartCourseRequest request)
         {
-
-            var course = _rep.GetById(request.id);
-            if (course == null) {
-                return NotFound();
-            }
-            course.DateOfEndCourse = request.endDayCourse;
-            if (_rep.UpdateDayEndCourse(course) == true)
-            {
-                return Ok();
-            }
-            return BadRequest();
-        }
-        [HttpPatch("lesson-days")]
-        public ActionResult UpdateDayOfWorkedLesson([FromBody] UpdateDayCourseRequest request)
-        {
-            var course = _rep.GetById(request.id);
+            var course = _courseRepository.GetById(request.Id);
             if (course == null)
             {
                 return NotFound();
             }
-            course.DaysOfWeek = DaysHelper.GetDayOfWeek(request.days.Select(u => (DayOfWeek) u).ToArray());
-            if (_rep.UpdateDayOfLesson(course) == true)
+
+            course.DateOfStartCourse = request.StartDayCourse;
+            if (_courseRepository.UpdateDayStartCourse(course))
             {
                 return Ok();
             }
-            return BadRequest();
 
-            
+            return BadRequest();
         }
+
+        [HttpPatch("end-date")]
+        public ActionResult UpdateEndDate([FromBody] UpdateDateEndCourseRequest request)
+        {
+            var course = _courseRepository.GetById(request.Id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            course.DateOfEndCourse = request.EndDayCourse;
+            if (_courseRepository.UpdateDayEndCourse(course))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPatch("lesson-days")]
+        public ActionResult UpdateLessonDays([FromBody] UpdateDayCourseRequest request)
+        {
+            var course = _courseRepository.GetById(request.Id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            course.DaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(i => (DayOfWeek)i).ToArray());
+            if (_courseRepository.UpdateDayOfLesson(course))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
         [HttpPatch("lesson-time")]
-        public ActionResult UpdateTimeInCourse([FromBody] UpdateTimeCourseRequest c)
+        public ActionResult UpdateTime([FromBody] UpdateTimeCourseRequest request)
         {
-            Course course = new Course { Id = c.id, TimeOfLesson = c.timeOfCourse };
+            Course course = new Course { Id = request.Id, TimeOfLesson = request.TimeOfCourse };
 
-            if (_rep.UpdateTimeOfCourse(course) == true)
+            if (_courseRepository.UpdateTimeOfCourse(course))
             {
                 return Ok();
             }
+
             return BadRequest();
         }
+
         [HttpPatch("coach")]
-        public ActionResult UpdateCoachInCourse([FromBody] UpdateCoachCourseRequest c)//исправь опечатку в названии метода
+        public ActionResult UpdateCoach([FromBody] UpdateCoachCourseRequest request)
         {
-            Course course = new Course { CoachId = c.coachId, Id = c.id };
+            Course course = new Course { CoachId = request.CoachId, Id = request.Id };
 
 
-            if (_rep.UpdateCoachCourse(course) == true)
+            if (_courseRepository.UpdateCoachCourse(course))
             {
                 return Ok();
             }
+
             return BadRequest();
         }
     }
