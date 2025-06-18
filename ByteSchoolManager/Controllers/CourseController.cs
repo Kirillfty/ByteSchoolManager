@@ -1,6 +1,9 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Text.Json.Serialization;
 using static ByteSchoolManager.Repository.ICourseRepository;
 
 namespace ByteSchoolManager.Controllers
@@ -10,28 +13,34 @@ namespace ByteSchoolManager.Controllers
     public class CourseController : ControllerBase
     {
 
-        public record UpdateCoachCourseRequest(int id,int coachId); //поля в рекордах с большой буквы
-        public record CreateCourseRequest(Course.DayOfWeek day, //не day а days, лучше сделай чтобы передался массив дней недели, ибо enum flags на js нету
-            TimeOnly timeOfLesson, 
+        public record UpdateCoachCourseRequest(int id, int coachId);
+        public record UpdateDateStartCourseRequest(int id, DateOnly startDayCourse);
+        public record UpdateDateEndCourseRequest(int id, DateOnly endDayCourse);
+        public record CreateCourseRequest(int[] days,
+            TimeOnly timeOfLesson,
             DateOnly DateOfStartCourse,
-            DateOnly DateOfEndCourse, 
-            string Title, 
-            int CoachId);//поля в рекордах с большой буквы
-        public record UpdateTimeCourseRequest(int id, TimeOnly timeOfCourse);//поля в рекордах с большой буквы
-        public record UpdateDayCourseRequest(int id, Course.DayOfWeek day);//поля в рекордах с большой буквы, не day а days, лучше сделай чтобы передался массив дней недели, ибо enum flags на js нету
+            DateOnly DateOfEndCourse,
+            string Title,
+            int CoachId);
+        public record UpdateTimeCourseRequest(int id, TimeOnly timeOfCourse);
+        public record UpdateDayCourseRequest(int id, int[] days);
 
-        public ICourseRepository _rep; //добавить public readonly, изменить название поля на _repository (буквы если что бесплатные)
+        public readonly ICourseRepository _rep;
         public CourseController(ICourseRepository rep)
         {
             _rep = rep;
         }
 
-        [HttpPost]
-        public ActionResult CreateCoure([FromBody] CreateCourseRequest c) { //исправь опечатку в названии метода, поменять название 'c' на 'request'
-            Course course = new Course {TimeOfLesson = c.timeOfLesson,
+        [HttpPost("create-course")]
+        public ActionResult CreateCoure([FromBody] CreateCourseRequest c)
+        {
+
+            Course course = new Course
+            {
+                TimeOfLesson = c.timeOfLesson,
                 DateOfEndCourse = c.DateOfEndCourse,
                 DateOfStartCourse = c.DateOfStartCourse,
-                DaysOfWeek = c.day,
+                DaysOfWeek = DaysHelper.GetDayOfWeek(c.days.Select(u => (DayOfWeek)u).ToArray()),
                 Title = c.Title,
                 CoachId = c.CoachId
             };
@@ -39,24 +48,58 @@ namespace ByteSchoolManager.Controllers
             {
                 return BadRequest();
             }
-            else {
+            else
+            {
                 return Created();
             }
         }
-        [HttpPatch("update-day-lesson")] //поменять put на patch
-        public ActionResult UpdateDayOfWorkedLesson([FromBody]UpdateDayCourseRequest c)
-        {
-            Course course = new Course { Id = c.id, DaysOfWeek = c.day};
-            if (_rep.UpdateDayOfLesson(course) == true)
+        [HttpPatch("update-start-date")]
+        public ActionResult UpdateStartCourse([FromBody] UpdateDateStartCourseRequest request) {
+
+            var course = _rep.GetById(request.id);
+            course.DateOfStartCourse = request.startDayCourse;
+            if (_rep.UpdateDayStartCourse(course) == true)
             {
                 return Ok();
             }
             return BadRequest();
         }
-        [HttpPatch("update-time-course")]//поменять put на patch
-        public ActionResult UpdateTimeinCourse([FromBody]UpdateTimeCourseRequest c)
+        [HttpPatch("update-end-date")]
+        public ActionResult UpdateEndCourse([FromBody] UpdateDateEndCourseRequest request)
         {
-            Course course = new Course { Id = c.id,TimeOfLesson = c.timeOfCourse };
+
+            var course = _rep.GetById(request.id);
+            if (course == null) {
+                return NotFound();
+            }
+            course.DateOfEndCourse = request.endDayCourse;
+            if (_rep.UpdateDayEndCourse(course) == true)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        [HttpPatch("update-day-lesson")] //поменять put на patch
+        public ActionResult UpdateDayOfWorkedLesson([FromBody] UpdateDayCourseRequest request)
+        {
+            var course = _rep.GetById(request.id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            course.DaysOfWeek = DaysHelper.GetDayOfWeek(request.days.Select(u => (DayOfWeek) u).ToArray());
+            if (_rep.UpdateDayOfLesson(course) == true)
+            {
+                return Ok();
+            }
+            return BadRequest();
+
+            
+        }
+        [HttpPatch("update-time-course")]//поменять put на patch
+        public ActionResult UpdateTimeInCourse([FromBody] UpdateTimeCourseRequest c)
+        {
+            Course course = new Course { Id = c.id, TimeOfLesson = c.timeOfCourse };
 
             if (_rep.UpdateTimeOfCourse(course) == true)
             {
@@ -64,11 +107,11 @@ namespace ByteSchoolManager.Controllers
             }
             return BadRequest();
         }
-        [HttpPatch]//поменять put на patch
+        [HttpPatch("update-coach-in-course")]//поменять put на patch
         public ActionResult UpdateCoachInCourse([FromBody] UpdateCoachCourseRequest c)//исправь опечатку в названии метода
         {
-            Course course = new Course { CoachId = c.coachId,Id = c.id };
-            
+            Course course = new Course { CoachId = c.coachId, Id = c.id };
+
 
             if (_rep.UpdateCoachCourse(course) == true)
             {
@@ -85,6 +128,6 @@ namespace ByteSchoolManager.Controllers
 
 
 
-       
+
     }
 }

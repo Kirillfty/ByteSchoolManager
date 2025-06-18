@@ -10,6 +10,7 @@ namespace ByteSchoolManager.Controllers
     public class CoachController:ControllerBase
     {
         public record CreateCoachRequest(string Name, string PhoneNumber, string Telegram);
+        public record UpdateCoachRequest(int Id,string Name, string PhoneNumber, string Telegram);
         private ICoachRepository _repository;
         public CoachController(ICoachRepository usersRepository)
         {
@@ -17,10 +18,10 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCoach([FromBody] CreateCoachRequest coach) {
+        public ActionResult CreateCoach([FromBody] CreateCoachRequest request) {
 
-            Coach c = new Coach { Name = coach.Name, PhoneNumber = coach.PhoneNumber, Telegram = coach.Telegram };
-            if (_repository.Create(c) != null)
+            Coach coach = new Coach { Name = request.Name, PhoneNumber = request.PhoneNumber, Telegram = request.Telegram };
+            if (_repository.Create(coach) != null)
                 return Ok();
 
             return BadRequest();
@@ -28,9 +29,11 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPut]
-        public ActionResult UpdateCoach([FromBody] Coach coach)
+        public ActionResult UpdateCoach([FromBody] UpdateCoachRequest request)
         {
-            if (_repository.Update(coach) == null)
+            Coach coach = new Coach { Name = request.Name, Id = request.Id, PhoneNumber = request.PhoneNumber, Telegram = request.Telegram };
+
+            if (_repository.Update(coach) == false)
                 return BadRequest();
             
             return Ok();

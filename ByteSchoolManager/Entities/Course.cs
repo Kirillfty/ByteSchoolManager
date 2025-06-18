@@ -9,6 +9,7 @@ namespace ByteSchoolManager.Entities
         [Flags]
         public enum DayOfWeek
         {
+            None = 0,
             Sunday = 1,
             Monday = 2,
             Tuesday = 4,
