@@ -19,14 +19,14 @@ namespace ByteSchoolManager
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Student>()
-               .HasMany(c => c.Courses)
-               .WithMany(u => u.Students)
+            modelBuilder.Entity<Course>()
+               .HasMany(c => c.Students)
+               .WithMany(u => u.Courses)
                .UsingEntity<StudentCourse>();
 
-            modelBuilder.Entity<Student>()
-               .HasMany(c => c.Lessons)
-               .WithMany(u => u.Students)
+            modelBuilder.Entity<Lesson>()
+               .HasMany(c => c.Students)
+               .WithMany(u => u.Lessons)
                .UsingEntity<StudentLesson>();
         }
     }

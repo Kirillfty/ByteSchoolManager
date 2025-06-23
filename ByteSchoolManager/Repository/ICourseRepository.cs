@@ -1,5 +1,6 @@
 
 using ByteSchoolManager.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -12,6 +13,7 @@ public interface ICourseRepository : IRepository<Course>
     public bool UpdateDayEndCourse(Course course);
     public bool UpdateCoachCourse(Course course);
     public bool UpdateTimeOfCourse(Course course);
+    public bool AddStudentInCourse(int courseId, int[] studentsId);
 }
 
 public class CourseRepository : ICourseRepository
@@ -223,7 +225,35 @@ public class CourseRepository : ICourseRepository
     {
         return _context.Courses.FirstOrDefault(u => u.Id == id);
     }
+    public bool AddStudentInCourse(int courseId, int[] studentsId) {
+       
 
+        var oldStudents = _context.StudentCourses
+            .Where(u => u.Id == courseId)
+            .Select(u => u.StudentId)
+            .ToList();
+
+        var deletedStudentId = oldStudents.Except(studentsId).ToList();
+        //_context.RemoveRange(deletedStudentId);
+       
+
+        var addedStudentId = studentsId.Except(oldStudents).ToList();
+        for (int i=0; i < addedStudentId.Count;i++) {
+            
+            _context.StudentCourses.Add(new StudentCourse
+            {
+                CourseId = courseId,
+                StudentId = addedStudentId[i],
+                Status = StudentCourse.StudentStatus.NotEngaged
+            });
+
+        }
+        _context.SaveChanges();
+        
+       
+
+        return true;
+    }
     public bool Update(Course entity)
     {
         throw new NotFiniteNumberException();

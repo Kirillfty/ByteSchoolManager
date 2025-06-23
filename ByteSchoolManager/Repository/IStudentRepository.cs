@@ -1,4 +1,5 @@
 ﻿using ByteSchoolManager.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace ByteSchoolManager.Repository;
 
@@ -22,7 +23,7 @@ public class StudentRepository : IStudentRepository
 
     public Student? GetById(int id)
     {
-        throw new NotImplementedException();
+        return _context.Students.FirstOrDefault(u => u.Id == id);
     }
 
     public int? Create(Student student)

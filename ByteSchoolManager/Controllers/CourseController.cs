@@ -13,7 +13,7 @@ namespace ByteSchoolManager.Controllers
         public record UpdateDateStartCourseRequest(int Id, DateOnly StartDayCourse);
 
         public record UpdateDateEndCourseRequest(int Id, DateOnly EndDayCourse);
-
+        public record AddStudentCourseRequest(int Id, int[] Students);
         public record CreateCourseRequest(
             int[] Days,
             TimeOnly TimeOfLesson,
@@ -28,12 +28,15 @@ namespace ByteSchoolManager.Controllers
         public record UpdateDayCourseRequest(int Id, int[] Days);
 
         private readonly ICourseRepository _courseRepository;
+        private readonly IStudentRepository _studentRepository;
 
-        public CourseController(ICourseRepository courseRepository)
+        public CourseController(ICourseRepository courseRepository,IStudentRepository studentRepository)
         {
             _courseRepository = courseRepository;
+            _studentRepository = studentRepository;
+            
         }
-
+        
         [HttpGet]
         public List<Course> GetAll()
         {
@@ -141,6 +144,16 @@ namespace ByteSchoolManager.Controllers
             }
 
             return BadRequest();
+        }
+        [HttpPost("add-student-in-course")]
+        public ActionResult AddStudentInCourse([FromBody] AddStudentCourseRequest request) {
+           
+            
+            if (_courseRepository.AddStudentInCourse(request.Id,request.Students) == false) 
+                return NotFound();
+
+
+             return Ok();
         }
     }
 }

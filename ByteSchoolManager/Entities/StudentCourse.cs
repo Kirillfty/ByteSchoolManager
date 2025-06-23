@@ -17,13 +17,13 @@ namespace ByteSchoolManager.Entities
         [Key]
         public int Id { get; set; }
         public required int  StudentId { get; set; }
-        public required int LessonId { get; set; }
+        public required int CourseId { get; set; }
         public required StudentStatus Status { get; set; }
 
         [ForeignKey(nameof(StudentId))]
         public Student Student { get; set; }
         
-        [ForeignKey(nameof(LessonId))]
-        public Course Lesson { get; set; }
+        [ForeignKey(nameof(CourseId))]
+        public Course Course { get; set; }
     }
 }
