@@ -225,32 +225,50 @@ public class CourseRepository : ICourseRepository
     {
         return _context.Courses.FirstOrDefault(u => u.Id == id);
     }
-    public bool AddStudentInCourse(int courseId, int[] studentsId) {
-       
-
-        var oldStudents = _context.StudentCourses
-            .Where(u => u.Id == courseId)
-            .Select(u => u.StudentId)
+    public record LessonRequest(int[] studentsId);
+    public bool AddStudentInCourse(int courseId, int[] studentsId)
+    {
+        
+        // Получаем текущие связи студентов с курсом
+        var oldStudentCourses = _context.StudentCourses
+            .Where(sc => sc.CourseId == courseId)
             .ToList();
 
-        var deletedStudentId = oldStudents.Except(studentsId).ToList();
-        //_context.RemoveRange(deletedStudentId);
-       
+        var notDoneLessons = _context.Lessons.Where(sc => sc.CourseId == courseId && sc.Status == Lesson.LessonStatus.NotDone).ToList();
 
-        var addedStudentId = studentsId.Except(oldStudents).ToList();
-        for (int i=0; i < addedStudentId.Count;i++) {
-            
-            _context.StudentCourses.Add(new StudentCourse
+        var oldStudents = oldStudentCourses.Select(sc => sc.StudentId).ToList();
+
+        var deletedStudentIds = oldStudents.Except(studentsId).ToList();
+
+        var addedStudentIds = studentsId.Except(oldStudents).ToList();
+
+        // Удаляем связи с студентами, которых больше не должно быть
+        var toRemove = oldStudentCourses.Where(sc => deletedStudentIds.Contains(sc.StudentId));
+        _context.StudentCourses.RemoveRange(toRemove);
+
+        // Добавляем новые связи
+        var newStudentCourses = addedStudentIds.Select(id => new StudentCourse { StudentId = id,
+            CourseId = courseId,
+            Status = StudentCourse.StudentStatus.NotEngaged });
+
+
+        _context.StudentCourses.AddRange(newStudentCourses);
+
+
+        foreach (var lesson in notDoneLessons)
+        {
+            var newStudentLessons = newStudentCourses.Select(sc => new StudentLesson
             {
-                CourseId = courseId,
-                StudentId = addedStudentId[i],
-                Status = StudentCourse.StudentStatus.NotEngaged
-            });
+                StudentId = sc.StudentId,
+                Status = StudentLesson.StudentStatus.Online,
+                LessonId = lesson.Id
+                // Заполните другие необходимые свойства, если есть
+            }).ToList();
 
+            _context.StudentLessons.AddRange(newStudentLessons);
         }
+
         _context.SaveChanges();
-        
-       
 
         return true;
     }
@@ -258,4 +276,5 @@ public class CourseRepository : ICourseRepository
     {
         throw new NotFiniteNumberException();
     }
+    
 }

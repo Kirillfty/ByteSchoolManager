@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ByteSchoolManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c96ee203bf42255c8953e41de5e6c6b64472b158")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d10fcb2a366f81897f0e303fc731afba7e0b052")]
 [assembly: System.Reflection.AssemblyProductAttribute("ByteSchoolManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ByteSchoolManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
