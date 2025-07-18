@@ -17,13 +17,13 @@ namespace ByteSchoolManager.Entities
         [Key]
         public int Id { get; set; }
 
-        public required int CourseId { get; set; }
+        public required int CourseId { get; set; }//
 
-        public required DateTime DateAndTime { get; set; }
+        public required DateTime DateAndTime { get; set; }//
 
         public required int CoachId { get; set; }
 
-        public List<Student> Students { get; set; }
+        public List<Student> Students { get; set; }//
         public LessonStatus Status { get; set; }
 
 

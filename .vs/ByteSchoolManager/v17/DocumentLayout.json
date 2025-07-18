@@ -7,72 +7,36 @@
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\repository\\icourserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\studentlesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\studentlesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\studentcourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\studentcourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\coachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\coachcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\dayshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\dayshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\repository\\ilessonsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\repository\\ilessonsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\responces\\getlessonbyidresponce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\responces\\getlessonbyidresponce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\repository\\icoachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\repository\\icoachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\authoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\authoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,8 +46,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CoachController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CoachController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\CoachController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CoachController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\CoachController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T16:12:09.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T16:12:01.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\LessonController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\LessonController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\LessonController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T20:30:43.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\CourseController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\CourseController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAowC8AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T20:30:33.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetLessonByIdResponce.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Responces\\GetLessonByIdResponce.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Responces\\GetLessonByIdResponce.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Responces\\GetLessonByIdResponce.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Responces\\GetLessonByIdResponce.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T20:23:58.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ILessonsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ILessonsRepository.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Repository\\ILessonsRepository.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ILessonsRepository.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Repository\\ILessonsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T19:46:42.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Lesson.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\Lesson.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Lesson.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Entities\\Lesson.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA1wBcAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T08:15:04.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICoachRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ICoachRepository.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Repository\\ICoachRepository.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ICoachRepository.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Repository\\ICoachRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:32:18.397Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -92,214 +156,10 @@
               "RelativeDocumentMoniker": "ByteSchoolManager\\Repository\\ICourseRepository.cs",
               "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ICourseRepository.cs",
               "RelativeToolTip": "ByteSchoolManager\\Repository\\ICourseRepository.cs",
-              "ViewState": "AgIAAOQAAAAAAAAAAAAhwAEBAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACQBAAAAAAAAAAAAwC0BAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T06:19:23.037Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:16:13.919Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StudentLesson.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\StudentLesson.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\StudentLesson.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\StudentLesson.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Entities\\StudentLesson.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA6wBUAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T19:50:59.366Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Program.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Program.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Program.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:15:10.803Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CoachController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CoachController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\CoachController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CoachController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\CoachController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:16:09.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:16:08.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Course.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Course.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\Course.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Course.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Entities\\Course.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwCQAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T18:06:08.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CourseController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\CourseController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\CourseController.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAswJwAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T18:06:04.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DaysHelper.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\DaysHelper.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\DaysHelper.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\DaysHelper.cs",
-              "RelativeToolTip": "ByteSchoolManager\\DaysHelper.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T17:45:59.684Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationContext.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\ApplicationContext.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\ApplicationContext.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\ApplicationContext.cs",
-              "RelativeToolTip": "ByteSchoolManager\\ApplicationContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:15:24.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Lesson.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Lesson.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\Lesson.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Lesson.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Entities\\Lesson.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:15:04.576Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:16:20.139Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AuthOptions.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\AuthOptions.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\AuthOptions.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\AuthOptions.cs",
-              "RelativeToolTip": "ByteSchoolManager\\AuthOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:15:15.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Student.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\Student.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\Student.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Entities\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T14:48:05.481Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "StudentCourse.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\StudentCourse.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Entities\\StudentCourse.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Entities\\StudentCourse.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Entities\\StudentCourse.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T15:58:48.906Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IStudentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\IStudentRepository.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Repository\\IStudentRepository.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\IStudentRepository.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Repository\\IStudentRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAlwBgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T15:16:15.363Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ICoachRepository.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ICoachRepository.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Repository\\ICoachRepository.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Repository\\ICoachRepository.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Repository\\ICoachRepository.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T17:32:18.397Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\appsettings.Development.json",
-              "RelativeToolTip": "ByteSchoolManager\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-17T08:31:05.023Z"
             }
           ]
         }

@@ -12,5 +12,11 @@ namespace ByteSchoolManager.Entities
         public required string PhoneNumber { get; set; }
         public required string Telegram { get; set; }
         public List<Student> Students { get; set; }
+        public int UserId { get; set; }
+
+        [ForeignKey(nameof(UserId))]
+        public User User { get; set; }
+        
+
     }
 }

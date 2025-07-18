@@ -1,7 +1,10 @@
 
 using ByteSchoolManager.Entities;
+using ByteSchoolManager.Responces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using System;
+using static ByteSchoolManager.Repository.CourseRepository;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ByteSchoolManager.Repository;
@@ -14,6 +17,9 @@ public interface ICourseRepository : IRepository<Course>
     public bool UpdateCoachCourse(Course course);
     public bool UpdateTimeOfCourse(Course course);
     public bool AddStudentInCourse(int courseId, int[] studentsId);
+    public bool RescheduleLesson(int lessonId,DateTime date);
+    public bool RescheduleCoachInLesson(int lessonId, int coachId);
+    public List<GetLessonsInDayResponce> GetLessonsInDays(int coach,int day);
 }
 
 public class CourseRepository : ICourseRepository
@@ -271,6 +277,39 @@ public class CourseRepository : ICourseRepository
         _context.SaveChanges();
 
         return true;
+    }
+    public bool RescheduleLesson(int lessonId, DateTime date) {
+        var lesson = _context.Lessons.FirstOrDefault(u => u.Id == lessonId);
+
+        lesson.DateAndTime = date;
+
+        _context.SaveChanges();
+        return true;
+    }
+    public bool RescheduleCoachInLesson(int lessonId, int coachId) {
+        var lesson = _context.Lessons.FirstOrDefault(u => u.Id == lessonId);
+
+        lesson.CoachId = coachId;
+
+        _context.SaveChanges();
+        return true;
+    }
+    
+    public List<GetLessonsInDayResponce> GetLessonsInDays(int coachId,int day) {
+        
+        DateTime today = DateTime.Now;
+        int currentDayOfWeek = (int)today.DayOfWeek;
+        if (currentDayOfWeek == 0) currentDayOfWeek = 7; 
+
+        int daysDifference = (int)day - currentDayOfWeek;
+        DateTime targetDate = today.AddDays(daysDifference);
+      
+
+
+        return _context.Lessons.Include(u => u.Students)
+            .Include(u => u.Course)
+            .Where(u => u.CoachId == coachId && u.DateAndTime.Date == targetDate.Date)
+            .Select(lesson => new GetLessonsInDayResponce(lesson.Id, TimeOnly.FromDateTime(lesson.DateAndTime),lesson.Course.Title,lesson.Students.Count)).ToList();
     }
     public bool Update(Course entity)
     {

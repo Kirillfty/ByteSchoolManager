@@ -4,6 +4,7 @@ namespace ByteSchoolManager.Repository;
 
 public interface ICoachRepository : IRepository<Coach>
 {
+    public Coach? GetByUserId(int userId);
 }
 
 public class CoachRepository : ICoachRepository
@@ -14,15 +15,17 @@ public class CoachRepository : ICoachRepository
     {
         _context = context;
     }
-    
+    public Coach? GetByUserId(int userId) {
+        return _context.Coaches.FirstOrDefault(u => u.UserId == userId);
+    }
     public List<Coach> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Coaches.ToList();
     }
 
     public Coach? GetById(int id)
     {
-        throw new NotImplementedException();
+        return _context.Coaches.FirstOrDefault(u => u.Id == id);
     }
 
     public int? Create(Coach coach)
@@ -31,12 +34,11 @@ public class CoachRepository : ICoachRepository
         if (result == null)
             return null;
 
-        try {
-            _context.SaveChanges();
-        }
-        catch(Exception ex) {
-            return null;
-        }
+        
+        _context.SaveChanges();
+        
+       
+  
         return coach.Id;
     }
 

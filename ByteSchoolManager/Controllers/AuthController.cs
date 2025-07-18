@@ -19,7 +19,7 @@ namespace ClubsBack.Controllers
             _userRepository = userRepository;
         }
 
-        public record LoginRequest([Required] string NickName, [Required] string Password);
+        public record LoginRequest([Required] string Login, [Required] string Password);
 
         public record RegisterRequest(
             [Required] string Login,
@@ -32,7 +32,7 @@ namespace ClubsBack.Controllers
         {
             var users = _userRepository.GetAll();
 
-            var user = users.FirstOrDefault(u => u.Login == loginRequest.NickName);
+            var user = users.FirstOrDefault(u => u.Login == loginRequest.Login);
 
             if (user == null)
                 return Unauthorized("Username is incorrect");
