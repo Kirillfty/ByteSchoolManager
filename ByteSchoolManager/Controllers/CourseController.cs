@@ -43,7 +43,7 @@ namespace ByteSchoolManager.Controllers
             _coachRepository = rep;
         }
         [HttpGet("get-lesson-by-id/{id}")]
-        public List<GetLessonByIdResponce> GetLessonByIdWithStudents([FromRoute] int id)
+        public GetLessonByIdResponce? GetLessonByIdWithStudents([FromRoute] int id)
         {
             return _lessonsRepository.GetLessonByIdWithStudents(id);
         }
@@ -55,7 +55,7 @@ namespace ByteSchoolManager.Controllers
 
     
       
-        [Authorize(Roles = "Coach")]
+        [Authorize(Roles = UserRole.Coach)]
         [HttpGet("get-lesson-in-day/{dayOfWeak}")]
         public List<GetLessonsInDayResponce> GetLassonInDay([FromRoute]int dayOfWeak) {
             var userId = HttpContext.User.Identity.Name;

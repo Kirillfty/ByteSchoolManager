@@ -7,22 +7,29 @@ namespace ByteSchoolManager.Controllers
     [ApiController]
     [Route("api/[controller]")]
 
-    public class CoachController:ControllerBase
+    public class CoachController : ControllerBase
     {
-        public record CreateCoachRequest(string Name, string PhoneNumber, string Telegram,int userId);
-        public record UpdateCoachRequest(int Id,string Name, string PhoneNumber, string Telegram);
+        public record CreateCoachRequest(string Name, string PhoneNumber, string Telegram, int userId);
+        public record UpdateCoachRequest(int Id, string Name, string PhoneNumber, string Telegram);
         private ICoachRepository _repository;
+        private IUserRepository _userRepository;
         public CoachController(ICoachRepository usersRepository)
         {
             _repository = usersRepository;
         }
-        
-        [HttpPost]
-        public ActionResult CreateCoach([FromBody] CreateCoachRequest request) {
 
-            Coach coach = new Coach { Name = request.Name, PhoneNumber = request.PhoneNumber, Telegram = request.Telegram ,UserId = request.userId};
+        [HttpPost]
+        public ActionResult CreateCoach([FromBody] CreateCoachRequest request)
+        {
+
+            Coach coach = new Coach { Name = request.Name, PhoneNumber = request.PhoneNumber, Telegram = request.Telegram, UserId = request.userId };
             if (_repository.Create(coach) != null)
-                return Ok();
+            {
+                if (_userRepository.UpdateRoleUser(request.userId, UserRole.Coach))
+                {
+                    return Ok();
+                }
+            }
 
             return BadRequest();
 
@@ -35,11 +42,12 @@ namespace ByteSchoolManager.Controllers
 
             if (_repository.Update(coach) == false)
                 return BadRequest();
-            
+
             return Ok();
         }
         [HttpGet]
-        public List<Coach> GetAllCoaches() {
+        public List<Coach> GetAllCoaches()
+        {
             return _repository.GetAll();
         }
     }

@@ -30,16 +30,14 @@ namespace ClubsBack.Controllers
         [HttpPost("login")]
         public ActionResult<TokenPair> Login([FromBody] LoginRequest loginRequest)
         {
-            var users = _userRepository.GetAll();
-
-            var user = users.FirstOrDefault(u => u.Login == loginRequest.Login);
+            var user = _userRepository.GetByLogin(loginRequest.Login);
 
             if (user == null)
                 return Unauthorized("Username is incorrect");
 
             if (user.Password != loginRequest.Password)
                 return Unauthorized("Password is incorrect");
-
+            
             string refreshToken = Guid.NewGuid().ToString();
 
             _userRepository.SetRefreshToken(refreshToken, user.Id);
@@ -61,6 +59,11 @@ namespace ClubsBack.Controllers
         [HttpPost("register")]
         public ActionResult<TokenPair> Register([FromBody] RegisterRequest registerRequest)
         {
+           
+            if (_userRepository.GetByLogin(registerRequest.Login) != null)
+            {
+                return BadRequest("user already exist");
+            }
             User newUser = new()
             {
 
@@ -68,11 +71,12 @@ namespace ClubsBack.Controllers
                 Password = registerRequest.Password,
                 Role = "user"
             };
+            
             int? result = _userRepository.Create(newUser);
 
             if (result == null)
                 return BadRequest("User cannot be created");
-
+            
             newUser.Id = result.Value;
 
             string refreshToken = Guid.NewGuid().ToString();
@@ -110,7 +114,7 @@ namespace ClubsBack.Controllers
             return _userRepository.GetAll().ToList();
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = UserRole.Admin)]
         [HttpDelete("{userId:int}")]
         public ActionResult DeleteUser([FromRoute] int userId)
         {

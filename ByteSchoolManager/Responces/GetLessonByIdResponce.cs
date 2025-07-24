@@ -2,6 +2,6 @@
 
 namespace ByteSchoolManager.Responces
 {
-    public record GetLessonByIdResponce(int lessonId, List<Student> students);
-    
+    public record GetLessonByIdResponce(int Id, List<GetLessonByIdResponceStudent> Students);
+    public record GetLessonByIdResponceStudent(int Id,string Name);
 }

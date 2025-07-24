@@ -7,7 +7,7 @@ namespace ByteSchoolManager.Repository
 {
     public interface ILessonsRepository : IRepository<Lesson>
     {
-        public List<GetLessonByIdResponce> GetLessonByIdWithStudents(int id);
+        public GetLessonByIdResponce? GetLessonByIdWithStudents(int id);
         public Lesson? GetById([FromRoute] int id);
     }
 
@@ -19,14 +19,20 @@ namespace ByteSchoolManager.Repository
         {
             _context = context;
         }
-        public List<GetLessonByIdResponce> GetLessonByIdWithStudents(int id)
+        public GetLessonByIdResponce? GetLessonByIdWithStudents(int id)
         {
-            var res = _context.Lessons
+            var lesson = _context.Lessons
                 .Include(u => u.Students)
-                .Where(u => u.Id == id)
-                .Select(responce => new GetLessonByIdResponce(responce.Id,responce.Students))
-                .ToList();
-            return res;
+                .FirstOrDefault(u => u.Id == id);
+
+            if (lesson == null)
+            {
+                return null;
+            }
+
+            return new GetLessonByIdResponce(
+                        lesson.Id,
+                        lesson.Students.Select(u => new GetLessonByIdResponceStudent(u.Id, u.Name)).ToList());
         }
         public int? Create(Lesson entity)
         {

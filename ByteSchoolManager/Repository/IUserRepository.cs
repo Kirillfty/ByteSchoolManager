@@ -1,10 +1,13 @@
 ﻿using ByteSchoolManager.Entities;
+using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace ByteSchoolManager.Repository;
 
 public interface IUserRepository : IRepository<User>
 {
     public bool SetRefreshToken(string refreshToken, int id);
+    public bool UpdateRoleUser(int userid,string role);
+    public User? GetByLogin(string login);
 }
 
 public class UserRepository : IUserRepository
@@ -76,5 +79,22 @@ public class UserRepository : IUserRepository
             return false;
         }
         return true;
+    }
+
+    public bool UpdateRoleUser(int userid, string role)
+    {
+        var result = _context.Users.Where(u => u.Id == userid)
+            .FirstOrDefault();
+        if (result == null) {
+            return false;
+        }
+        result.Role = role;
+        _context.SaveChanges();
+        return true;
+    }
+
+    public User? GetByLogin(string login)
+    {
+        return _context.Users.FirstOrDefault(u => u.Login == login);
     }
 }
