@@ -9,30 +9,30 @@ public interface IStudentRepository: IRepository<Student>
 
 public class StudentRepository : IStudentRepository
 {
-    private readonly ApplicationContext _context;
+    private readonly ApplicationDbContext _dbContext;
     
-    public StudentRepository(ApplicationContext context)
+    public StudentRepository(ApplicationDbContext dbContext)
     {
-        _context = context;
+        _dbContext = dbContext;
     }
 
     public List<Student> GetAll()
     {
-        return _context.Students.ToList();
+        return _dbContext.Students.ToList();
     }
 
     public Student? GetById(int id)
     {
-        return _context.Students.FirstOrDefault(u => u.Id == id);
+        return _dbContext.Students.FirstOrDefault(u => u.Id == id);
     }
 
     public int? Create(Student student)
     {
-        var result = _context.Students.Add(student);
+        var result = _dbContext.Students.Add(student);
         if (result == null)
             return null;
 
-        _context.SaveChanges();
+        _dbContext.SaveChanges();
      
 
         return student.Id;
@@ -40,9 +40,9 @@ public class StudentRepository : IStudentRepository
 
     public bool Update(Student student)
     {
-        _context.Students.Update(student);
+        _dbContext.Students.Update(student);
 
-        _context.SaveChanges();
+        _dbContext.SaveChanges();
        
         return true;
     }
