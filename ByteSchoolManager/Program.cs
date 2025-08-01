@@ -1,5 +1,4 @@
 using ByteSchoolManager;
-using ByteSchoolManager.Controllers;
 using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using ClubsBack;
@@ -10,13 +9,13 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 string conn = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<ApplicationDbContext>(u => u.UseNpgsql(conn));
+builder.Services.AddDbContext<ApplicationContext>(u => u.UseNpgsql(conn));
 
 IConfigurationSection authConfiguration = builder.Configuration.GetSection("AuthOptions");
 AuthOptions authOptions = new AuthOptions(
-    authConfiguration["ISSUER"] ?? throw new Exception("ISSUER is null!"),
-    authConfiguration["AUDIENCE"] ?? throw new Exception("AUDIENCE is null!"),
-    authConfiguration["KEY"]) ?? throw new Exception("KEY is null!");
+             authConfiguration["ISSUER"] ?? throw new Exception("ISSUER is null!"),
+             authConfiguration["AUDIENCE"] ?? throw new Exception("AUDIENCE is null!"),
+             authConfiguration["KEY"]) ?? throw new Exception("KEY is null!");
 builder.Services.AddSingleton<AuthOptions>(authOptions);
 builder.Services.AddTransient<JwtCreator>();
 
@@ -26,19 +25,14 @@ builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ILessonsRepository, LessonRepository>();
 
-builder.Services.AddScoped<RepositoryBase<Course>, CourseBaseRepository>();
-builder.Services.AddScoped<RepositoryBase<Lesson>, LessonBaseRepository>();
-
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(Program).Assembly));
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = authOptions.Issuer,
+        ValidIssuer = authOptions.Issuer, //???????? ????????
         ValidateAudience = true,
-        ValidAudience = authOptions.Audience,
+        ValidAudience = authOptions.Audience,//???????? ?????????
         ValidateLifetime = true,
         IssuerSigningKey = authOptions.GetSymmetricKey,
         ValidateIssuerSigningKey = true
@@ -47,17 +41,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-    
+
+    // Описание схемы авторизации
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme.",
+        Description = "Введите только сам JWT-токен (префикс Bearer добавится автоматически).",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
         Scheme = "bearer",
         BearerFormat = "JWT"
     });
-    
+
+    // Глобальное требование для всех операций
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -76,24 +72,24 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
     builder.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
+           .AllowAnyMethod()
+           .AllowAnyHeader();
 }));
+
 
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        await context.Database.MigrateAsync();
-    }
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var context = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+//        await context.Database.MigrateAsync();
+//    }
+//}
 
 if (app.Environment.IsDevelopment())
 {

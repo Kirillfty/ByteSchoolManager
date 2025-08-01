@@ -12,19 +12,19 @@ public interface IUserRepository : IRepository<User>
 
 public class UserRepository : IUserRepository
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly ApplicationContext _context;
     
-    public UserRepository(ApplicationDbContext dbContext)
+    public UserRepository(ApplicationContext context)
     {
-        _dbContext = dbContext;
+        _context = context;
     }
 
     public int? Create(User entity)
     {
-        _dbContext.Users.Add(entity);
+        _context.Users.Add(entity);
         try
         {
-            _dbContext.SaveChanges();
+            _context.SaveChanges();
         }
         catch (Exception e)
         {
@@ -35,10 +35,10 @@ public class UserRepository : IUserRepository
 
     public bool Update(User userId)
     {
-        _dbContext.Users.Update(userId);
+        _context.Users.Update(userId);
         try
         {
-            _dbContext.SaveChanges();
+            _context.SaveChanges();
         }
         catch (Exception e)
         {
@@ -49,7 +49,7 @@ public class UserRepository : IUserRepository
 
     public List<User> GetAll()
     {
-        return _dbContext.Users.ToList();
+        return _context.Users.ToList();
     }
 
     public User? GetById(int id)
@@ -63,7 +63,7 @@ public class UserRepository : IUserRepository
     }
     public bool SetRefreshToken(string refreshToken, int id)
     {
-        User? r = _dbContext.Users.FirstOrDefault(u => u.Id == id);
+        User? r = _context.Users.FirstOrDefault(u => u.Id == id);
 
         if (r == null)
             return false;
@@ -72,7 +72,7 @@ public class UserRepository : IUserRepository
 
         try
         {
-            _dbContext.SaveChanges();
+            _context.SaveChanges();
         }
         catch (Exception e)
         {
@@ -83,18 +83,18 @@ public class UserRepository : IUserRepository
 
     public bool UpdateRoleUser(int userid, string role)
     {
-        var result = _dbContext.Users.Where(u => u.Id == userid)
+        var result = _context.Users.Where(u => u.Id == userid)
             .FirstOrDefault();
         if (result == null) {
             return false;
         }
         result.Role = role;
-        _dbContext.SaveChanges();
+        _context.SaveChanges();
         return true;
     }
 
     public User? GetByLogin(string login)
     {
-        return _dbContext.Users.FirstOrDefault(u => u.Login == login);
+        return _context.Users.FirstOrDefault(u => u.Login == login);
     }
 }

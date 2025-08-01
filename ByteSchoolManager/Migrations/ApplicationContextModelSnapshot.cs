@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ByteSchoolManager.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -103,14 +103,8 @@ namespace ByteSchoolManager.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<bool>("Marked")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Moved")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Replaced")
-                        .HasColumnType("boolean");
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -129,6 +123,9 @@ namespace ByteSchoolManager.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CoachId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -146,6 +143,8 @@ namespace ByteSchoolManager.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CoachId");
 
                     b.ToTable("Students");
                 });
@@ -261,7 +260,7 @@ namespace ByteSchoolManager.Migrations
                         .IsRequired();
 
                     b.HasOne("ByteSchoolManager.Entities.Course", "Course")
-                        .WithMany("Lessons")
+                        .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -269,6 +268,13 @@ namespace ByteSchoolManager.Migrations
                     b.Navigation("Coach");
 
                     b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("ByteSchoolManager.Entities.Student", b =>
+                {
+                    b.HasOne("ByteSchoolManager.Entities.Coach", null)
+                        .WithMany("Students")
+                        .HasForeignKey("CoachId");
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.StudentCourse", b =>
@@ -309,9 +315,9 @@ namespace ByteSchoolManager.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("ByteSchoolManager.Entities.Course", b =>
+            modelBuilder.Entity("ByteSchoolManager.Entities.Coach", b =>
                 {
-                    b.Navigation("Lessons");
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

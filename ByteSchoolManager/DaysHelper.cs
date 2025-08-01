@@ -10,9 +10,10 @@ namespace ByteSchoolManager
                 .Cast<Course.DayOfWeek>()
                 .Where(f => days.HasFlag(f))
                 .ToList();
-
+            
             return dayOfWeeks.Where(u => u != Course.DayOfWeek.None).Select(dayOfWeek => dayOfWeek switch
             {
+                
                 Course.DayOfWeek.Sunday => DayOfWeek.Sunday,
                 Course.DayOfWeek.Monday => DayOfWeek.Monday,
                 Course.DayOfWeek.Tuesday => DayOfWeek.Tuesday,
@@ -21,27 +22,8 @@ namespace ByteSchoolManager
                 Course.DayOfWeek.Friday => DayOfWeek.Friday,
                 Course.DayOfWeek.Saturday => DayOfWeek.Saturday
             }).ToList();
-        }
-        
-        public static int[] GetDayNumbers(Course.DayOfWeek days)
-        {
-            var dayOfWeeks = Enum.GetValues(typeof(Course.DayOfWeek))
-                .Cast<Course.DayOfWeek>()
-                .Where(f => days.HasFlag(f))
-                .ToList();
 
-            return dayOfWeeks.Where(u => u != Course.DayOfWeek.None).Select(dayOfWeek => dayOfWeek switch
-            {
-                Course.DayOfWeek.Sunday => 0,
-                Course.DayOfWeek.Monday => 1,
-                Course.DayOfWeek.Tuesday => 2,
-                Course.DayOfWeek.Wednesday => 3,
-                Course.DayOfWeek.Thursday => 4,
-                Course.DayOfWeek.Friday => 5,
-                Course.DayOfWeek.Saturday => 6
-            }).ToArray();
         }
-
         public static Course.DayOfWeek GetDayOfWeek(DayOfWeek[] days)
         {
             Course.DayOfWeek dayOfWeek = 0;
@@ -56,9 +38,9 @@ namespace ByteSchoolManager
                     DayOfWeek.Thursday => Course.DayOfWeek.Thursday,
                     DayOfWeek.Friday => Course.DayOfWeek.Friday,
                     DayOfWeek.Saturday => Course.DayOfWeek.Saturday,
+                    
                 };
             }
-
             return dayOfWeek;
         }
     }
