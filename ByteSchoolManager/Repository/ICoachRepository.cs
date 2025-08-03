@@ -9,33 +9,33 @@ public interface ICoachRepository : IRepository<Coach>
 
 public class CoachRepository : ICoachRepository
 {
-    private readonly ApplicationContext _context;
+    private readonly ApplicationDbContext _dbContext;
     
-    public CoachRepository(ApplicationContext context)
+    public CoachRepository(ApplicationDbContext dbContext)
     {
-        _context = context;
+        _dbContext = dbContext;
     }
     public Coach? GetByUserId(int userId) {
-        return _context.Coaches.FirstOrDefault(u => u.UserId == userId);
+        return _dbContext.Coaches.FirstOrDefault(u => u.UserId == userId);
     }
     public List<Coach> GetAll()
     {
-        return _context.Coaches.ToList();
+        return _dbContext.Coaches.ToList();
     }
 
     public Coach? GetById(int id)
     {
-        return _context.Coaches.FirstOrDefault(u => u.Id == id);
+        return _dbContext.Coaches.FirstOrDefault(u => u.Id == id);
     }
 
     public int? Create(Coach coach)
     {
-        var result = _context.Coaches.Add(coach);
+        var result = _dbContext.Coaches.Add(coach);
         if (result == null)
             return null;
 
         
-        _context.SaveChanges();
+        _dbContext.SaveChanges();
         
        
   
@@ -44,10 +44,10 @@ public class CoachRepository : ICoachRepository
 
     public bool Update(Coach entity)
     {
-        _context.Coaches.Update(entity);
+        _dbContext.Coaches.Update(entity);
         try
         {
-            _context.SaveChanges();
+            _dbContext.SaveChanges();
         }
         catch (Exception e)
         {

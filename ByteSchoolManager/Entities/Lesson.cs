@@ -1,37 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ByteSchoolManager.Common.Abstractions;
 
 namespace ByteSchoolManager.Entities
 {
     [Table("Lessons")]
-    public class Lesson
+    public class Lesson : IDbEntity
     {
-        public enum LessonStatus
-        {
-            NotDone,
-            Сanceled,
-            Done,
-            Mooved,
-            Replaced
-        }
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
-        public required int CourseId { get; set; }//
+        public required int CourseId { get; set; }
 
-        public required DateTime DateAndTime { get; set; }//
+        public required DateTime DateAndTime { get; set; }
 
         public required int CoachId { get; set; }
 
-        public List<Student> Students { get; set; }//
-        public LessonStatus Status { get; set; }
+        public List<Student> Students { get; set; }
+
+        public bool Moved { get; set; }
+        public bool Replaced { get; set; }
+        public bool Marked { get; set; }
+        [ForeignKey(nameof(CourseId))] public Course Course { get; set; }
 
 
-        [ForeignKey(nameof(CourseId))]
-        public Course Course { get; set; }
-
-
-        [ForeignKey(nameof(CoachId))]
-        public Coach Coach { get; set; }
+        [ForeignKey(nameof(CoachId))] public Coach Coach { get; set; }
     }
 }

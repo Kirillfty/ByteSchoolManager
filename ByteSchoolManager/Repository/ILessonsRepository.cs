@@ -7,21 +7,23 @@ namespace ByteSchoolManager.Repository
 {
     public interface ILessonsRepository : IRepository<Lesson>
     {
-        public GetLessonByIdResponce? GetLessonByIdWithStudents(int id);
-        public Lesson? GetById([FromRoute] int id);
+        public GetLessonByIdResponce? GetByIdWithStudents(int id);
+        public bool RescheduleLesson(int lessonId, DateTime date);
+        public bool RescheduleCoachInLesson(int lessonId, int coachId);
     }
 
     public class LessonRepository : ILessonsRepository
     {
-        private readonly ApplicationContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
-        public LessonRepository(ApplicationContext context)
+        public LessonRepository(ApplicationDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
-        public GetLessonByIdResponce? GetLessonByIdWithStudents(int id)
+
+        public GetLessonByIdResponce? GetByIdWithStudents(int id)
         {
-            var lesson = _context.Lessons
+            var lesson = _dbContext.Lessons
                 .Include(u => u.Students)
                 .FirstOrDefault(u => u.Id == id);
 
@@ -31,39 +33,51 @@ namespace ByteSchoolManager.Repository
             }
 
             return new GetLessonByIdResponce(
-                        lesson.Id,
-                        lesson.Students.Select(u => new GetLessonByIdResponceStudent(u.Id, u.Name)).ToList());
-        }
-        public int? Create(Lesson entity)
-        {
-            throw new NotImplementedException();
+                lesson.Id,
+                lesson.Students.Select(u => new GetLessonByIdResponceStudent(u.Id, u.Name)).ToList());
         }
 
-        public bool Delete(int entityId)
+        public bool RescheduleLesson(int lessonId, DateTime date)
         {
-            throw new NotImplementedException();
+            var lesson = _dbContext.Lessons.FirstOrDefault(u => u.Id == lessonId);
+
+            if (lesson is null)
+            {
+                return false;
+            }
+
+            lesson.DateAndTime = date;
+
+            _dbContext.SaveChanges();
+            return true;
         }
 
-        public List<Lesson> GetAll()
+        public bool RescheduleCoachInLesson(int lessonId, int coachId)
         {
-            throw new NotImplementedException();
+            var lesson = _dbContext.Lessons.FirstOrDefault(u => u.Id == lessonId);
+
+            if (lesson == null)
+            {
+                return false;
+            }
+
+            lesson.CoachId = coachId;
+
+            _dbContext.SaveChanges();
+            return true;
         }
 
+        public int? Create(Lesson entity) => throw new NotImplementedException();
 
-        public bool Update(Lesson entity)
-        {
-            throw new NotImplementedException();
-        }
+        public bool Delete(int entityId) => throw new NotImplementedException();
 
-        Lesson? IRepository<Lesson>.GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public List<Lesson> GetAll() => throw new NotImplementedException();
 
-        public Lesson? GetById([FromRoute] int id)
-        {
-            throw new NotImplementedException();
-        }
+
+        public bool Update(Lesson entity) => throw new NotImplementedException();
+
+        Lesson? IRepository<Lesson>.GetById(int id) => throw new NotImplementedException();
+
+        public Lesson? GetById([FromRoute] int id) => throw new NotImplementedException();
     }
-
 }

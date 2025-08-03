@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ByteSchoolManager.Common.Abstractions;
 
 namespace ByteSchoolManager.Entities
 {
     [Table("StudentLessons")]
-    public class StudentLesson
+    public class StudentLesson : IDbEntity
     {
         public enum StudentStatus
         {
