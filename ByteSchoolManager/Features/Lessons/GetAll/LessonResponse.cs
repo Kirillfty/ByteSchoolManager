@@ -2,19 +2,11 @@
 
 namespace ByteSchoolManager.Features.Lessons.GetAll
 {
-    public record LessonDto(
+    public record LessonResponse(
         int Id,
-
         int CourseId,
-
         DateTime DateAndTime,
-
         int CoachId,
-
-        int Studentss
+        int Students
     );
 }
-
-
-
-

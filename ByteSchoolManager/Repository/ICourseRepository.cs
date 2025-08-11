@@ -1,5 +1,5 @@
 using ByteSchoolManager.Entities;
-using ByteSchoolManager.Responces;
+using ByteSchoolManager.Features.Lessons.GetLessonsByDay;
 using Microsoft.EntityFrameworkCore;
 
 namespace ByteSchoolManager.Repository;

@@ -15,22 +15,43 @@ public abstract class RepositoryBase<T> where T : class, IDbEntity
 
     public abstract IQueryable<T> Query { get; }
 
-    public async Task<T?> FirstOrDefault(Expression<Func<T, bool>> predicate,
-        bool tracking = false,
-        CancellationToken ct = default)
-    {
-        var query = tracking ? Query : Query.AsNoTracking();
-
-        return await query.FirstOrDefaultAsync(predicate);
-    }
-
-    public async Task<List<T>> ListAsync(Expression<Func<T, bool>>? predicate = null,
+    public async Task<TResult?> FirstOrDefaultSelectionAsync<TResult>(Expression<Func<T, TResult>> select,
+        Expression<Func<T, bool>>? predicate = null,
         bool tracking = false,
         CancellationToken ct = default)
     {
         var query = tracking ? Query : Query.AsNoTracking();
 
         query = predicate is not null ? query.Where(predicate) : query;
+
+        return await query.Select(select).FirstOrDefaultAsync(ct);
+    }
+
+    public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate,
+        bool tracking = false,
+        CancellationToken ct = default)
+    {
+        var query = tracking ? Query : Query.AsNoTracking();
+
+        return await query.FirstOrDefaultAsync(predicate, ct);
+    }
+
+    public async Task<List<T>> ListAsync(Expression<Func<T, bool>>? predicate = null,
+        List<Expression<Func<T, object>>>? includes = null,
+        bool tracking = false,
+        CancellationToken ct = default)
+    {
+        var query = tracking ? Query : Query.AsNoTracking();
+
+        query = predicate is not null ? query.Where(predicate) : query;
+
+        if (includes is not null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
 
         return await query.ToListAsync();
     }

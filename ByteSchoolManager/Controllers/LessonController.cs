@@ -1,6 +1,8 @@
 ﻿using ByteSchoolManager.Entities;
+using ByteSchoolManager.Features.Lessons.GetLessonsByDay;
 using ByteSchoolManager.Repository;
 using ByteSchoolManager.Responces;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,20 +13,17 @@ namespace ByteSchoolManager.Controllers
     public class LessonController : ControllerBase
     {
         private readonly ILessonsRepository _lessonsRepository;
-        private readonly ICoachRepository _coachRepository;
-        private readonly ICourseRepository _courseRepository;
-        
+        private readonly ISender _sender;
+
         public record MoveLessonRequest(int LessonId, DateTime Date);
 
         public record ReplaceCoachInLessonRequest(int LessonId, int CoachId);
 
         public LessonController(ILessonsRepository studentRepository,
-            ICoachRepository coachRepository,
-            ICourseRepository courseRepository)
+            ISender sender)
         {
             _lessonsRepository = studentRepository;
-            _coachRepository = coachRepository;
-            _courseRepository = courseRepository;
+            _sender = sender;
         }
 
         [HttpGet("{id:int}")]
@@ -35,12 +34,11 @@ namespace ByteSchoolManager.Controllers
 
         [Authorize(Roles = UserRole.Coach)]
         [HttpGet("by-day/{dayOfWeak:int}")]
-        public List<GetLessonsInDayResponce> GetLassonInDay([FromRoute] int dayOfWeak)
+        public async Task<List<GetLessonsInDayResponce>> GetLessonsByDay([FromRoute] int dayOfWeak)
         {
-            var userId = HttpContext.User.Identity.Name;
-            var coach = _coachRepository.GetByUserId(int.Parse(userId));
+            var userId = int.Parse(HttpContext.User.Identity.Name);
 
-            return _courseRepository.GetLessonsInDays(coach.Id, dayOfWeak);
+            return await _sender.Send(new GetLessonsByDayQuery(dayOfWeak, userId));
         }
         
         [HttpPatch("move")]

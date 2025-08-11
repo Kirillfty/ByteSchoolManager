@@ -21,8 +21,6 @@ namespace ByteSchoolManager.Entities
         public bool Replaced { get; set; }
         public bool Marked { get; set; }
         [ForeignKey(nameof(CourseId))] public Course Course { get; set; }
-
-
         [ForeignKey(nameof(CoachId))] public Coach Coach { get; set; }
     }
 }
