@@ -1,5 +1,6 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Features.Lessons.GetLessonsByDay;
+using ByteSchoolManager.Features.Lessons.Mark;
 using ByteSchoolManager.Repository;
 using ByteSchoolManager.Responces;
 using MediatR;
@@ -57,6 +58,12 @@ namespace ByteSchoolManager.Controllers
                 return NotFound();
 
             return Ok();
+        }
+
+        [HttpPost("mark")]
+        public async Task<ActionResult> MarkLesson([FromBody] MarkLessonCommand command)
+        {
+            return Ok(await _sender.Send(command));
         }
     }
 }

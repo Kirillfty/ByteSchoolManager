@@ -9,19 +9,16 @@ namespace ByteSchoolManager.Entities
     {
         public enum StudentStatus
         {
-            Present,
-            AbsentWithoutExcuse,
-            AbsentRespect,
+            InClass,
+            Miss,
+            MissNoReason,
             Online
         }
 
         [Key]
         public int Id { get; set; }
-
         public required int StudentId { get; set; }
-
         public required int LessonId { get; set; }
-
         public required StudentStatus Status { get; set; }
         
         [ForeignKey(nameof(StudentId))]
@@ -30,6 +27,4 @@ namespace ByteSchoolManager.Entities
         [ForeignKey(nameof(LessonId))]
         public Lesson Lesson { get; set; }
     }
-
-
 }

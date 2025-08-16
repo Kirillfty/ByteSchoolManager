@@ -220,8 +220,6 @@ public class CourseRepository : ICourseRepository
             .Where(sc => sc.CourseId == courseId)
             .ToList();
 
-        var notMarkedLessons = _dbContext.Lessons.Where(sc => sc.CourseId == courseId && !sc.Marked).ToList();
-
         var oldStudents = oldStudentCourses.Select(sc => sc.StudentId).ToList();
 
         var deletedStudentIds = oldStudents.Except(studentsId).ToList();
@@ -243,19 +241,6 @@ public class CourseRepository : ICourseRepository
 
 
         _dbContext.StudentCourses.AddRange(newStudentCourses);
-
-
-        foreach (var lesson in notMarkedLessons)
-        {
-            var newStudentLessons = newStudentCourses.Select(sc => new StudentLesson
-            {
-                StudentId = sc.StudentId,
-                Status = StudentLesson.StudentStatus.Online,
-                LessonId = lesson.Id
-            }).ToList();
-
-            _dbContext.StudentLessons.AddRange(newStudentLessons);
-        }
 
         _dbContext.SaveChanges();
 

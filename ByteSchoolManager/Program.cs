@@ -28,6 +28,10 @@ builder.Services.AddTransient<ILessonsRepository, LessonRepository>();
 
 builder.Services.AddScoped<RepositoryBase<Course>, CourseBaseRepository>();
 builder.Services.AddScoped<RepositoryBase<Lesson>, LessonBaseRepository>();
+builder.Services.AddScoped<RepositoryBase<StudentLesson>, StudentLessonBaseRepository>();
+builder.Services.AddScoped<RepositoryBase<StudentCourse>, StudentCourseBaseRepository>();
+builder.Services.AddScoped<RepositoryBase<Student>, StudentBaseRepository>();
+builder.Services.AddScoped<RepositoryBase<Coach>, CoachBaseRepository>();
 
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
