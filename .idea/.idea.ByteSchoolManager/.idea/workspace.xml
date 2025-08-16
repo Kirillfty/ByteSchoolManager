@@ -6,152 +6,22 @@
     <projectFile profileName="http">ByteSchoolManager/ByteSchoolManager.csproj</projectFile>
     <projectFile profileName="https">ByteSchoolManager/ByteSchoolManager.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c4997f91-35cf-4a88-ab76-84d87df2dfe6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ByteSchoolManager/CopilotIndices/17.14.719.50355/CodeChunks.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/.futdcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ByteSchoolManager/v17/DocumentLayout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.metadata.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.metadata.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.projects.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.projects.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.strings.v9.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/byteschoolmanager.strings.v9.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/.vs/ByteSchoolManager/CopilotIndices/17.14.719.50355/CodeChunks.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Controllers/CourseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Controllers/CourseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/Course.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/Lesson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/Lesson.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Repository/ICourseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Repository/ICourseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.runtimeconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ByteSchoolManager.staticwebassets.endpoints.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Humanizer.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Microsoft.OpenApi.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Mono.TextTemplating.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Npgsql.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.CodeDom.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.Composition.AttributedModel.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.Composition.Convention.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.Composition.Hosting.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.Composition.Runtime.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.Composition.TypedParts.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.EntityFrameworkCore.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/ByteSchoolManager.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteScho.320A0538.Up2Date" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.csproj.BuildWithSkipAnalyzers" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.genruntimeconfig.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ByteSchoolManager.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/apphost.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/rbcswa.dswa.cache.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/ref/ByteSchoolManager.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/refint/ByteSchoolManager.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/rpswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/rpswa.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/staticwebassets.build.endpoints.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/staticwebassets.build.json.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/Debug/net8.0/staticwebassets.references.upToDateCheck.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonsByDay/GetLessonsByDayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonsByDay/GetLessonsByDayQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/MarkLessonCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/MarkLessonCommand.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -165,17 +35,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.ByteSchoolManager: https.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.ByteSchoolManager: https.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ByteSchoolManager: https">
     <configuration name="ByteSchoolManager: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ByteSchoolManager/ByteSchoolManager.csproj" />

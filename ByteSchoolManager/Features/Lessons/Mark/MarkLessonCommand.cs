@@ -9,14 +9,14 @@ public record MarkLessonCommand(int LessonId, LessonStudentRequest[] Students) :
 
 public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, string>
 {
-    private readonly LessonBaseRepository _lessonRepository;
-    private readonly StudentCourseBaseRepository _studentCourseRepository;
-    private readonly StudentLessonBaseRepository _studentLessonRepository;
+    private readonly RepositoryBase<Lesson> _lessonRepository;
+    private readonly RepositoryBase<StudentCourse> _studentCourseRepository;
+    private readonly RepositoryBase<StudentLesson> _studentLessonRepository;
 
     public StudentLessonRequestHandler(
-        LessonBaseRepository lessonRepository,
-        StudentCourseBaseRepository studentCourseRepository,
-        StudentLessonBaseRepository studentLessonRepository)
+        RepositoryBase<Lesson> lessonRepository,
+        RepositoryBase<StudentCourse> studentCourseRepository,
+        RepositoryBase<StudentLesson> studentLessonRepository)
     {
         _lessonRepository = lessonRepository;
         _studentCourseRepository = studentCourseRepository;

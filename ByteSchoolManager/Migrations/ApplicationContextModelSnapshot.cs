@@ -49,7 +49,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Coaches");
+                    b.ToTable("Coaches", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.Course", b =>
@@ -83,7 +83,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasIndex("CoachId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.Lesson", b =>
@@ -118,7 +118,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.Student", b =>
@@ -147,7 +147,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.StudentCourse", b =>
@@ -173,7 +173,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentCourses");
+                    b.ToTable("StudentCourses", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.StudentLesson", b =>
@@ -199,7 +199,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentLessons");
+                    b.ToTable("StudentLessons", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.User", b =>
@@ -227,7 +227,7 @@ namespace ByteSchoolManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("ByteSchoolManager.Entities.Coach", b =>

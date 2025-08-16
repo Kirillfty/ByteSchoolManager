@@ -1,4 +1,5 @@
 ﻿using ByteSchoolManager.Common.Abstractions;
+using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using MediatR;
 
@@ -8,10 +9,10 @@ namespace ByteSchoolManager.Features.Lessons.GetLessonsByDay
 
     public class GetLessonsByDayQueryHandler : IRequestHandler<GetLessonsByDayQuery, List<GetLessonsInDayResponce>>
     {
-        private readonly LessonBaseRepository _lessonRepository;
-        private readonly CoachBaseRepository _coachRepository;
+        private readonly RepositoryBase<Lesson> _lessonRepository;
+        private readonly RepositoryBase<Coach> _coachRepository;
 
-        public GetLessonsByDayQueryHandler(LessonBaseRepository lessonRepository, CoachBaseRepository coachRepository)
+        public GetLessonsByDayQueryHandler(RepositoryBase<Lesson> lessonRepository, RepositoryBase<Coach> coachRepository)
         {
             _lessonRepository = lessonRepository;
             _coachRepository = coachRepository;
