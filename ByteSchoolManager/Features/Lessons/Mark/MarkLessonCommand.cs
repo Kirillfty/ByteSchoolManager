@@ -25,7 +25,7 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
 
     public async Task<string> Handle(MarkLessonCommand request, CancellationToken ct)
     {
-        var lesson = await _lessonRepository.FirstOrDefaultAsync(x => x.Id == request.LessonId, ct: ct);
+        var lesson = await _lessonRepository.FirstOrDefaultAsync(x => x.Id == request.LessonId, tracking: true, ct: ct);
 
         if (lesson is null)
             return "Selected lesson not found";
@@ -53,6 +53,8 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
         });
 
         await _studentLessonRepository.AddRangeAsync(studentLessons, ct);
+
+        lesson.Marked = true;
         
         await _studentLessonRepository.SaveChangesAsync(ct);
         
