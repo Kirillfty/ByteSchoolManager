@@ -88,6 +88,10 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -98,6 +102,8 @@ if (app.Environment.IsDevelopment())
         await context.Database.MigrateAsync();
     }
 }
+
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
