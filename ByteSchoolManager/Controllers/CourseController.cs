@@ -1,6 +1,7 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Features.Courses.Create;
 using ByteSchoolManager.Features.Courses.GetAll;
+using ByteSchoolManager.Features.Courses.UpdateCourseCoach;
 using ByteSchoolManager.Features.Courses.UpdateCourseDays;
 using ByteSchoolManager.Repository;
 using MediatR;
@@ -98,16 +99,9 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPatch("coach")]
-        public ActionResult UpdateCoach([FromBody] UpdateCoachCourseRequest request)
+        public async Task<ActionResult<string>> UpdateCoach([FromBody] UpdateCourseCoachCommand request, CancellationToken ct)
         {
-            Course course = new Course { CoachId = request.CoachId, Id = request.Id };
-
-            if (_courseRepository.UpdateCoachCourse(course))
-            {
-                return Ok();
-            }
-
-            return BadRequest();
+            return await _sender.Send(request, ct);
         }
 
         [HttpPost("add-student-in-course")]
