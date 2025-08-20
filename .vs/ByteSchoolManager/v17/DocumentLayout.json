@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|c:\\users\\kirill\\source\\repos\\byteschoolmanager\\byteschoolmanager\\features\\lessons\\getlessonsbyday\\getlessonsbydayquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03C86C6F-AE1D-42E7-9446-ABE448B4A501}|ByteSchoolManager\\ByteSchoolManager.csproj|solutionrelative:byteschoolmanager\\features\\lessons\\getlessonsbyday\\getlessonsbydayquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,24 +37,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\CourseController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\CourseController.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAEwF0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T19:23:38.013Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA5wC4AAAA4AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs*",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs*",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAawGoAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-20T19:19:07.458Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GetLessonsByDayQuery.cs",
               "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Features\\Lessons\\GetLessonsByDay\\GetLessonsByDayQuery.cs",
               "RelativeDocumentMoniker": "ByteSchoolManager\\Features\\Lessons\\GetLessonsByDay\\GetLessonsByDayQuery.cs",
@@ -58,12 +75,11 @@
               "RelativeToolTip": "ByteSchoolManager\\Features\\Lessons\\GetLessonsByDay\\GetLessonsByDayQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T18:50:16.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-13T18:50:16.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GetLessonsInDayResponce.cs",
               "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Features\\Lessons\\GetLessonsByDay\\GetLessonsInDayResponce.cs",
               "RelativeDocumentMoniker": "ByteSchoolManager\\Features\\Lessons\\GetLessonsByDay\\GetLessonsInDayResponce.cs",
@@ -75,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "GetAllCoursesQuery.cs",
               "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Features\\Courses\\GetAll\\GetAllCoursesQuery.cs",
               "RelativeDocumentMoniker": "ByteSchoolManager\\Features\\Courses\\GetAll\\GetAllCoursesQuery.cs",
@@ -87,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "LessonDto.cs",
               "DocumentMoniker": "C:\\Users\\vladi\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\ByteSchoolManager\\ByteSchoolManager\\Features\\Lessons\\GetAll\\LessonDto.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\vladi\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\ByteSchoolManager\\ByteSchoolManager\\Features\\Lessons\\GetAll\\LessonDto.cs",
@@ -99,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GetAllLessonsQuery.cs",
               "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Features\\Lessons\\GetAll\\GetAllLessonsQuery.cs",
               "RelativeDocumentMoniker": "ByteSchoolManager\\Features\\Lessons\\GetAll\\GetAllLessonsQuery.cs",

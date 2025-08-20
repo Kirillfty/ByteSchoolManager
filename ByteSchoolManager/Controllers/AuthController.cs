@@ -25,7 +25,7 @@ namespace ClubsBack.Controllers
             [Required] string Login,
             [Required] string Password);
 
-        public record TokenPair(string AccessToken, string RefreshToken);
+        public record TokenPair(string AccessToken, string RefreshToken,string Role);
 
         [HttpPost("login")]
         public ActionResult<TokenPair> Login([FromBody] LoginRequest loginRequest)
@@ -44,7 +44,7 @@ namespace ClubsBack.Controllers
 
             string authToken = _jwtCreator.Create(user.Role, user.Id);
 
-            return new TokenPair(authToken, refreshToken);
+            return new TokenPair(authToken, refreshToken,user.Role);
         }
 
         [Authorize]
@@ -85,7 +85,7 @@ namespace ClubsBack.Controllers
 
             string authToken = _jwtCreator.Create(newUser.Role, newUser.Id);
 
-            return new TokenPair(authToken, refreshToken);
+            return new TokenPair(authToken, refreshToken,newUser.Role);
         }
 
         [HttpGet("refresh/{refreshToken}")]
@@ -104,7 +104,7 @@ namespace ClubsBack.Controllers
 
             string authToken = _jwtCreator.Create(user.Role, user.Id);
 
-            return new TokenPair(authToken, newRefreshToken);
+            return new TokenPair(authToken, newRefreshToken, user.Role);
         }
 
         [Authorize]
