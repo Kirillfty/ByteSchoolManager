@@ -2,4 +2,4 @@
 
 namespace ByteSchoolManager.Features.Lessons.Mark;
 
-public record LessonStudentRequest(int StudentId, StudentLesson.StudentStatus Status);
+public record LessonStudentDto(int StudentId, StudentLesson.StudentStatus Status);

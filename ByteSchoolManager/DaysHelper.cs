@@ -1,4 +1,5 @@
-﻿using ByteSchoolManager.Entities;
+﻿using ByteSchoolManager.Common.Exceptions;
+using ByteSchoolManager.Entities;
 
 namespace ByteSchoolManager
 {
@@ -42,7 +43,7 @@ namespace ByteSchoolManager
             }).ToArray();
         }
 
-        public static Course.DayOfWeek GetDayOfWeek(DayOfWeek[] days)
+        public static Course.DayOfWeek GetDayOfWeek(IEnumerable<DayOfWeek> days)
         {
             Course.DayOfWeek dayOfWeek = 0;
             foreach (var day in days)
@@ -56,6 +57,7 @@ namespace ByteSchoolManager
                     DayOfWeek.Thursday => Course.DayOfWeek.Thursday,
                     DayOfWeek.Friday => Course.DayOfWeek.Friday,
                     DayOfWeek.Saturday => Course.DayOfWeek.Saturday,
+                    _ => throw new BadRequestException($"Unknown day[{(int)day}]. DayOfWeek must be in range 0 - 6.")
                 };
             }
 

@@ -17,29 +17,47 @@ public abstract class RepositoryBase<T> where T : class, IDbEntity
 
     public async Task<TResult?> FirstOrDefaultSelectionAsync<TResult>(Expression<Func<T, TResult>> select,
         Expression<Func<T, bool>>? predicate = null,
+        List<Expression<Func<T, object>>>? includes = null,
         bool tracking = false,
-        CancellationToken ct = default)
+        CancellationToken cancellationToken = default)
     {
         var query = tracking ? Query : Query.AsNoTracking();
 
         query = predicate is not null ? query.Where(predicate) : query;
 
-        return await query.Select(select).FirstOrDefaultAsync(ct);
+        if (includes is not null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+        
+        return await query.Select(select).FirstOrDefaultAsync(cancellationToken);
     }
 
     public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate,
+        List<Expression<Func<T, object>>>? includes = null,
         bool tracking = false,
-        CancellationToken ct = default)
+        CancellationToken cancellationToken = default)
     {
         var query = tracking ? Query : Query.AsNoTracking();
 
-        return await query.FirstOrDefaultAsync(predicate, ct);
+        if (includes is not null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+        
+        return await query.FirstOrDefaultAsync(predicate, cancellationToken);
     }
 
     public async Task<List<T>> ListAsync(Expression<Func<T, bool>>? predicate = null,
         List<Expression<Func<T, object>>>? includes = null,
         bool tracking = false,
-        CancellationToken ct = default)
+        CancellationToken cancellationToken = default)
     {
         var query = tracking ? Query : Query.AsNoTracking();
 
@@ -60,7 +78,7 @@ public abstract class RepositoryBase<T> where T : class, IDbEntity
         Expression<Func<T, bool>>? predicate = null,
         List<Expression<Func<T, object>>>? includes = null,
         bool tracking = false,
-        CancellationToken ct = default)
+        CancellationToken cancellationToken = default)
     {
         var query = tracking ? Query : Query.AsNoTracking();
 
@@ -77,9 +95,9 @@ public abstract class RepositoryBase<T> where T : class, IDbEntity
         return await query.Select(selector).ToListAsync();
     }
 
-    public async Task AddAsync(T entity, CancellationToken ct = default)
+    public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
     {
-        await _dbContext.AddAsync(entity, ct);
+        await _dbContext.AddAsync(entity, cancellationToken);
     }
 
     public void Remove(T entity)
@@ -87,18 +105,13 @@ public abstract class RepositoryBase<T> where T : class, IDbEntity
         _dbContext.Remove(entity);
     }
 
-    public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken ct = default)
+    public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
     {
-        await _dbContext.AddRangeAsync(entities, ct);
+        await _dbContext.AddRangeAsync(entities, cancellationToken);
     }
 
     public void RemoveRange(IEnumerable<T> entities)
     {
         _dbContext.RemoveRange(entities);
-    }
-
-    public async Task SaveChangesAsync(CancellationToken ct = default)
-    {
-        await _dbContext.SaveChangesAsync(ct);
     }
 }

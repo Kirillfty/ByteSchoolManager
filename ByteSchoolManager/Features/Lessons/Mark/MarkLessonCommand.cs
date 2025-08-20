@@ -5,10 +5,11 @@ using MediatR;
 
 namespace ByteSchoolManager.Features.Lessons.Mark;
 
-public record MarkLessonCommand(int LessonId, LessonStudentRequest[] Students) : ICommand<string>;
+public record MarkLessonCommand(int LessonId, LessonStudentDto[] Students) : ICommand<string>;
 
 public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, string>
 {
+    private readonly IUnitOfWork _unitOfWork;
     private readonly RepositoryBase<Lesson> _lessonRepository;
     private readonly RepositoryBase<StudentCourse> _studentCourseRepository;
     private readonly RepositoryBase<StudentLesson> _studentLessonRepository;
@@ -16,16 +17,18 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
     public StudentLessonRequestHandler(
         RepositoryBase<Lesson> lessonRepository,
         RepositoryBase<StudentCourse> studentCourseRepository,
-        RepositoryBase<StudentLesson> studentLessonRepository)
+        RepositoryBase<StudentLesson> studentLessonRepository,
+        IUnitOfWork unitOfWork)
     {
         _lessonRepository = lessonRepository;
         _studentCourseRepository = studentCourseRepository;
         _studentLessonRepository = studentLessonRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<string> Handle(MarkLessonCommand request, CancellationToken ct)
     {
-        var lesson = await _lessonRepository.FirstOrDefaultAsync(x => x.Id == request.LessonId, tracking: true, ct: ct);
+        var lesson = await _lessonRepository.FirstOrDefaultAsync(x => x.Id == request.LessonId, tracking: true, cancellationToken: ct);
 
         if (lesson is null)
             return "Selected lesson not found";
@@ -35,7 +38,7 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
         var lessonStudentIds = await _studentCourseRepository.ListSelectionAsync(
             x => x.Student.Id,
             x => studentIds.Contains(x.StudentId) && x.CourseId == lesson.CourseId && x.Status == StudentCourse.StudentStatus.Engaged,
-            ct: ct);
+            cancellationToken: ct);
 
         foreach (var studentId in studentIds)
         {
@@ -56,7 +59,7 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
 
         lesson.Marked = true;
         
-        await _studentLessonRepository.SaveChangesAsync(ct);
+        await _unitOfWork.SaveChangesAsync(ct);
         
         return "Lesson successfully marked";
     }

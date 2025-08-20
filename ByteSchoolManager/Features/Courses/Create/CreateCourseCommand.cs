@@ -5,7 +5,7 @@ using MediatR;
 
 namespace ByteSchoolManager.Features.Courses.Create;
 
-public class CreateCourseCommand : ICommand<int>
+public class CreateCourseCommand : ICommand<string>
 {
     public int[] Days { get; set; }
     public TimeOnly TimeOfLesson { get; set; }
@@ -15,32 +15,31 @@ public class CreateCourseCommand : ICommand<int>
     public int CoachId { get; set; }
 }
 
-public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, int>
+public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, string>
 {
+    private readonly IUnitOfWork _unitOfWork;
     private readonly RepositoryBase<Course> _courseRepository;
-    private readonly RepositoryBase<Lesson> _lessonRepository;
 
-    public CreateCourseCommandHandler(RepositoryBase<Course> courseRepository, RepositoryBase<Lesson> lessonRepository)
+    public CreateCourseCommandHandler(
+        RepositoryBase<Course> courseRepository,
+        RepositoryBase<Lesson> lessonRepository,
+        IUnitOfWork unitOfWork)
     {
         _courseRepository = courseRepository;
-        _lessonRepository = lessonRepository;
+        _unitOfWork = unitOfWork;
     }
 
-    public async Task<int> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
+    public async Task<string> Handle(CreateCourseCommand request, CancellationToken ct)
     {
         Course course = new Course
         {
             TimeOfLesson = request.TimeOfLesson,
             DateOfEndCourse = request.DateOfEndCourse,
             DateOfStartCourse = request.DateOfStartCourse,
-            DaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(i => (DayOfWeek)i).ToArray()),
+            DaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(i => (DayOfWeek)i)),
             Title = request.Title,
             CoachId = request.CoachId
         };
-        
-        await _courseRepository.AddAsync(course, cancellationToken);
-
-        await _courseRepository.SaveChangesAsync(cancellationToken);
         
         var lessons = new List<Lesson>();
         var dates = GetDatesBetweenStartAndEndByDaysOfWeek(course.DateOfStartCourse, course.DateOfEndCourse,
@@ -56,11 +55,12 @@ public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, i
             });
         }
 
-        await _lessonRepository.AddRangeAsync(lessons);
+        course.Lessons = lessons;
+        await _courseRepository.AddAsync(course, ct);
 
-        await _lessonRepository.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync(ct);
 
-        return course.Id;
+        return $"Course[{course.Id}] '{course.Title}' created";
     }
     
     private List<DateOnly> GetDatesBetweenStartAndEndByDaysOfWeek(DateOnly start, DateOnly end,

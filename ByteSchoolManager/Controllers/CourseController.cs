@@ -1,6 +1,7 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Features.Courses.Create;
 using ByteSchoolManager.Features.Courses.GetAll;
+using ByteSchoolManager.Features.Courses.UpdateCourseDays;
 using ByteSchoolManager.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +14,6 @@ namespace ByteSchoolManager.Controllers
     {
         private readonly ISender _sender;
 
-        public record UpdateCoachCourseRequest(int Id, int CoachId);
-
         public record UpdateDateStartCourseRequest(int Id, DateOnly StartDayCourse);
 
         public record UpdateDateEndCourseRequest(int Id, DateOnly EndDayCourse);
@@ -22,8 +21,6 @@ namespace ByteSchoolManager.Controllers
         public record AddStudentCourseRequest(int Id, int[] Students);
 
         public record UpdateTimeCourseRequest(int Id, TimeOnly TimeOfCourse);
-
-        public record UpdateDayCourseRequest(int Id, int[] Days);
 
         private readonly ICourseRepository _courseRepository;
 
@@ -40,9 +37,9 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create([FromBody] CreateCourseCommand request, CancellationToken ct)
+        public async Task<string> Create([FromBody] CreateCourseCommand request, CancellationToken ct)
         {
-            return Ok(await _sender.Send(request, ct));
+            return await _sender.Send(request, ct);
         }
 
         [HttpPatch("start-date")]
@@ -81,22 +78,10 @@ namespace ByteSchoolManager.Controllers
             return BadRequest();
         }
 
-        [HttpPatch("lesson-days")]
-        public ActionResult UpdateLessonDays([FromBody] UpdateDayCourseRequest request)
+        [HttpPatch("days")]
+        public async Task<IActionResult> UpdateCourseDays([FromBody] UpdateCourseDaysCommand request, CancellationToken ct)
         {
-            var course = _courseRepository.GetById(request.Id);
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            course.DaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(i => (DayOfWeek)i).ToArray());
-            if (_courseRepository.UpdateDayOfLesson(course))
-            {
-                return Ok();
-            }
-
-            return BadRequest();
+            return Ok(await _sender.Send(request, ct));
         }
 
         [HttpPatch("lesson-time")]

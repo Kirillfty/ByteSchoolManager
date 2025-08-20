@@ -21,6 +21,6 @@ public class GetAllCoursesQueryHandler : IRequestHandler<GetAllCoursesQuery, Lis
         return await _repository.ListSelectionAsync(
             x => new CourseDto(x.Id, DaysHelper.GetDayNumbers(x.DaysOfWeek), x.TimeOfLesson, x.DateOfStartCourse,
                 x.DateOfEndCourse, x.Title, x.CoachId,
-                x.Students.Count, x.Lessons.Count), ct: cancellationToken);
+                x.Students.Count, x.Lessons.Count), cancellationToken: cancellationToken);
     }
 }
