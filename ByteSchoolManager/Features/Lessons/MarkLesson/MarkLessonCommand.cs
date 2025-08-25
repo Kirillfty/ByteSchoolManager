@@ -3,9 +3,9 @@ using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using MediatR;
 
-namespace ByteSchoolManager.Features.Lessons.Mark;
+namespace ByteSchoolManager.Features.Lessons.MarkLesson;
 
-public record MarkLessonCommand(int LessonId, LessonStudentDto[] Students) : ICommand<string>;
+public record MarkLessonCommand(int LessonId, MarkLessonStudentDto[] Students) : ICommand<string>;
 
 public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, string>
 {
@@ -37,7 +37,7 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
 
         var lessonStudentIds = await _studentCourseRepository.ListSelectionAsync(
             x => x.Student.Id,
-            x => studentIds.Contains(x.StudentId) && x.CourseId == lesson.CourseId && x.Status == StudentCourse.StudentStatus.Engaged,
+            x => studentIds.Contains(x.StudentId) && x.CourseId == lesson.CourseId && x.CourseStatus == StudentCourse.StudentCourseStatus.Engaged,
             cancellationToken: ct);
 
         foreach (var studentId in studentIds)
@@ -52,7 +52,7 @@ public record StudentLessonRequestHandler : IRequestHandler<MarkLessonCommand, s
         {
             LessonId = lesson.Id,
             StudentId = x.StudentId,
-            Status = x.Status
+            LessonStatus = x.LessonStatus
         });
 
         await _studentLessonRepository.AddRangeAsync(studentLessons, ct);

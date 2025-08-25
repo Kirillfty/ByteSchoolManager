@@ -7,7 +7,7 @@ namespace ByteSchoolManager.Entities
     [Table("StudentLessons")]
     public class StudentLesson : IDbEntity
     {
-        public enum StudentStatus
+        public enum StudentLessonStatus
         {
             InClass,
             Miss,
@@ -19,7 +19,7 @@ namespace ByteSchoolManager.Entities
         public int Id { get; set; }
         public required int StudentId { get; set; }
         public required int LessonId { get; set; }
-        public required StudentStatus Status { get; set; }
+        public required StudentLessonStatus LessonStatus { get; set; }
         
         [ForeignKey(nameof(StudentId))]
         public Student Student { get; set; }

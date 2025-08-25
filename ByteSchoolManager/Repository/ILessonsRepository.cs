@@ -1,5 +1,5 @@
 ﻿using ByteSchoolManager.Entities;
-using ByteSchoolManager.Responces;
+using ByteSchoolManager.Features.Lessons.GetLessonWithStudents;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +7,6 @@ namespace ByteSchoolManager.Repository
 {
     public interface ILessonsRepository : IRepository<Lesson>
     {
-        public GetLessonByIdResponce? GetByIdWithStudents(int id);
         public bool RescheduleLesson(int lessonId, DateTime date);
         public bool RescheduleCoachInLesson(int lessonId, int coachId);
     }
@@ -19,22 +18,6 @@ namespace ByteSchoolManager.Repository
         public LessonRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-        }
-
-        public GetLessonByIdResponce? GetByIdWithStudents(int id)
-        {
-            var lesson = _dbContext.Lessons
-                .Include(u => u.Students)
-                .FirstOrDefault(u => u.Id == id);
-
-            if (lesson == null)
-            {
-                return null;
-            }
-
-            return new GetLessonByIdResponce(
-                lesson.Id,
-                lesson.Students.Select(u => new GetLessonByIdResponceStudent(u.Id, u.Name)).ToList());
         }
 
         public bool RescheduleLesson(int lessonId, DateTime date)

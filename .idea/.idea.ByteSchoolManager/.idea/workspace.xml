@@ -11,9 +11,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4997f91-35cf-4a88-ab76-84d87df2dfe6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/EditCourseStudents/CourseStudentDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/EditCourseStudents/EditCourseStudentsCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDates/UpdateCourseDatesCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseTime/UpdateCourseTimeCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonWithStudents/GetLessonWithStudentsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonWithStudents/LessonWithStudentsDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/assets/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/assets/css/tailwind.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/pages/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/app/pages/login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/fonts/Inter/Inter-italic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/public/fonts/Inter/Inter-normal.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ByteSchoolManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonsByDay/GetLessonsByDayQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonsByDay/GetLessonsByDayQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/MarkLessonCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/MarkLessonCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/ByteSchoolManager.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/ByteSchoolManager.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Controllers/CourseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Controllers/CourseController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Controllers/LessonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Controllers/LessonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/Course.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/Lesson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/Lesson.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/StudentCourse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/StudentCourse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Entities/StudentLesson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Entities/StudentLesson.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDays/UpdateCourseDaysCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDays/UpdateCourseDaysCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/LessonStudentDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/MarkLesson/MarkLessonStudentDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/Mark/MarkLessonCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/MarkLesson/MarkLessonCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Repository/ICourseRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Repository/ILessonsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ByteSchoolManager/Repository/ILessonsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ByteSchoolManager/Responces/GetLessonByIdResponce.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +53,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25eff0c6e61fa78668cfab4bedf57b35564a0231cb9fa3e750ecc38ffe78/ActionResultOfT.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/vladi/Documents/GitHub/ByteSchoolManager/ByteSchoolManager/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Common/Exceptions/BadRequestException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Common/Exceptions/NotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/vladi/Documents/GitHub/ByteSchoolManager/ByteSchoolManager/Entities/Course.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/EditCourseStudents/EditCourseStudentsCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseCoach/UpdateCourseCoachCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDates/UpdateCourseDatesCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDays/UpdateCourseDaysCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseTime/UpdateCourseTimeCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Features/Lessons/GetLessonByIdWithStudents/GetLessonByIdWithStudentsQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/ProblemDetailsExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ByteSchoolManager/Repository/UnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -40,10 +83,15 @@
     ".NET Launch Settings Profile.ByteSchoolManager: https.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -59,6 +107,7 @@
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -74,6 +123,7 @@
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -89,6 +139,7 @@
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -121,12 +172,20 @@
       <option name="presentableId" value="Default" />
       <updated>1749750113008</updated>
       <workItem from="1749750115151" duration="104000" />
+      <workItem from="1755418498141" duration="181000" />
+      <workItem from="1755418703275" duration="13078000" />
+      <workItem from="1755717934671" duration="180000" />
+      <workItem from="1755940634064" duration="396000" />
+      <workItem from="1755941073860" duration="12656000" />
+      <workItem from="1756029384435" duration="1360000" />
+      <workItem from="1756030833047" duration="1243000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -146,6 +205,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ByteSchoolManager/Features/Courses/UpdateCourseDays/UpdateCourseDaysCommand.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Users\vladi\Documents\GitHub\ByteSchoolManager\ByteSchoolManager\Features\Courses\UpdateCourseDays\UpdateCourseDaysCommand.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="2321" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2360" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -15,7 +15,7 @@ namespace ByteSchoolManager.Entities
 
         public required int CoachId { get; set; }
 
-        public List<Student> Students { get; set; }
+        public List<StudentLesson> Students { get; set; }
 
         public bool Moved { get; set; }
         public bool Replaced { get; set; }

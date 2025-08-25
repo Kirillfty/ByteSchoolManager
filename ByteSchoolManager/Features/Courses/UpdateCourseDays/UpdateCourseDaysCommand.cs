@@ -12,15 +12,12 @@ public record UpdateCourseDaysCommand(int CourseId, int[] Days) : ICommand<strin
 public class UpdateDaysOnCourseCommandHandler : IRequestHandler<UpdateCourseDaysCommand, string>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly RepositoryBase<Lesson> _lessonRepository;
     private readonly RepositoryBase<Course> _courseRepository;
 
     public UpdateDaysOnCourseCommandHandler(
-        RepositoryBase<Lesson> lessonRepository,
         RepositoryBase<Course> courseRepository,
         IUnitOfWork unitOfWork)
     {
-        _lessonRepository = lessonRepository;
         _courseRepository = courseRepository;
         _unitOfWork = unitOfWork;
     }
@@ -28,7 +25,12 @@ public class UpdateDaysOnCourseCommandHandler : IRequestHandler<UpdateCourseDays
     public async Task<string> Handle(UpdateCourseDaysCommand request, CancellationToken ct)
     {
         var courseDaysOfWeek = DaysHelper.GetDayOfWeek(request.Days.Select(x => (DayOfWeek)x));
-        var course = await _courseRepository.FirstOrDefaultAsync(c => c.Id == request.CourseId, cancellationToken: ct, tracking: true);
+        var course = await _courseRepository.FirstOrDefaultAsync(
+            c => c.Id == request.CourseId,
+            includes: [x => x.Lessons],
+            cancellationToken: ct,
+            tracking: true
+        );
 
         if (course is null)
         {
@@ -37,15 +39,12 @@ public class UpdateDaysOnCourseCommandHandler : IRequestHandler<UpdateCourseDays
 
         course.DaysOfWeek = courseDaysOfWeek;
 
-        var notMarkedLessons = await _lessonRepository.ListAsync(l => !l.Marked && l.CourseId == course.Id, cancellationToken: ct);
+        var notMarkedLessons = course.Lessons.Where(l => !l.Marked).ToList();
 
-        var lastLesson = await _lessonRepository.Query
-            .Where(u => u.CourseId == course.Id)
-            .OrderBy(u => u.DateAndTime)
-            .LastOrDefaultAsync(ct);
+        var lastLesson = course.Lessons.Where(x => x.Marked).OrderBy(x => x.DateAndTime).LastOrDefault();
 
         var date = lastLesson is not null
-            ? DateOnly.FromDateTime(lastLesson.DateAndTime.AddDays(1))
+            ? DateOnly.FromDateTime(lastLesson.DateAndTime).AddDays(1)
             : course.DateOfStartCourse;
 
         var lessonDates = GetDatesBetweenStartAndEndByDaysOfWeek(date, course.DateOfEndCourse, course.DaysOfWeek);
@@ -61,12 +60,12 @@ public class UpdateDaysOnCourseCommandHandler : IRequestHandler<UpdateCourseDays
             });
         }
 
-        _lessonRepository.RemoveRange(notMarkedLessons);
-        await _lessonRepository.AddRangeAsync(newLessons, ct);
+        course.Lessons.RemoveAll(l => notMarkedLessons.Any(x => x.Id == l.Id));
+        course.Lessons.AddRange(newLessons);
 
         await _unitOfWork.SaveChangesAsync(ct);
 
-        return $"The days of lessons in the ‘{course.Title}’ course have been successfully updated." +
+        return $"The days of lessons in the ‘{course.Title}’ course have been successfully updated. " +
                $"{notMarkedLessons.Count} lessons have been deleted and {newLessons.Count} lessons have been added.";
     }
 

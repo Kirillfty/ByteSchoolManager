@@ -18,9 +18,9 @@ namespace ByteSchoolManager.Entities
 
         public required string ParentPhoneNumber { get; set; }
 
-        public List<Course> Courses { get; set; }
+        public List<StudentCourse> Courses { get; set; }
 
-        public List<Lesson> Lessons { get; set; }
+        public List<StudentLesson> Lessons { get; set; }
 
         //Список отработанных занятий (связь Таблица Студент - Отработанное занятие)
     }

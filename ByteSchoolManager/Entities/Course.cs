@@ -28,7 +28,7 @@ namespace ByteSchoolManager.Entities
         public string Title { get; set; }
         public int CoachId { get; set; }
         [ForeignKey(nameof(CoachId))] public Coach Coach { get; set; }
-        public List<Student> Students { get; set; }
+        public List<StudentCourse> Students { get; set; }
         public List<Lesson> Lessons { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Features.Lessons.GetLessonsByDay;
-using ByteSchoolManager.Features.Lessons.Mark;
+using ByteSchoolManager.Features.Lessons.GetLessonWithStudents;
+using ByteSchoolManager.Features.Lessons.MarkLesson;
 using ByteSchoolManager.Repository;
-using ByteSchoolManager.Responces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,20 +28,20 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public GetLessonByIdResponce? GetLessonByIdWithStudents([FromRoute] int id)
+        public async Task<IActionResult> GetLessonWithStudents([FromRoute] int id)
         {
-            return _lessonsRepository.GetByIdWithStudents(id);
+            return Ok(await _sender.Send(new GetLessonWithStudentsQuery(id)));
         }
 
         [Authorize(Roles = UserRole.Coach)]
         [HttpGet("by-day/{dayOfWeak:int}")]
-        public async Task<List<GetLessonsInDayResponce>> GetLessonsByDay([FromRoute] int dayOfWeak)
+        public async Task<IActionResult> GetLessonsByDay([FromRoute] int dayOfWeak)
         {
             var userId = int.Parse(HttpContext.User.Identity.Name);
 
-            return await _sender.Send(new GetLessonsByDayQuery(dayOfWeak, userId));
+            return Ok(await _sender.Send(new GetLessonsByDayQuery(dayOfWeak, userId)));
         }
-        
+
         [HttpPatch("move")]
         public ActionResult ResheduleLesson([FromBody] MoveLessonRequest request)
         {
@@ -61,7 +61,7 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpPost("mark")]
-        public async Task<ActionResult> MarkLesson([FromBody] MarkLessonCommand command)
+        public async Task<IActionResult> MarkLesson([FromBody] MarkLessonCommand command)
         {
             return Ok(await _sender.Send(command));
         }

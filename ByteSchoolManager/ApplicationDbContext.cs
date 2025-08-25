@@ -18,16 +18,15 @@ namespace ByteSchoolManager
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Course>()
-               .HasMany(c => c.Students)
-               .WithMany(u => u.Courses)
-               .UsingEntity<StudentCourse>();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne(s => s.Course)
+                .WithMany(c => c.Students);
 
-            modelBuilder.Entity<Lesson>()
-               .HasMany(c => c.Students)
-               .WithMany(u => u.Lessons)
-               .UsingEntity<StudentLesson>();
+            modelBuilder.Entity<StudentLesson>()
+                .HasOne(s => s.Lesson)
+                .WithMany(c => c.Students);
         }
     }
 }
