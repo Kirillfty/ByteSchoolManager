@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+document.documentElement.classList.toggle('p-dark', false);
 </script>
 
 <template>
