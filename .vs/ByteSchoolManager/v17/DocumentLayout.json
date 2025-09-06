@@ -37,8 +37,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAawGoAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T19:19:07.458Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -49,21 +62,7 @@
               "RelativeToolTip": "ByteSchoolManager\\Controllers\\CourseController.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAEwF0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T19:23:38.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "ByteSchoolManager\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\kirill\\source\\repos\\ByteSchoolManager\\ByteSchoolManager\\Controllers\\AuthController.cs*",
-              "RelativeToolTip": "ByteSchoolManager\\Controllers\\AuthController.cs*",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAawGoAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T19:19:07.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-20T19:23:38.013Z"
             },
             {
               "$type": "Document",

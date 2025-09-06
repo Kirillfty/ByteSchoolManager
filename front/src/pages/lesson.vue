@@ -1,9 +1,9 @@
-﻿<template>
+<template>
   <div class="container">
     <Navigation></Navigation>
     <!-- Main Content -->
     <div class="flex-1 bg-gray-50 flex">
-      <p>Admin</p>
+      <p>Lesson</p>
     </div>
   </div>
 </template>
