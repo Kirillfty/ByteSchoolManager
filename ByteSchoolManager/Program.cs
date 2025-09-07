@@ -22,12 +22,12 @@ builder.Services.AddSingleton<AuthOptions>(authOptions);
 builder.Services.AddTransient<JwtCreator>();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<ICoachRepository, CoachRepository>();
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<ILessonsRepository, LessonRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+builder.Services.AddScoped<RepositoryBase<User>, UserBaseRepository>();
 builder.Services.AddScoped<RepositoryBase<Course>, CourseBaseRepository>();
 builder.Services.AddScoped<RepositoryBase<Lesson>, LessonBaseRepository>();
 builder.Services.AddScoped<RepositoryBase<StudentLesson>, StudentLessonBaseRepository>();
