@@ -1,4 +1,5 @@
-﻿using ByteSchoolManager.Features.Courses.Create;
+﻿using ByteSchoolManager.Entities;
+using ByteSchoolManager.Features.Courses.Create;
 using ByteSchoolManager.Features.Courses.EditCourseStudents;
 using ByteSchoolManager.Features.Courses.GetAll;
 using ByteSchoolManager.Features.Courses.UpdateCourseCoach;
@@ -15,7 +16,7 @@ namespace ByteSchoolManager.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ISender _sender;
-
+        
         public CourseController(ISender sender)
         {
             _sender = sender;
@@ -25,6 +26,12 @@ namespace ByteSchoolManager.Controllers
         public async Task<IActionResult> GetAll(CancellationToken ct)
         {
             return Ok(await _sender.Send(new GetAllCoursesQuery(), ct));
+        }
+        [HttpDelete]
+        public ActionResult<Course> Delete(int id)
+        {
+            if () {
+            }
         }
 
         [HttpPost]

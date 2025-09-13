@@ -56,8 +56,5 @@ public class CoachRepository : ICoachRepository
         return true;
     }
 
-    public bool Delete(int entityId)
-    {
-        throw new NotImplementedException();
-    }
+   
 }

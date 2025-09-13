@@ -13,7 +13,7 @@
   <div class="lessons" v-for="index in lessonData" :key="index.id">
     <div class="lesson" @click.prevent="goToLessonPage(index.id)">
       <h1 id="name-lesson">{{ index.title }}</h1>
-      <h1 id="time-lesson">{{ getHoursMinutes(index.time) }}</h1>
+      <h1 id="time-lesson">{{ removeSeconds(index.time) }}</h1>
       <div class="student-lesson-cont">
         <p id="student-lesson">{{ index.students }}</p>
       </div>
@@ -33,7 +33,9 @@ import weekday from 'dayjs/plugin/weekday' // Для корректного оп
 // Настраиваем day.js
 dayjs.extend(weekday)
 dayjs.locale('ru')
-
+function removeSeconds(timeStr){
+                    return timeStr ? timeStr.split(':').slice(0, 2).join(':') : '';
+};
 function getWeekDates(startFromMonday = true) {
   const today = new Date()
   const dayOfWeek = today.getDay() // 0 (воскресенье) - 6 (суббота)
