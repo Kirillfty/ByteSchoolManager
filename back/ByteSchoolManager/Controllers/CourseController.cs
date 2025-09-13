@@ -27,12 +27,9 @@ namespace ByteSchoolManager.Controllers
         {
             return Ok(await _sender.Send(new GetAllCoursesQuery(), ct));
         }
-        [HttpDelete]
-        public ActionResult<Course> Delete(int id)
-        {
-            if () {
-            }
-        }
+
+       
+
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCourseCommand request, CancellationToken ct)

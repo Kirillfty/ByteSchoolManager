@@ -1,4 +1,5 @@
 ﻿using ByteSchoolManager.Entities;
+using ByteSchoolManager.Features.Lessons.GetAll;
 using ByteSchoolManager.Features.Lessons.GetLessonsByDay;
 using ByteSchoolManager.Features.Lessons.GetLessonWithStudents;
 using ByteSchoolManager.Features.Lessons.MarkLesson;
@@ -25,6 +26,12 @@ namespace ByteSchoolManager.Controllers
         {
             _lessonsRepository = studentRepository;
             _sender = sender;
+        }
+
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAllLessons(CancellationToken ct)
+        {
+            return Ok(await _sender.Send(new GetAllLessonsQuery(),ct));
         }
 
         [HttpGet("{id:int}")]
