@@ -37,6 +37,7 @@ declare module 'vue' {
     StatsWidget: typeof import('./src/components/dashboard/StatsWidget.vue')['default']
     Tag: typeof import('primevue/tag')['default']
     Toast: typeof import('primevue/toast')['default']
+    UpdateCourseMenu: typeof import('./src/components/UpdateCourseMenu.vue')['default']
   }
   export interface GlobalDirectives {
     Ripple: typeof import('primevue/ripple')['default']

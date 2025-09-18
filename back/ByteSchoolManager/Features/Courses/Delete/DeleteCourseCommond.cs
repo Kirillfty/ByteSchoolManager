@@ -1,35 +1,41 @@
 ﻿using ByteSchoolManager.Common.Abstractions;
+using ByteSchoolManager.Common.Exceptions;
 using ByteSchoolManager.Entities;
 using ByteSchoolManager.Repository;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
 
 namespace ByteSchoolManager.Features.Courses.Delete
 {
-    public record DeleteCourseCommond(int id) : ICommand<string>;
+    public class DeleteCourseCommand : IRequest<Unit>
+    {
+        [Required]
+        public int Id { get; set; }
+    }
 
-    //public class DeleteCourseCommondHandler : IRequestHandler<DeleteCourseCommond, string>
-    //{
-    //    private readonly RepositoryBase<Course> _courseRepository;
-    //    private readonly IUnitOfWork _unitOfWork;
-    //    public DeleteCourseCommondHandler(RepositoryBase<Course> courseRepository, IUnitOfWork unitOfWork)
-    //    {
-    //        _courseRepository = courseRepository;
-    //        _unitOfWork = unitOfWork;
-    //    }
-    //    public Task<string> Handle(DeleteCourseCommond request, CancellationToken ct)
-    //    {
-    //        var course =  _courseRepository.FirstOrDefaultAsync(
-    //         predicate: u => u.Id == request.id,
-    //         includes: [x => x.Lessons],
-    //         tracking: true,
-    //         cancellationToken: ct
-    //         );
+    // Обработчик команды
+    public class DeleteCourseCommandHandler : IRequestHandler<DeleteCourseCommand, Unit>
+    {
+        private readonly ApplicationDbContext _context;
+
+        public DeleteCourseCommandHandler(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Unit> Handle(DeleteCourseCommand request, CancellationToken cancellationToken)
+        {
+            var course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
 
 
-            
-    //    }
-    //}
+            _context.Courses.Remove(course);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Unit.Value;
+        }
+    }
 
 
 }

@@ -1,5 +1,6 @@
 ﻿using ByteSchoolManager.Entities;
 using ByteSchoolManager.Features.Courses.Create;
+using ByteSchoolManager.Features.Courses.Delete;
 using ByteSchoolManager.Features.Courses.EditCourseStudents;
 using ByteSchoolManager.Features.Courses.GetAll;
 using ByteSchoolManager.Features.Courses.UpdateCourseCoach;
@@ -27,8 +28,16 @@ namespace ByteSchoolManager.Controllers
         {
             return Ok(await _sender.Send(new GetAllCoursesQuery(), ct));
         }
+        [HttpDelete("id")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteCourseCommand { Id = id };
+            await _sender.Send(command);
 
-       
+            return NoContent();
+        }
+
+
 
 
         [HttpPost]

@@ -12,8 +12,8 @@
         <template #title>{{ item.title }} {{ removeSeconds(item.time) }}</template>
         <template #content>
           <p class="m-0">Студенты:{{ item.studentCount }}</p>
-          <Button label="Изменить" @click="Edit" :model="items" />
-          <Button label="Удалить" @click="Delete" :model="items" />
+          <UpdateCourse></UpdateCourse>
+          <Button label="Удалить" @click="Delete(item.id)" :model="items" />
         </template>
         
       </Card>
@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import Navigation from '@/components/Navigation.vue';
 import MenuCourse from '@/components/AddMenuCourse.vue';
+import UpdateCourse from '@/components/UpdateCourseMenu.vue';
 import Button from 'primevue/button';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
@@ -32,8 +33,13 @@ import Card from 'primevue/card';
 function Edit(){
   alert('edit');
 }
-function Delete(){
-  alert('delete');
+async function Delete(id){
+  await axios.delete('https://localhost:7273/api/course/'+id)
+  .then(async function(res){
+    if(res){
+      await GetCourseData();
+    }
+  })
 }
 let courseData = ref('');
 async function GetCourseData() {
