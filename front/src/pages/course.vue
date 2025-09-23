@@ -1,9 +1,10 @@
 <template id="mar">
   <div class="container">
     <div class="header">
-      <Navigation></Navigation>
-      
-      <MenuCourse></MenuCourse>
+      <div class="menus">
+        <Navigation></Navigation>
+        <MenuCourse></MenuCourse>
+      </div>
     </div>
 
     <!-- Main Content -->
@@ -12,10 +13,14 @@
         <template #title>{{ item.title }} {{ removeSeconds(item.time) }}</template>
         <template #content>
           <p class="m-0">Студенты:{{ item.studentCount }}</p>
-          <UpdateCourse></UpdateCourse>
-          <Button label="Удалить" @click="Delete(item.id)" :model="items" />
+          <p class="m-0">Дата начала курса:{{ item.startDate }}</p>
+          <p class="m-0">Дата конца курса:{{ item.endDate }}</p>
+          <p class="m-0">Тренер:{{ item.coachId }}</p>
+          <p class="m-0">Кол-во занятий:{{ item.lessonsCount }}</p>
+          <div class="buttons">
+            <UpdateCourse></UpdateCourse>
+          </div>
         </template>
-        
       </Card>
     </div>
   </div>
@@ -25,21 +30,20 @@
 import Navigation from '@/components/Navigation.vue';
 import MenuCourse from '@/components/AddMenuCourse.vue';
 import UpdateCourse from '@/components/UpdateCourseMenu.vue';
-import Button from 'primevue/button';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
 
-function Edit(){
+function Edit() {
   alert('edit');
 }
-async function Delete(id){
-  await axios.delete('https://localhost:7273/api/course/'+id)
-  .then(async function(res){
-    if(res){
-      await GetCourseData();
-    }
-  })
+async function Delete(id) {
+  await axios.delete('https://localhost:7273/api/course/' + id)
+    .then(async function (res) {
+      if (res) {
+        await GetCourseData();
+      }
+    })
 }
 let courseData = ref('');
 async function GetCourseData() {
@@ -70,12 +74,19 @@ onMounted(async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 1%;
 }
-
-.header{
+.menus{
+  width:70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
+  width: 100%;
 }
 </style>
