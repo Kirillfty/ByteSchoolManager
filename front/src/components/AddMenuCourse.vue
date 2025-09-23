@@ -10,7 +10,7 @@
                 <InputText type="text" v-model="courseDto.coachId" placeholder="id тренера курса" />
             </div>
             <div class="buttons">
-                <Button label="Добавить" @click="visible = true" />
+                <Button label="Добавить" @click="AddCourse()" />
                 
             </div>
         </Drawer>
@@ -25,7 +25,7 @@ import InputText from 'primevue/inputtext';
 import axios from 'axios'
 
 async function AddCourse(){
-    await axios.post('https://localhost:7273/api/Course',{days:Number(courseDto.value.days),
+    await axios.post('https://localhost:7273/api/Course',{days:stringToNumbers(courseDto.value.days),
         timeOfLesson:courseDto.value.timeOfLesson,
         dateOfStartCourse:courseDto.value.dateOfStartCourse,
         dateOfEndCourse:courseDto.value.dateOfEndCourse,
@@ -36,7 +36,9 @@ async function AddCourse(){
         alert('created');
     })
 }
-
+function stringToNumbers(str: String) {
+    return str.split(',').map(Number);
+}
 let courseDto = ref({
     days: '',
     timeOfLesson: '',

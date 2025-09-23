@@ -36,7 +36,9 @@ declare module 'vue' {
     SplitButton: typeof import('primevue/splitbutton')['default']
     StatsWidget: typeof import('./src/components/dashboard/StatsWidget.vue')['default']
     Tag: typeof import('primevue/tag')['default']
+    TieredMenu: typeof import('primevue/tieredmenu')['default']
     Toast: typeof import('primevue/toast')['default']
+    ToggleMenu: typeof import('./src/components/ToggleMenu.vue')['default']
     UpdateCourseMenu: typeof import('./src/components/UpdateCourseMenu.vue')['default']
   }
   export interface GlobalDirectives {

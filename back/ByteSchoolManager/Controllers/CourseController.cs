@@ -28,8 +28,8 @@ namespace ByteSchoolManager.Controllers
         {
             return Ok(await _sender.Send(new GetAllCoursesQuery(), ct));
         }
-        [HttpDelete("id")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete([FromRoute]int id)
         {
             var command = new DeleteCourseCommand { Id = id };
             await _sender.Send(command);

@@ -29,7 +29,7 @@ defineProps({
     required: true // Обязательный параметр
   }
 })
-function Delete(id){
+function Delete(id: any){
     axios.delete('https://localhost:7273/api/Course/'+id)
     .then(function(res){
         alert(res);

@@ -18,25 +18,26 @@
           <p class="m-0">Тренер:{{ item.coachId }}</p>
           <p class="m-0">Кол-во занятий:{{ item.lessonsCount }}</p>
           <div class="buttons">
-            <UpdateCourse :Id="item.id"></UpdateCourse>
+            <ToggleMenu></ToggleMenu>
           </div>
         </template>
       </Card>
+      
     </div>
   </div>
+  
 </template>
 
 <script setup lang="ts">
 import Navigation from '@/components/Navigation.vue';
 import MenuCourse from '@/components/AddMenuCourse.vue';
-import UpdateCourse from '@/components/UpdateCourseMenu.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
+import ToggleMenu from '@/components/ToggleMenu.vue';
 
 
-
-let courseData = ref('');
+let courseData = ref();
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Course')
     .then(function (res) {
@@ -46,7 +47,7 @@ async function GetCourseData() {
 }
 
 
-function removeSeconds(timeStr) {
+function removeSeconds(timeStr: string) {
   return timeStr ? timeStr.split(':').slice(0, 2).join(':') : '';
 };
 
@@ -68,12 +69,14 @@ onMounted(async () => {
   flex-direction: column;
   padding: 1%;
 }
-.menus{
-  width:70%;
+
+.menus {
+  width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .header {
   display: flex;
   justify-content: center;
