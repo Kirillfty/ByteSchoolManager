@@ -18,7 +18,7 @@
           <p class="m-0">Тренер:{{ item.coachId }}</p>
           <p class="m-0">Кол-во занятий:{{ item.lessonsCount }}</p>
           <div class="buttons">
-            <UpdateCourse></UpdateCourse>
+            <UpdateCourse :Id="item.id"></UpdateCourse>
           </div>
         </template>
       </Card>
@@ -34,17 +34,8 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
 
-function Edit() {
-  alert('edit');
-}
-async function Delete(id) {
-  await axios.delete('https://localhost:7273/api/course/' + id)
-    .then(async function (res) {
-      if (res) {
-        await GetCourseData();
-      }
-    })
-}
+
+
 let courseData = ref('');
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Course')

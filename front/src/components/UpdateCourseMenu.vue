@@ -11,7 +11,7 @@
             </div>
             <div class="buttons">
                 <Button label="Изменить" @click="visible = true" />
-                <Button label="Удалить" @click="visible = true" />
+                <Button label="Удалить" @click="Delete(Id)" />
             </div>
         </Drawer>
         <Button label="Изменить" @click="visible = true" />
@@ -22,7 +22,22 @@ import { ref } from 'vue'
 import Button from 'primevue/button';
 import Drawer from 'primevue/drawer';
 import InputText from 'primevue/inputtext';
-
+import axios from 'axios'
+defineProps({
+  Id: {
+    type: Number,
+    required: true // Обязательный параметр
+  }
+})
+function Delete(id){
+    axios.delete('https://localhost:7273/api/Course/'+id)
+    .then(function(res){
+        alert(res);
+    })
+}
+function Update(){
+    
+}
 let courseDto = {
     dayOfWeak: '',
     timeOfLesson: '',
