@@ -18,7 +18,7 @@
           <p class="m-0">Тренер:{{ item.coachId }}</p>
           <p class="m-0">Кол-во занятий:{{ item.lessonsCount }}</p>
           <div class="buttons">
-            <ToggleMenu></ToggleMenu>
+            <ToggleMenu :Id="item.id"></ToggleMenu>
           </div>
         </template>
       </Card>

@@ -34,6 +34,7 @@ async function AddCourse(){
     })
     .then(()=>{
         alert('created');
+        location.reload();
     })
 }
 function stringToNumbers(str: String) {

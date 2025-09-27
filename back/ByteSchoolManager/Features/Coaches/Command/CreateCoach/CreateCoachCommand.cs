@@ -10,13 +10,15 @@ namespace ByteSchoolManager.Features.Coaches.Command.CreateCoach
 
     public class CreateCoachCommandHandler : IRequestHandler<CreateCoachCommand, string>
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly RepositoryBase<User> _userRepository;
         private readonly RepositoryBase<Coach> _coachRepository;
 
-        public CreateCoachCommandHandler(RepositoryBase<User> userRepository, RepositoryBase<Coach> coachRepository)
+        public CreateCoachCommandHandler(RepositoryBase<User> userRepository, RepositoryBase<Coach> coachRepository, IUnitOfWork unitOfWork)
         {
             _userRepository = userRepository;
             _coachRepository = coachRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<string> Handle(CreateCoachCommand request, CancellationToken cancellationToken)
@@ -40,6 +42,8 @@ namespace ByteSchoolManager.Features.Coaches.Command.CreateCoach
                     Telegram = request.Telegram
                 },
                 cancellationToken);
+
+            await _unitOfWork.SaveChangesAsync();
 
             return "New successfully coach created";
         }

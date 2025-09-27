@@ -1,81 +1,59 @@
 <template>
   <div class="card flex justify-center">
-    <Button type="button" label="Toggle" @click="toggle" aria-haspopup="true" aria-controls="overlay_tmenu" />
+    <Button type="button" label="..." @click="toggle" aria-haspopup="true" aria-controls="overlay_tmenu" />
     <TieredMenu ref="menu" id="overlay_tmenu" :model="items" popup />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import axios from 'axios'
 
+const emit = defineEmits(['course-deleted'])
+
+const props = defineProps(['Id'])
 const menu = ref();
 const items = ref([
   {
-    label: 'File',
-    icon: 'pi pi-file',
-    items: [
-      {
-        label: 'New',
-        icon: 'pi pi-plus',
-        items: [
-          {
-            label: 'Document',
-            icon: 'pi pi-file'
-          },
-          {
-            label: 'Image',
-            icon: 'pi pi-image'
-          },
-          {
-            label: 'Video',
-            icon: 'pi pi-video'
-          }
-        ]
-      },
-      {
-        label: 'Open',
-        icon: 'pi pi-folder-open'
-      },
-      {
-        label: 'Print',
-        icon: 'pi pi-print'
-      }
-    ]
-  },
-  {
-    label: 'Edit',
+    label: 'Изменить',
     icon: 'pi pi-file-edit',
     items: [
       {
-        label: 'Copy',
-        icon: 'pi pi-copy'
+        label: 'Дату проведения занятия',
+        icon: 'pi pi-file'
       },
       {
-        label: 'Delete',
-        icon: 'pi pi-times'
+        label: 'Изменить тренера',
+        icon: 'pi pi-file'
+      },
+      {
+        label: 'Дату начала курса',
+        icon: 'pi pi-file'
+      },
+      {
+        label: 'Изменить дату конца курса',
+        icon: 'pi pi-file'
+      },
+      {
+        label: 'Время проведения занятия',
+        icon: 'pi pi-file'
       }
     ]
-  },
-  {
-    label: 'Search',
-    icon: 'pi pi-search'
   },
   {
     separator: true
   },
   {
-    label: 'Share',
-    icon: 'pi pi-share-alt',
-    items: [
-      {
-        label: 'Slack',
-        icon: 'pi pi-slack'
-      },
-      {
-        label: 'Whatsapp',
-        icon: 'pi pi-whatsapp'
-      }
-    ]
+    label: 'Удалить',
+    icon: 'pi pi-trash',
+    command:async()=>{
+      await axios.delete('https://localhost:7273/api/Course/'+props.Id)
+      .then((res)=>{
+        console.log(props.Id);
+        location.reload()
+        return res;
+      });
+    }
   }
 ]);
 
