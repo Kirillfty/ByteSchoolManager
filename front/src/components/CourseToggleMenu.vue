@@ -10,6 +10,8 @@
         <Dialog v-model:visible="displayCoachDialog" header="Пользователь" :style="{ width: '50vw' }" :modal="true">
             <p>Изменение тренера по id</p>
             <template #footer>
+                <Input placeholder="id тренера" v-model="coachId"/>
+                <Button label="Отправить" @click="ReplaceCoahInCourse(coachId)"></Button>
                 <Button label="Закрыть" @click="displayCoachDialog = false" />
             </template>
         </Dialog>
@@ -22,16 +24,16 @@
         </Dialog>
 
         <Dialog v-model:visible="displayDateOfStartCourseDialog" header="Настройки" :style="{ width: '50vw' }" :modal="true">
-            <p>Изменить дату начала курса</p>
+            <p>Изменить дату начала и конца курса</p>
             <template #footer>
                 <Button label="Закрыть" @click="displayDateOfStartCourseDialog = false" />
             </template>
         </Dialog>
 
-        <Dialog v-model:visible="displayDateOfEndCourseDialog" header="Настройки" :style="{ width: '50vw' }" :modal="true">
-            <p>Изменить дату конца курса</p>
+        <Dialog v-model:visible="displayDaysOfCourseDialog" header="Настройки" :style="{ width: '50vw' }" :modal="true">
+            <p>Изменить дни проведения занятий</p>
             <template #footer>
-                <Button label="Закрыть" @click="displayDateOfEndCourseDialog = false" />
+                <Button label="Закрыть" @click="displayDaysOfCourseDialog = false" />
             </template>
         </Dialog>
 
@@ -46,13 +48,16 @@
 
 <script setup>
 import { ref } from 'vue';
-
+import axios from 'axios'
+const props = defineProps(['Id'])
+let coachId = ref();
 const menu = ref();
 const displayCoachDialog = ref(false);
 const displayDateOfLessonDialog = ref(false);
 const displayDateOfStartCourseDialog = ref(false);
-const displayDateOfEndCourseDialog = ref(false);
 const displayTimeOfLessonDialog = ref(false);
+const displayDaysOfCourseDialog = ref(false);
+
 
 let courseDto = ref({
     days: '',
@@ -62,6 +67,21 @@ let courseDto = ref({
     title: '',
     coachId: ''
 });
+
+const ReplaceCoahInCourse = (coachId) => {
+    axios.patch('https://localhost:7273/api/Course/coach', {
+        courseId: props.Id,
+        coachId: coachId
+    })
+    .then((res) => {
+        console.log(res);
+        alert('ok');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error occurred');
+    });
+}
 
 const toggleMenu = (event) => {
     menu.value.toggle(event);
@@ -87,21 +107,21 @@ const menuItems = ref([
                 }
             },
             {
-                label: 'Дату начала курса',
+                label: 'Дату начала курса и конца курса',
                 icon: 'pi pi-file',
                 command: () => {
                     displayDateOfStartCourseDialog.value = true;
                 }
             },
             {
-                label: 'Изменить дату конца курса',
+                label: 'Время проведения занятия',
                 icon: 'pi pi-file',
                 command: () => {
-                    displayDateOfEndCourseDialog.value = true;
+                    displayTimeOfLessonDialog.value = true;
                 }
             },
-            {
-                label: 'Время проведения занятия',
+             {
+                label: 'Изменить дни недели',
                 icon: 'pi pi-file',
                 command: () => {
                     displayTimeOfLessonDialog.value = true;
