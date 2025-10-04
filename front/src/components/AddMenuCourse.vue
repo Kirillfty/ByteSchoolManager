@@ -11,7 +11,7 @@
             </div>
             <div class="buttons">
                 <Button label="Добавить" @click="AddCourse()" />
-                
+
             </div>
         </Drawer>
         <Button icon="pi pi-plus" @click="visible = true" />
@@ -37,10 +37,10 @@ async function AddCourse(){
         location.reload();
     })
 }
-function stringToNumbers(str: String) {
+function stringToNumbers(str:string) {
     return str.split(',').map(Number);
 }
-let courseDto = ref({
+const courseDto = ref({
     days: '',
     timeOfLesson: '',
     dateOfStartCourse: '',
@@ -48,5 +48,5 @@ let courseDto = ref({
     title: '',
     coachId: ''
 });
-let visible = ref();
+const visible = ref();
 </script>
