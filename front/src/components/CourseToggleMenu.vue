@@ -77,7 +77,7 @@ let courseDto = ref({
 const ReplaceStartAndEndCourse=()=>{
   axios.patch('https://localhost:7273/api/Course/dates',{courseId:props.Id,
     startDate:courseDto.value.dateOfStartCourse,
-    endDate:courseDto.value.dateOfEndCourse
+    endDate\:courseDto.value.dateOfEndCourse
   })
   .catch(function(err){
     console.log(err);

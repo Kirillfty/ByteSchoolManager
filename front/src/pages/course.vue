@@ -22,10 +22,10 @@
           </div>
         </template>
       </Card>
-      
+
     </div>
   </div>
-  
+
 </template>
 
 <script setup lang="ts">
@@ -34,7 +34,6 @@ import MenuCourse from '@/components/AddMenuCourse.vue';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
-import ToggleMenu from '@/components/ToggleMenu.vue';
 
 
 let courseData = ref();
