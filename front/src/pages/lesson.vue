@@ -2,20 +2,21 @@
   <div class="container">
     <div class="header">
       <Navigation></Navigation>
-      
+
       <MenuCourse></MenuCourse>
     </div>
 
     <!-- Main Content -->
     <div class="flex-1 bg-gray-50 flex" v-for="item in courseData" :key="item" id="card-container">
       <Card>
-        <template #title>{{ item.title }} {{ removeSeconds(item.time) }}</template>
+        <template #title>{{ item.id }} {{ removeSeconds(item.dateAndTime) }}</template>
         <template #content>
-          <p class="m-0">Студенты:{{ item.studentCount }}</p>
+          <p class="m-0">Студенты:{{ item.students }}</p>
+          <p class="m-0">id тренера:{{ item.coachId }}</p>
           <Button label="Изменить" @click="Edit" :model="items" />
           <Button label="Удалить" @click="Delete" :model="items" />
         </template>
-        
+
       </Card>
     </div>
   </div>
@@ -37,7 +38,7 @@ function Delete(){
 }
 let courseData = ref('');
 async function GetCourseData() {
-  await axios.get('https://localhost:7273/api/lesson')
+  await axios.get('https://localhost:7273/api/Lesson/get-all')
     .then(function (res) {
       console.log(res.data);
       return courseData.value = res.data;

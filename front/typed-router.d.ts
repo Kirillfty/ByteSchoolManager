@@ -22,7 +22,6 @@ declare module 'vue-router/auto-routes' {
     '/admin': RouteRecordInfo<'/admin', '/admin', Record<never, never>, Record<never, never>>,
     '/coach': RouteRecordInfo<'/coach', '/coach', Record<never, never>, Record<never, never>>,
     '/course': RouteRecordInfo<'/course', '/course', Record<never, never>, Record<never, never>>,
-    '/h': RouteRecordInfo<'/h', '/h', Record<never, never>, Record<never, never>>,
     '/home': RouteRecordInfo<'/home', '/home', Record<never, never>, Record<never, never>>,
     '/lesson': RouteRecordInfo<'/lesson', '/lesson', Record<never, never>, Record<never, never>>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,
@@ -54,10 +53,6 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/course.vue': {
       routes: '/course'
-      views: never
-    }
-    'src/pages/h.vue': {
-      routes: '/h'
       views: never
     }
     'src/pages/home.vue': {
