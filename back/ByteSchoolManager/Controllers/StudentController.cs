@@ -58,4 +58,13 @@ public class StudentController : ControllerBase
         
         return Ok();
     }
+    [HttpDelete("delete/{id:int}")]
+    public ActionResult DeleteStudent([FromRoute] int id) {
+        if (_repository.Delete(id))
+        {
+            return Ok();
+        }
+        return BadRequest();
+    }
+    
 }

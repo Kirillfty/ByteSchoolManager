@@ -49,6 +49,12 @@ public class StudentRepository : IStudentRepository
 
     public bool Delete(int entityId)
     {
-        throw new NotImplementedException();
+        var student = _dbContext.Students.FirstOrDefault(u => u.Id == entityId);
+        if (student is not null) {
+            _dbContext.Remove(student);
+            _dbContext.SaveChanges();
+            return true;
+        }
+        return false;
     }
 }

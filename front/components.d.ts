@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AddMenuCourse: typeof import('./src/components/AddMenuCourse.vue')['default']
+    AddStudentMenu: typeof import('./src/components/AddStudentMenu.vue')['default']
     AppConfig: typeof import('./src/components/AppConfig.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     AppTopbar: typeof import('./src/components/AppTopbar.vue')['default']
@@ -20,6 +21,7 @@ declare module 'vue' {
     DataTable: typeof import('primevue/datatable')['default']
     Dialog: typeof import('primevue/dialog')['default']
     Drawer: typeof import('primevue/drawer')['default']
+    EditStudenttoggleMenu: typeof import('./src/components/EditStudenttoggleMenu.vue')['default']
     Form: typeof import('@primevue/forms/form')['default']
     FormField: typeof import('@primevue/forms/formfield')['default']
     IconField: typeof import('primevue/iconfield')['default']
