@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы по программированию</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .course-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .filter-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .badge {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container mt-4">
+        <!-- Заголовок -->
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h1 class="display-4">🎓 Курсы по программированию</h1>
+                <p class="lead">Найдите подходящий курс для вашего развития</p>
+            </div>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="row">
+            <div class="col-12">
+                <div class="filter-section">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="search" class="form-label">Поиск курсов</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="search" 
+                                placeholder="Введите название курса или технологию..."
+                                v-model="filters.search"
+                            >
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="category" class="form-label">Категория</label>
+                            <select class="form-select" id="category" v-model="filters.category">
+                                <option value="">Все категории</option>
+                                <option value="frontend">Frontend</option>
+                                <option value="backend">Backend</option>
+                                <option value="fullstack">Fullstack</option>
+                                <option value="mobile">Mobile</option>
+                                <option value="devops">DevOps</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="level" class="form-label">Уровень сложности</label>
+                            <select class="form-select" id="level" v-model="filters.level">
+                                <option value="">Все уровни</option>
+                                <option value="beginner">Начинающий</option>
+                                <option value="intermediate">Средний</option>
+                                <option value="advanced">Продвинутый</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="certificate" v-model="filters.withCertificate">
+                                <label class="form-check-label" for="certificate">
+                                    Только с сертификатом
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    Найдено курсов: <strong>{{ filteredCourses.length }}</strong>
+                    <span v-if="filters.search" class="ms-3">
+                        По запросу: "{{ filters.search }}"
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Список курсов -->
+        <div class="row">
+            <div class="col-md-6 col-lg-4" v-for="course in filteredCourses" :key="course.id">
+                <div class="card course-card h-100">
+                    <div class="card-header">
+                        <span class="badge bg-primary">{{ course.category }}</span>
+                        <span class="badge bg-success ms-1">{{ course.level }}</span>
+                        <span v-if="course.withCertificate" class="badge bg-warning ms-1">Сертификат</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text">{{ course.description }}</p>
+                        <div class="mb-2">
+                            <strong>Технологии:</strong>
+                            <span v-for="tech in course.technologies" :key="tech" class="badge bg-secondary me-1">
+                                {{ tech }}
+                            </span>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <strong>Тренер:</strong> {{ course.coach }}
+                            </small>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <strong>Длительность:</strong> {{ course.duration }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 mb-0 text-success">{{ course.price }} ₽</span>
+                            <button class="btn btn-primary btn-sm" @click="enrollCourse(course)">
+                                Записаться
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сообщение если курсы не найдены -->
+        <div class="row" v-if="filteredCourses.length === 0">
+            <div class="col-12 text-center">
+                <div class="alert alert-warning">
+                    <h4>Курсы не найдены</h4>
+                    <p>Попробуйте изменить параметры фильтрации</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем Vue 3 и axios через CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    courses: [],
+                    filters: {
+                        search: '',
+                        category: '',
+                        level: '',
+                        withCertificate: false
+                    }
+                }
+            },
+            computed: {
+                filteredCourses() {
+                    return this.courses.filter(course => {
+                        // Поиск по названию и описанию
+                        const matchesSearch = !this.filters.search || 
+                            course.title.toLowerCase().includes(this.filters.search.toLowerCase()) ||
+                            course.description.toLowerCase().includes(this.filters.search.toLowerCase()) ||
+                            course.technologies.some(tech => 
+                                tech.toLowerCase().includes(this.filters.search.toLowerCase())
+                            );
+                        
+                        // Фильтр по категории
+                        const matchesCategory = !this.filters.category || 
+                            course.category === this.filters.category;
+                        
+                        // Фильтр по уровню
+                        const matchesLevel = !this.filters.level || 
+                            course.level === this.filters.level;
+                        
+                        // Фильтр по сертификату
+                        const matchesCertificate = !this.filters.withCertificate || 
+                            course.withCertificate;
+                        
+                        return matchesSearch && matchesCategory && matchesLevel && matchesCertificate;
+                    });
+                }
+            },
+            methods: {
+                async fetchCourses() {
+                    try {
+                        // Имитация API запроса с моковыми данными
+                        // В реальном приложении здесь будет axios.get('your-api-url')
+                        this.courses = await this.mockApiCall();
+                    } catch (error) {
+                        console.error('Ошибка загрузки курсов:', error);
+                    }
+                },
+                
+                mockApiCall() {
+                    return new Promise((resolve) => {
+                        setTimeout(() => {
+                            resolve([
+                                {
+                                    id: 1,
+                                    title: "Vue.js с нуля до профессионала",
+                                    description: "Полный курс по современному фронтенд-фреймворку Vue.js",
+                                    category: "frontend",
+                                    level: "beginner",
+                                    technologies: ["Vue.js", "JavaScript", "HTML", "CSS"],
+                                    coach: "Иван Петров",
+                                    duration: "2 месяца",
+                                    price: 15000,
+                                    withCertificate: true
+                                },
+                                {
+                                    id: 2,
+                                    title: "PHP и Laravel для Backend разработки",
+                                    description: "Освойте backend разработку на PHP и фреймворке Laravel",
+                                    category: "backend",
+                                    level: "intermediate",
+                                    technologies: ["PHP", "Laravel", "MySQL", "REST API"],
+                                    coach: "Анна Сидорова",
+                                    duration: "3 месяца",
+                                    price: 20000,
+                                    withCertificate: true
+                                },
+                                {
+                                    id: 3,
+                                    title: "React + Node.js Fullstack разработка",
+                                    description: "Научитесь создавать полноценные веб-приложения",
+                                    category: "fullstack",
+                                    level: "advanced",
+                                    technologies: ["React", "Node.js", "Express", "MongoDB"],
+                                    coach: "Петр Иванов",
+                                    duration: "4 месяца",
+                                    price: 25000,
+                                    withCertificate: true
+                                },
+                                {
+                                    id: 4,
+                                    title: "Python для начинающих",
+                                    description: "Основы программирования на Python",
+                                    category: "backend",
+                                    level: "beginner",
+                                    technologies: ["Python", "Django", "SQL"],
+                                    coach: "Мария Козлова",
+                                    duration: "1 месяц",
+                                    price: 12000,
+                                    withCertificate: false
+                                },
+                                {
+                                    id: 5,
+                                    title: "JavaScript продвинутый уровень",
+                                    description: "Глубокое погружение в современный JavaScript",
+                                    category: "frontend",
+                                    level: "advanced",
+                                    technologies: ["JavaScript", "ES6+", "TypeScript"],
+                                    coach: "Алексей Смирнов",
+                                    duration: "2 месяца",
+                                    price: 18000,
+                                    withCertificate: true
+                                },
+                                {
+                                    id: 6,
+                                    title: "DevOps с Docker и Kubernetes",
+                                    description: "Освойте современные DevOps практики",
+                                    category: "devops",
+                                    level: "intermediate",
+                                    technologies: ["Docker", "Kubernetes", "CI/CD", "AWS"],
+                                    coach: "Дмитрий Волков",
+                                    duration: "3 месяца",
+                                    price: 30000,
+                                    withCertificate: true
+                                }
+                            ]);
+                        }, 500);
+                    });
+                },
+                
+                enrollCourse(course) {
+                    alert(`Вы записались на курс: ${course.title}\nТренер: ${course.coach}`);
+                    // Здесь можно добавить логику для реальной записи на курс
+                }
+            },
+            mounted() {
+                this.fetchCourses();
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

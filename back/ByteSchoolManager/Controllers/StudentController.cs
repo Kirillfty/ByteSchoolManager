@@ -40,7 +40,7 @@ public class StudentController : ControllerBase
         }
         return Ok();
     }
-    [HttpPut]
+    [HttpPatch("update")]
     public ActionResult Update([FromBody] UpdateStudentRequest student)
     {
         Student stud = new Student

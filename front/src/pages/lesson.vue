@@ -13,8 +13,8 @@
         <template #content>
           <p class="m-0">Студенты:{{ item.students }}</p>
           <p class="m-0">id тренера:{{ item.coachId }}</p>
-          <Button label="Изменить" @click="Edit" :model="items" />
-          <Button label="Удалить" @click="Delete" :model="items" />
+          <Button label="Изменить" @click="Edit" :model="item" />
+          <Button label="Удалить" @click="Delete" :model="item" />
         </template>
 
       </Card>
