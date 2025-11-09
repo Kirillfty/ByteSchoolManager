@@ -29,10 +29,11 @@ namespace ByteSchoolManager.Controllers
         }
 
         [HttpGet("get-all")]
-        public async Task<IActionResult> GetAllLessons(CancellationToken ct)
+        public async Task<IActionResult> GetAllLessons([FromQuery] GetAllLessonsQuery query, CancellationToken ct)
         {
-            return Ok(await _sender.Send(new GetAllLessonsQuery(),ct));
+            return Ok(await _sender.Send(query,ct));
         }
+
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetLessonWithStudents([FromRoute] int id)

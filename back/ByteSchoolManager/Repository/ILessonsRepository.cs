@@ -9,6 +9,7 @@ namespace ByteSchoolManager.Repository
     {
         public bool RescheduleLesson(int lessonId, DateTime date);
         public bool RescheduleCoachInLesson(int lessonId, int coachId);
+        public List<Lesson> FilterLessonsWithCoachId(int coachid);
     }
 
     public class LessonRepository : ILessonsRepository
@@ -62,5 +63,17 @@ namespace ByteSchoolManager.Repository
         Lesson? IRepository<Lesson>.GetById(int id) => throw new NotImplementedException();
 
         public Lesson? GetById([FromRoute] int id) => throw new NotImplementedException();
+
+        public List<Lesson> FilterLessonsWithCoachId(int coachid)
+        {
+
+            var lessons = _dbContext.Lessons
+            .Where(u => u.CoachId == coachid)
+            .OrderBy(u => u.DateAndTime)
+            .Reverse()
+            .ToList();
+
+            return lessons;
+        }
     }
 }
