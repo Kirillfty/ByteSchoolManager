@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <Navigation></Navigation>
-
+      <SortMenu v-model:sort-data="courseData"></SortMenu>
       <MenuCourse></MenuCourse>
     </div>
 
@@ -29,6 +29,8 @@ import Button from 'primevue/button';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
+import SortMenu from '@/components/SortMenu.vue';
+
 
 function Edit(){
   alert('edit');
@@ -37,6 +39,7 @@ function Delete(){
   alert('delete');
 }
 let courseData = ref('');
+
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Lesson/get-all')
     .then(function (res) {
@@ -44,7 +47,6 @@ async function GetCourseData() {
       return courseData.value = res.data;
     })
 }
-
 
 function removeSeconds(timeStr) {
   return timeStr ? timeStr.split(':').slice(0, 2).join(':') : '';

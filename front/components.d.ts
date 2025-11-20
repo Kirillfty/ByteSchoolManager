@@ -15,6 +15,7 @@ declare module 'vue' {
     AppTopbar: typeof import('./src/components/AppTopbar.vue')['default']
     Badge: typeof import('primevue/badge')['default']
     Button: typeof import('primevue/button')['default']
+    Card: typeof import('primevue/card')['default']
     Chart: typeof import('primevue/chart')['default']
     Column: typeof import('primevue/column')['default']
     CourseToggleMenu: typeof import('./src/components/CourseToggleMenu.vue')['default']

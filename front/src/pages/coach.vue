@@ -1,5 +1,5 @@
 ﻿<template>
-  <div class="flex items-center justify-between max-w-2xl m-auto">
+  <div class="flex items-center justify-between max-w-2xl m-auto" id="nav">
     <Button
       v-for="(date, index) in getWeekDates()"
       :key="index"
@@ -11,13 +11,12 @@
     </Button>
   </div>
   <div class="lessons" v-for="index in lessonData" :key="index.id">
-    <div class="lesson" @click.prevent="goToLessonPage(index.id)">
-      <h1 id="name-lesson">{{ index.title }}</h1>
-      <h1 id="time-lesson">{{ removeSeconds(index.time) }}</h1>
-      <div class="student-lesson-cont">
-        <p id="student-lesson">{{ index.students }}</p>
-      </div>
-    </div>
+    <Card @click.prevent="goToLessonPage(index.id)" id="card">
+        <template #title>{{ index.title }} {{ removeSeconds(index.time) }}</template>
+        <template #content>
+          <p class="m-0">Студенты:{{ index.students }}</p>
+        </template>
+    </Card>
   </div>
 </template>
 
@@ -77,4 +76,17 @@ function GetLessonInDay(NumberOfDay) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.lessons{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#card{
+  width:60% !important;
+  margin-top:5% !important;
+}
+#nav{
+  margin-top:3%;
+}
+</style>
