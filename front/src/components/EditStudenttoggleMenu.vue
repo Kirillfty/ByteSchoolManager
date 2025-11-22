@@ -57,7 +57,7 @@ function UpdateStudent(){
   })
 }
 
-const toggleMenu = (event) => {
+const toggleMenu = (event:any) => {
   menu.value.toggle(event)
 }
 
