@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <Navigation></Navigation>
-      <SortMenu v-model:sort-data="courseData"></SortMenu>
+      <SortMenu></SortMenu>
       <MenuCourse></MenuCourse>
     </div>
 
@@ -48,7 +48,7 @@ async function GetCourseData() {
     })
 }
 
-function removeSeconds(timeStr) {
+function removeSeconds(timeStr:string) {
   return timeStr ? timeStr.split(':').slice(0, 2).join(':') : '';
 };
 

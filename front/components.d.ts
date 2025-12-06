@@ -38,6 +38,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SalesTrendWidget: typeof import('./src/components/dashboard/SalesTrendWidget.vue')['default']
+    Select: typeof import('primevue/select')['default']
     SortMenu: typeof import('./src/components/SortMenu.vue')['default']
     SplitButton: typeof import('primevue/splitbutton')['default']
     StatsWidget: typeof import('./src/components/dashboard/StatsWidget.vue')['default']
