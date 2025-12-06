@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <Navigation></Navigation>
-      <SortMenu></SortMenu>
+      <SortMenu v-model:sort="courseData"></SortMenu>
       <MenuCourse></MenuCourse>
     </div>
 
