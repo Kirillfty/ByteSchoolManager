@@ -1,9 +1,11 @@
 <template id="mar">
   <div class="container">
     <div class="header">
-      <Navigation></Navigation>
+      <div class="nav">
+        <Navigation></Navigation>
+        <MenuCourse></MenuCourse>
+      </div>
       <SortMenu v-model:sort="courseData"></SortMenu>
-      <MenuCourse></MenuCourse>
     </div>
 
     <!-- Main Content -->
@@ -73,6 +75,13 @@ onMounted(async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width:100%;
+}
+.nav{
+  width:55%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
