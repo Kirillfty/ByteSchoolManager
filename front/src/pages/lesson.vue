@@ -9,18 +9,21 @@
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 bg-gray-50 flex" v-for="item in courseData" :key="item" id="card-container">
-      <Card>
-        <template #title>{{ item.id }} {{ removeSeconds(item.dateAndTime) }}</template>
-        <template #content>
-          <p class="m-0">Студенты:{{ item.students }}</p>
-          <p class="m-0">id тренера:{{ item.coachId }}</p>
-          <Button label="Изменить" @click="Edit" :model="item" />
-          <Button label="Удалить" @click="Delete" :model="item" />
-        </template>
 
-      </Card>
-    </div>
+      <div v-for="item in courseData" :key="item" id="card-container">
+        <Card>
+          <template #title>{{ item.id }} {{ removeSeconds(item.dateAndTime) }}</template>
+          <template #content>
+            <p class="m-0">Студенты:{{ item.students }}</p>
+            <p class="m-0">id тренера:{{ item.coachId }}</p>
+            <Button label="Изменить" @click="Edit" :model="item" />
+            <Button label="Удалить" @click="Delete" :model="item" />
+          </template>
+
+        </Card>
+      </div>
+
+
   </div>
 </template>
 
@@ -34,10 +37,10 @@ import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
 
 
-function Edit(){
+function Edit() {
   alert('edit');
 }
-function Delete(){
+function Delete() {
   alert('delete');
 }
 let courseData = ref('');
@@ -50,7 +53,7 @@ async function GetCourseData() {
     })
 }
 
-function removeSeconds(timeStr:string) {
+function removeSeconds(timeStr: string) {
   return timeStr ? timeStr.split(':').slice(0, 2).join(':') : '';
 };
 
@@ -66,21 +69,26 @@ onMounted(async () => {
 
 <style scoped>
 #card-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+
 }
 
-.header{
+
+
+
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width:100%;
+  width: 100%;
 }
-.nav{
-  width:55%;
-  display:flex;
+
+.nav {
+  width: 55%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
