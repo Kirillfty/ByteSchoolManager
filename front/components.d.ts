@@ -23,6 +23,7 @@ declare module 'vue' {
     DataTable: typeof import('primevue/datatable')['default']
     Dialog: typeof import('primevue/dialog')['default']
     Drawer: typeof import('primevue/drawer')['default']
+    EditLessonMenu: typeof import('./src/components/EditLessonMenu.vue')['default']
     EditStudenttoggleMenu: typeof import('./src/components/EditStudenttoggleMenu.vue')['default']
     Form: typeof import('@primevue/forms/form')['default']
     FormField: typeof import('@primevue/forms/formfield')['default']

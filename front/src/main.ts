@@ -6,6 +6,7 @@ import "./assets/css/main.css";
 import ToastService from 'primevue/toastservice';
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes, handleHotUpdate } from 'vue-router/auto-routes'
+// Импортируем темную тему
 
 import App from './App.vue'
 import axios from 'axios'

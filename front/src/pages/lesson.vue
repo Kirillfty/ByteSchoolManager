@@ -16,7 +16,7 @@
           <template #content>
             <p class="m-0">Студенты:{{ item.students }}</p>
             <p class="m-0">id тренера:{{ item.coachId }}</p>
-            <Button label="Изменить" @click="Edit" :model="item" />
+            <EditLessonMenu v-model:></EditLessonMenu>
             <Button label="Удалить" @click="Delete" :model="item" />
           </template>
 
@@ -35,6 +35,7 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
+import EditLessonMenuVue from '@/components/EditLessonMenu.vue';
 
 
 function Edit() {
