@@ -16,8 +16,8 @@
         optionLabel="label"
         placeholder="Выберите тренера"
         class="filter-select"
-      />
-        <Button label="Отправить" @click="Selected()"></Button>
+        />
+        <Button label="Отправить" @click="EditCoachInLesson()"></Button>
         <Button label="Закрыть" @click="displayCoachDialog = false" />
       </template>
     </Dialog>
@@ -31,13 +31,19 @@ const selectedCoach = ref();
 const menu = ref();
 const coachData = ref();
 const displayCoachDialog = ref(false)
+const id = defineProps(['Id']);
 
 
 const toggleMenu = (event) => {
   menu.value.toggle(event)
 }
-function Select(){
-  alert(selectedCoach.value);
+function EditCoachInLesson(){
+    console.log(Number(id));
+    console.log(selectedCoach.value);
+    axios.patch('https://localhost:7273/api/Lesson/replace-coach/',{lessonId:id.Id,coachId:selectedCoach.value.code})
+    .then(function(res){
+        console.log('procces--'+res.status);
+    })
 }
 const menuItems = ref([
   {
@@ -58,12 +64,13 @@ const menuItems = ref([
   }
 ])
 async function GetCoachData() {
-  await axios.get('https://localhost:7273/api/Coach')
-    .then(async function (res) {
-      coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
-    })
-}
-onMounted(async()=>{
-  await GetCoachData();
+   await axios.get('https://localhost:7273/api/Coach')
+     .then(async function (res) {
+       coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
 })
+
+}
+ onMounted(async()=>{
+   await GetCoachData();
+ })
 </script>
