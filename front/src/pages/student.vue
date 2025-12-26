@@ -5,7 +5,7 @@
       <AddStudentMenu></AddStudentMenu>
     </div>
     <!-- Main Content -->
-    <div class="flex-1 bg-gray-50 flex" v-for="item in studentsData" :key="item" id="card-container">
+    <div class="flex-1 flex" v-for="item in studentsData" :key="item" id="card-container">
       <Card>
         <template #title>{{ item.name }}</template>
         <template #content>

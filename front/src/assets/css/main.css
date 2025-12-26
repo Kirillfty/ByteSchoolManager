@@ -2,6 +2,25 @@
 @import "tailwindcss-primeui";
 @import "primeicons/primeicons.css";
 
-@custom-variant dark (&:where(.p-dark, .p-dark *));
+
+body{
+  background-color: black !important;
+}
+
+#card-container{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  margin-top:3%;
+}
+#card{
+  width:80%;
+}
+.content-button{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3%;
+}
 
 

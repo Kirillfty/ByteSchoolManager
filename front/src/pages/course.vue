@@ -1,14 +1,14 @@
-<template id="mar">
+<template>
   <div class="container">
     <div class="header">
       <div class="menus">
         <Navigation></Navigation>
         <MenuCourse></MenuCourse>
+
       </div>
     </div>
-
     <!-- Main Content -->
-    <div class="flex-1 bg-gray-50 flex" v-for="item in courseData" :key="item" id="card-container">
+    <div v-for="item in courseData" :key="item" id="card-container">
       <Card>
         <template #title>{{ item.title }} {{ removeSeconds(item.time) }}</template>
         <template #content>
@@ -25,7 +25,6 @@
 
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
@@ -36,7 +35,7 @@ import axios from 'axios';
 import Card from 'primevue/card';
 
 
-let courseData = ref();
+const courseData = ref();
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Course')
     .then(function (res) {

@@ -3,7 +3,7 @@
     <div class="filters-grid">
       <Select
         v-model="selectedCoach"
-        :options="coachData"
+        :options="coachData.coachData"
         optionLabel="label"
         placeholder="Выберите тренера"
         class="filter-select"
@@ -85,7 +85,7 @@ import Checkbox from 'primevue/checkbox';
 const checkbox = ref(false);
 const startDate = ref();
 const endDate = ref();
-const coachData = ref();
+const coachData = defineProps(['coachData']);
 const courseData = ref();
 const sortData = defineModel('sort');
 const selectedCoach = ref();
@@ -192,12 +192,7 @@ const Sort = async () => {
   }
 };
 
-async function GetCoachData() {
-  await axios.get('https://localhost:7273/api/Coach')
-    .then(async function (res) {
-      coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
-    })
-}
+
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Course')
     .then(function (res) {
@@ -206,7 +201,7 @@ async function GetCourseData() {
     })
 }
 onMounted(async function () {
-  await GetCoachData();
+
   await GetCourseData();
 })
 </script>

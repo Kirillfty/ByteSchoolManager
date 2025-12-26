@@ -5,19 +5,23 @@
         <Navigation></Navigation>
         <MenuCourse></MenuCourse>
       </div>
-      <SortMenu v-model:sort="courseData"></SortMenu>
+      <SortMenu v-model:sort="courseData" :coachData="coachData"></SortMenu>
     </div>
 
     <!-- Main Content -->
-
+      <div id="message" v-if="courseData == ''">
+        <p style="color:red;text-align: center;">loading...</p>
+      </div>
       <div v-for="item in courseData" :key="item" id="card-container">
-        <Card>
+        <Card id="card">
           <template #title>{{ item.id }} {{ removeSeconds(item.dateAndTime) }}</template>
           <template #content>
             <p class="m-0">Студенты:{{ item.students }}</p>
             <p class="m-0">id тренера:{{ item.coachId }}</p>
-            <EditLessonMenu :Id="item.id"></EditLessonMenu>
-            <Button label="Удалить" @click="Delete" :model="item" />
+            <div class="content-button">
+              <EditLessonMenu :Id="item.id" :coachData="coachData"></EditLessonMenu>
+              <Button label="Удалить" @click="Delete" :model="item" />
+            </div>
           </template>
 
         </Card>
@@ -36,12 +40,21 @@ import axios from 'axios';
 import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
 
-
+const coachData = ref();
+async function GetCoachData() {
+  await axios.get('https://localhost:7273/api/Coach')
+    .then(async function (res) {
+      coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
+    })
+}
+onMounted(async()=>{
+  await GetCoachData();
+})
 
 function Delete() {
   alert('delete');
 }
-let courseData = ref('');
+const courseData = ref('');
 
 async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Lesson/get-all')
@@ -66,12 +79,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-#card-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-}
 
 
 

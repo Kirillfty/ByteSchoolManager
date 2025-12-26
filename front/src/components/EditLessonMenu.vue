@@ -12,7 +12,7 @@
       <template #footer>
         <Select
         v-model="selectedCoach"
-        :options="coachData"
+        :options="id.coachData"
         optionLabel="label"
         placeholder="Выберите тренера"
         class="filter-select"
@@ -25,13 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref,onMounted } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 const selectedCoach = ref();
 const menu = ref();
-const coachData = ref();
 const displayCoachDialog = ref(false)
-const id = defineProps(['Id']);
+const id = defineProps(['Id','coachData']);
 
 
 const toggleMenu = (event) => {
@@ -43,6 +42,7 @@ function EditCoachInLesson(){
     axios.patch('https://localhost:7273/api/Lesson/replace-coach/',{lessonId:id.Id,coachId:selectedCoach.value.code})
     .then(function(res){
         console.log('procces--'+res.status);
+        window.location.reload();
     })
 }
 const menuItems = ref([
@@ -63,14 +63,6 @@ const menuItems = ref([
     separator: true,
   }
 ])
-async function GetCoachData() {
-   await axios.get('https://localhost:7273/api/Coach')
-     .then(async function (res) {
-       coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
-})
 
-}
- onMounted(async()=>{
-   await GetCoachData();
- })
+
 </script>
