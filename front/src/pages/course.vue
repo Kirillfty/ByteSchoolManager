@@ -19,6 +19,7 @@
           <p class="m-0">Кол-во занятий:{{ item.lessonsCount }}</p>
           <div class="buttons">
             <CourseToggleMenu :Id="item.id" :courseId="item.id"></CourseToggleMenu>
+            <StudentMenuall :id="item.id"></StudentMenuall>
           </div>
         </template>
       </Card>
@@ -30,6 +31,8 @@
 <script setup lang="ts">
 import Navigation from '@/components/Navigation.vue';
 import MenuCourse from '@/components/AddMenuCourse.vue';
+import StudentMenuall from '@/components/StudentMenuall.vue';
+
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';

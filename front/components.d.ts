@@ -24,6 +24,7 @@ declare module 'vue' {
     CourseToggleMenu: typeof import('./src/components/CourseToggleMenu.vue')['default']
     DataTable: typeof import('primevue/datatable')['default']
     Dialog: typeof import('primevue/dialog')['default']
+    Divider: typeof import('primevue/divider')['default']
     Drawer: typeof import('primevue/drawer')['default']
     Dropdown: typeof import('primevue/dropdown')['default']
     EditLessonMenu: typeof import('./src/components/EditLessonMenu.vue')['default']
@@ -40,6 +41,7 @@ declare module 'vue' {
     Navigation: typeof import('./src/components/Navigation.vue')['default']
     Password: typeof import('primevue/password')['default']
     ProductOverviewWidget: typeof import('./src/components/dashboard/ProductOverviewWidget.vue')['default']
+    ProgressBar: typeof import('primevue/progressbar')['default']
     RecentActivityWidget: typeof import('./src/components/dashboard/RecentActivityWidget.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -59,5 +61,6 @@ declare module 'vue' {
   export interface GlobalDirectives {
     Ripple: typeof import('primevue/ripple')['default']
     StyleClass: typeof import('primevue/styleclass')['default']
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }
