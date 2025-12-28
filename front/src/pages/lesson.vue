@@ -4,8 +4,8 @@
       <div class="nav">
         <Navigation></Navigation>
         <MenuCourse></MenuCourse>
+        <SortMenu @onChange="Sort"></SortMenu>
       </div>
-      <SortMenu v-model:sort="courseData" :coachData="coachData"></SortMenu>
     </div>
 
     <!-- Main Content -->
@@ -40,6 +40,11 @@ import axios from 'axios';
 import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
 
+function Sort(sort){
+    axios.get('/api/lesson/get-all',{params:sort})
+    
+
+}
 const coachData = ref();
 async function GetCoachData() {
   await axios.get('https://localhost:7273/api/Coach')
@@ -47,9 +52,6 @@ async function GetCoachData() {
       coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
     })
 }
-onMounted(async()=>{
-  await GetCoachData();
-})
 
 function Delete() {
   alert('delete');
@@ -71,6 +73,7 @@ function removeSeconds(timeStr: string) {
 
 onMounted(async () => {
   await GetCourseData();
+  await GetCoachData();
 })
 
 
