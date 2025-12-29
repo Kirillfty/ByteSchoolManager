@@ -4,7 +4,7 @@
       <div class="nav">
         <Navigation></Navigation>
         <MenuCourse></MenuCourse>
-        <SortMenu @onChange="Sort"></SortMenu>
+        <SortMenu @onChange="Sort" :coach="coachData" :course="array"></SortMenu>
       </div>
     </div>
 
@@ -39,17 +39,29 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
+const array = ref();
 
+
+async function GetCourseData1() {
+  await axios.get('https://localhost:7273/api/Course')
+    .then(function (res) {
+      console.log(res.data);
+      array.value = res.data.map(x => {return {code:x.id , name: x.title}});
+    })
+}
 function Sort(sort){
     axios.get('/api/lesson/get-all',{params:sort})
-    
+    .then(function(res){
+      return courseData.value = res.data;
+})
+
 
 }
 const coachData = ref();
 async function GetCoachData() {
   await axios.get('https://localhost:7273/api/Coach')
     .then(async function (res) {
-      coachData.value = res.data.map(x => { return { code: x.id, label: x.name } });
+      coachData.value = res.data.map(x => { return { code: x.id, name: x.name } });
     })
 }
 
@@ -62,7 +74,8 @@ async function GetCourseData() {
   await axios.get('https://localhost:7273/api/Lesson/get-all')
     .then(function (res) {
       console.log(res.data);
-      return courseData.value = res.data;
+      courseData.value = res.data;
+
     })
 }
 
@@ -74,6 +87,7 @@ function removeSeconds(timeStr: string) {
 onMounted(async () => {
   await GetCourseData();
   await GetCoachData();
+  await GetCourseData1();
 })
 
 

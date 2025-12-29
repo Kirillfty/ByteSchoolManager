@@ -1,9 +1,9 @@
 <template>
-  <div class="card flex justify-center ">
+  <div class="card">
     <Select
       @change="(SelectedCourse) =>{Values.CourseId = SelectedCourse.value.code}"
       v-model="SelectedCourse"
-      :options="coaches"
+      :options="coaches.course"
       showClear
       optionLabel="name"
       placeholder="Select a City"
@@ -11,7 +11,7 @@
     />
      <Select
       @change="(SelectedCoach)=>{Values.CoachId = SelectedCoach.value.code}"
-      :options="courses"
+      :options="coaches.coach"
       v-model="SelectedCoach"
       showClear
       optionLabel="name"
@@ -41,9 +41,9 @@ const SelectedSort = ref('');
 const Values = reactive({
   StartDate:'',
   EndDate:'',
-  CourseId:'',
-  CoachId:'',
-  sort:''
+  CourseId:null,
+  CoachId:null,
+  sort:null
 });
 const sorts = ref([{
   name:'По Тренеру',
@@ -58,14 +58,9 @@ const sorts = ref([{
   code:'date'
 }
 ])
-const coaches = ref([{
-  name:'1',
-  code:'1'
-}])
-const courses = ref([{
-  name:'1',
-  code:'1'
-}])
+
+const coaches = defineProps(['coach','course']);
+
 
 function handleDateChange(value:Date[]){
     if(Date.length == 2){
@@ -81,3 +76,10 @@ watch(Values,(newValues)=>{
 
 
 </script>
+<style scoped>
+.card{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+</style>
