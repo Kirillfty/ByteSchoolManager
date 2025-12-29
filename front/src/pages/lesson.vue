@@ -10,7 +10,7 @@
 
     <!-- Main Content -->
       <div id="message" v-if="courseData == ''">
-        <p style="color:red;text-align: center;">loading...</p>
+        <p style="color:red;text-align: center;">{{message}}</p>
       </div>
       <div v-for="item in courseData" :key="item" id="card-container">
         <Card id="card">
@@ -39,6 +39,7 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import Card from 'primevue/card';
 import SortMenu from '@/components/SortMenu.vue';
+const message = ref('loading.....');
 const array = ref();
 
 
@@ -52,7 +53,10 @@ async function GetCourseData1() {
 function Sort(sort){
     axios.get('/api/lesson/get-all',{params:sort})
     .then(function(res){
-      return courseData.value = res.data;
+      courseData.value = res.data;
+      if(res.data.length == 0){
+        message.value = 'Занятий по этому фильтру нету';
+      }
 })
 
 
@@ -97,7 +101,11 @@ onMounted(async () => {
 
 <style scoped>
 
-
+#message{
+  width:100%;
+  text-align: center;
+  margin-top:5%;
+}
 
 
 .header {

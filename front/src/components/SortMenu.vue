@@ -18,7 +18,7 @@
       placeholder="Select a City"
       class="w-full md:w-56"
     />
-    <DatePicker @value-change="(event)=>{handleDateChange(event)}" selectionMode="range" :manualInput="false" />
+    <DatePicker v-model="dates" @value-change="(dates)=>{saveDates(dates)}" selectionMode="range" :manualInput="false" />
 
     <Select
       @change="(SelectedSort)=>{Values.sort = SelectedSort.value.code}"
@@ -38,6 +38,7 @@ const emit = defineEmits(['onChange']);
 const SelectedCourse = ref('');
 const SelectedCoach = ref('');
 const SelectedSort = ref('');
+const dates = ref();
 const Values = reactive({
   StartDate:'',
   EndDate:'',
@@ -61,14 +62,14 @@ const sorts = ref([{
 
 const coaches = defineProps(['coach','course']);
 
-
-function handleDateChange(value:Date[]){
-    if(Date.length == 2){
-      Values.StartDate = value[0].toString();
-      Values.EndDate = value[1].toString();
-    }
-}
-
+const saveDates = () => {
+  if (dates.value && dates.value.length === 2) {
+    Values.StartDate = dates.value[0].toISOString().split('T')[0]; // Год-месяц-день
+    Values.EndDate = dates.value[1].toISOString().split('T')[0];
+    console.log(Values);
+    // Теперь startDate и endDate в формате 'YYYY-MM-DD'
+  }
+};
 watch(Values,(newValues)=>{
   emit('onChange',newValues)
   console.log(newValues);
