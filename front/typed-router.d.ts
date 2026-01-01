@@ -23,6 +23,7 @@ declare module 'vue-router/auto-routes' {
     '/course': RouteRecordInfo<'/course', '/course', Record<never, never>, Record<never, never>>,
     '/home': RouteRecordInfo<'/home', '/home', Record<never, never>, Record<never, never>>,
     '/lesson': RouteRecordInfo<'/lesson', '/lesson', Record<never, never>, Record<never, never>>,
+    '/lesson-[id]': RouteRecordInfo<'/lesson-[id]', '/lesson-:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,
     '/student': RouteRecordInfo<'/student', '/student', Record<never, never>, Record<never, never>>,
   }
@@ -56,6 +57,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/lesson.vue': {
       routes: '/lesson'
+      views: never
+    }
+    'src/pages/lesson-[id].vue': {
+      routes: '/lesson-[id]'
       views: never
     }
     'src/pages/register.vue': {
